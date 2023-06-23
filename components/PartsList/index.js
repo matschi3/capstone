@@ -4,7 +4,7 @@ export default function PartsList({ parts }) {
   return (
     <section>
       {parts.map((part) => {
-        <PartCard key={part.id} part={part} />;
+        return <PartCard key={part.id} part={part} />;
       })}
     </section>
   );
