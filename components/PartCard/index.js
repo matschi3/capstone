@@ -1,4 +1,3 @@
-import { parts } from "@/lib/parts";
 import Image from "next/image";
 
 export default function PartCard({ part }) {
