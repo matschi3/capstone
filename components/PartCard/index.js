@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { PartCardContainer } from "./PartCard.styled";
 
 export default function PartCard({ part }) {
   return (
