@@ -7,3 +7,10 @@ export const PartCardFlexContainer = styled.article`
   border-radius: 5px;
   margin: 0.5%;
 `;
+
+export const PartCardCategory = styled.p`
+  border: 1px solid green;
+  border-radius: 5px;
+  background-color: green;
+  margin: 0.5%;
+`;
