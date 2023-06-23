@@ -3,10 +3,10 @@ import { PartsListContainer } from "./PartsList.styled";
 
 export default function PartsList({ parts }) {
   return (
-    <section>
+    <PartsListContainer>
       {parts.map((part) => {
         return <PartCard key={part.id} part={part} />;
       })}
-    </section>
+    </PartsListContainer>
   );
 }
