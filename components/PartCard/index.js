@@ -9,7 +9,6 @@ export default function PartCard({ part }) {
       <p>Name: {part.name}</p>
       <PartCardFlexContainer direction={"row"}>
         <PartCardCategory>{part.category}</PartCardCategory>
-        <PartCardCategory>{part.category}</PartCardCategory>
       </PartCardFlexContainer>
     </PartCardFlexContainer>
   );
