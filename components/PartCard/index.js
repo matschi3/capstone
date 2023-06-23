@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 export default function PartCard({ part }) {
-  console.log(part);
   return (
     <article>
       <Image src={part.imgUrl} alt={part.name} width={100} height={100} />
