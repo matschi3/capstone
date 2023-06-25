@@ -27,7 +27,6 @@ export const FilterContainer = styled.section`
 
 export const FilterButtonContainer = styled.section`
   display: flex;
-  overflow-x: scroll;
   white-space: nowrap;
   position: absolute;
   left: 50%;
