@@ -8,6 +8,7 @@ export default function PartsList({ parts }) {
       <section>
         <button>alle</button>
         <button>teller</button>
+        <button>vase</button>
       </section>
       <PartsListContainer>
         {parts.map((part) => {
