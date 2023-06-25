@@ -13,7 +13,7 @@ export default function PartsList({ parts }) {
         <button onClick={() => setCategoryFilter("teller")}>teller</button>
         <button onClick={() => setCategoryFilter("vase")}>vase</button>
         <button onClick={() => setCategoryFilter("schüssel")}>schüssel</button>
-        <button>figur</button>
+        <button onClick={() => setCategoryFilter("figur")}>figur</button>
       </section>
       <PartsListContainer>
         {parts.map((part) => {
