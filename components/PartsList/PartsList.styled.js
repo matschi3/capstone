@@ -20,4 +20,12 @@ export const StyledHeading = styled.h1`
   background-color: white;
 `;
 
-export const filterButtonContainer = styled.section``;
+export const FilterButtonContainer = styled.section`
+  display: flex;
+  overflow-x: scroll;
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+`;
