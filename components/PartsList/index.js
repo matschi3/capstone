@@ -11,7 +11,7 @@ export default function PartsList({ parts }) {
       <section>
         <button onClick={() => setCategoryFilter("alle")}>alle</button>
         <button onClick={() => setCategoryFilter("teller")}>teller</button>
-        <button>vase</button>
+        <button onClick={() => setCategoryFilter("vase")}>vase</button>
         <button>schüssel</button>
         <button>figur</button>
       </section>
