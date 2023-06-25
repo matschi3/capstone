@@ -31,7 +31,7 @@ export default function PartsList({ parts }) {
           in Verarbeitung
         </button>
         <button onClick={() => setStatusFilter("isAssembled")}>verbaut</button>
-        <button>verkauft</button>
+        <button onClick={() => setStatusFilter("isSold")}>verkauft</button>
       </FilterButtonContainer>
       <PartsListContainer>
         {filteredParts.map((part) => {
