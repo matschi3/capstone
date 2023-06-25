@@ -25,7 +25,9 @@ export default function PartsList({ parts }) {
         <button onClick={() => setCategoryFilter("schüssel")}>schüssel</button>
         <button onClick={() => setCategoryFilter("figur")}>figur</button>
       </FilterButtonContainer>
-      <FilterButtonContainer></FilterButtonContainer>
+      <FilterButtonContainer>
+        <button>alle</button>
+      </FilterButtonContainer>
       <PartsListContainer>
         {filteredParts.map((part) => {
           return <PartCard key={part.id} part={part} />;
