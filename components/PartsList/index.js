@@ -30,7 +30,7 @@ export default function PartsList({ parts }) {
         <button onClick={() => setStatusFilter("inAssembler")}>
           in Verarbeitung
         </button>
-        <button>verbaut</button>
+        <button onClick={() => setStatusFilter("isAssembled")}>verbaut</button>
         <button>verkauft</button>
       </FilterButtonContainer>
       <PartsListContainer>
