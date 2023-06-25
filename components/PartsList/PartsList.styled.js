@@ -19,3 +19,5 @@ export const StyledHeading = styled.h1`
   color: blue;
   background-color: white;
 `;
+
+export const filterButtonContainer = styled.section``;
