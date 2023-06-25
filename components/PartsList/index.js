@@ -29,21 +29,27 @@ export default function PartsList({ parts }) {
   return (
     <>
       <StyledHeading>PARTS</StyledHeading>
-      <FilterButtonContainer>
-        <button onClick={() => setCategoryFilter("alle")}>alle</button>
-        <button onClick={() => setCategoryFilter("teller")}>teller</button>
-        <button onClick={() => setCategoryFilter("vase")}>vase</button>
-        <button onClick={() => setCategoryFilter("schüssel")}>schüssel</button>
-        <button onClick={() => setCategoryFilter("figur")}>figur</button>
-      </FilterButtonContainer>
-      <FilterButtonContainer>
-        <button onClick={() => setStatusFilter("alle")}>alle</button>
-        <button onClick={() => setStatusFilter("inAssembler")}>
-          in Verarbeitung
-        </button>
-        <button onClick={() => setStatusFilter("isAssembled")}>verbaut</button>
-        <button onClick={() => setStatusFilter("isSold")}>verkauft</button>
-      </FilterButtonContainer>
+      <FilterContainer>
+        <FilterButtonContainer>
+          <button onClick={() => setCategoryFilter("alle")}>alle</button>
+          <button onClick={() => setCategoryFilter("teller")}>teller</button>
+          <button onClick={() => setCategoryFilter("vase")}>vase</button>
+          <button onClick={() => setCategoryFilter("schüssel")}>
+            schüssel
+          </button>
+          <button onClick={() => setCategoryFilter("figur")}>figur</button>
+        </FilterButtonContainer>
+        <FilterButtonContainer>
+          <button onClick={() => setStatusFilter("alle")}>alle</button>
+          <button onClick={() => setStatusFilter("inAssembler")}>
+            in Verarbeitung
+          </button>
+          <button onClick={() => setStatusFilter("isAssembled")}>
+            verbaut
+          </button>
+          <button onClick={() => setStatusFilter("isSold")}>verkauft</button>
+        </FilterButtonContainer>
+      </FilterContainer>
       <PartsListContainer>
         {filteredParts.map((part) => {
           return <PartCard key={part.id} part={part} />;
