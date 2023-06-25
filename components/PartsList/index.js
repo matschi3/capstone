@@ -5,6 +5,7 @@ export default function PartsList({ parts }) {
   return (
     <>
       <StyledHeading>PARTS</StyledHeading>
+      <section></section>
       <PartsListContainer>
         {parts.map((part) => {
           return <PartCard key={part.id} part={part} />;
