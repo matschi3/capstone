@@ -7,6 +7,7 @@ export default function PartsList({ parts }) {
       <StyledHeading>PARTS</StyledHeading>
       <section>
         <button>alle</button>
+        <button>teller</button>
       </section>
       <PartsListContainer>
         {parts.map((part) => {
