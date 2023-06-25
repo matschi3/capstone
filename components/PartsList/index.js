@@ -21,7 +21,7 @@ export default function PartsList({ parts }) {
         <button onClick={() => setCategoryFilter("figur")}>figur</button>
       </section>
       <PartsListContainer>
-        {parts.map((part) => {
+        {filteredParts.map((part) => {
           return <PartCard key={part.id} part={part} />;
         })}
       </PartsListContainer>
