@@ -3,6 +3,7 @@ import {
   PartsListContainer,
   StyledHeading,
   FilterButtonContainer,
+  FilterContainer,
 } from "./PartsList.styled";
 import { useState } from "react";
 
