@@ -22,14 +22,11 @@ export const StyledHeading = styled.h1`
 
 export const FilterContainer = styled.section`
   display: flex;
+  flex-direction: column;
   overflow-x: scroll;
 `;
 
 export const FilterButtonContainer = styled.section`
   display: flex;
   white-space: nowrap;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100vw;
 `;
