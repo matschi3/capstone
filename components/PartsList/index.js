@@ -23,11 +23,6 @@ export default function PartsList({ parts }) {
         <button onClick={() => setCategoryFilter("vase")}>vase</button>
         <button onClick={() => setCategoryFilter("schüssel")}>schüssel</button>
         <button onClick={() => setCategoryFilter("figur")}>figur</button>
-        <button onClick={() => setCategoryFilter("alle")}>alle</button>
-        <button onClick={() => setCategoryFilter("teller")}>teller</button>
-        <button onClick={() => setCategoryFilter("vase")}>vase</button>
-        <button onClick={() => setCategoryFilter("schüssel")}>schüssel</button>
-        <button onClick={() => setCategoryFilter("figur")}>figur</button>
       </FilterButtonContainer>
       <PartsListContainer>
         {filteredParts.map((part) => {
