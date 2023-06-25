@@ -13,7 +13,7 @@ export default function PartsList({ parts }) {
   const filteredParts = parts.filter((part) => {
     if (categoryFilter === "alle" || part.category === categoryFilter) {
       if (statusFilter === "alle") {
-        return true;
+        return part;
       } else if (statusFilter === "inAssembler") {
         return part.inAssembler;
       } else if (statusFilter === "isAssembled") {
