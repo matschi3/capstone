@@ -17,7 +17,7 @@ export default function PartsList({ parts }) {
   return (
     <>
       <StyledHeading>PARTS</StyledHeading>
-      <section>
+      <FilterButtonContainer>
         <button onClick={() => setCategoryFilter("alle")}>alle</button>
         <button onClick={() => setCategoryFilter("teller")}>teller</button>
         <button onClick={() => setCategoryFilter("vase")}>vase</button>
@@ -28,7 +28,7 @@ export default function PartsList({ parts }) {
         <button onClick={() => setCategoryFilter("vase")}>vase</button>
         <button onClick={() => setCategoryFilter("schüssel")}>schüssel</button>
         <button onClick={() => setCategoryFilter("figur")}>figur</button>
-      </section>
+      </FilterButtonContainer>
       <PartsListContainer>
         {filteredParts.map((part) => {
           return <PartCard key={part.id} part={part} />;
