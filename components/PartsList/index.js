@@ -26,7 +26,7 @@ export default function PartsList({ parts }) {
         <button onClick={() => setCategoryFilter("figur")}>figur</button>
       </FilterButtonContainer>
       <FilterButtonContainer>
-        <button>alle</button>
+        <button onClick={() => setStatusFilter("alle")}>alle</button>
         <button>in Verarbeitung</button>
         <button>verbaut</button>
         <button>verkauft</button>
