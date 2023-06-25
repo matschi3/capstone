@@ -11,8 +11,18 @@ export default function PartsList({ parts }) {
   const [statusFilter, setStatusFilter] = useState("alle");
 
   const filteredParts = parts.filter((part) => {
-    if (categoryFilter === "alle" || part.category === categoryFilter)
-      return true;
+    if (categoryFilter === "alle" || part.category === categoryFilter) {
+      if (statusFilter === "alle") {
+        return true;
+      } else if (statusFilter === "inAssembler") {
+        return part.inAssembler;
+      } else if (statusFilter === "isAssembled") {
+        return part.isAssembled;
+      } else if (statusFilter === "isSold") {
+        return part.isSold;
+      }
+    }
+    return false;
   });
 
   return (
