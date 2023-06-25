@@ -9,7 +9,7 @@ export default function PartsList({ parts }) {
     <>
       <StyledHeading>PARTS</StyledHeading>
       <section>
-        <button>alle</button>
+        <button onClick={() => setCategoryFilter("alle")}>alle</button>
         <button>teller</button>
         <button>vase</button>
         <button>schüssel</button>
