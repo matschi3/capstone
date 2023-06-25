@@ -3,6 +3,8 @@ import { PartsListContainer, StyledHeading } from "./PartsList.styled";
 import { useState } from "react";
 
 export default function PartsList({ parts }) {
+  const [categoryFilter, setCategoryFilter] = useState("alle");
+
   return (
     <>
       <StyledHeading>PARTS</StyledHeading>
