@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function PartsList({ parts }) {
   const [categoryFilter, setCategoryFilter] = useState("alle");
 
+  const filteredParts = parts.filter((part) => {});
   return (
     <>
       <StyledHeading>PARTS</StyledHeading>
