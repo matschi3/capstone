@@ -6,7 +6,7 @@ export const PartsListContainer = styled.section`
   border: 1px solid black;
   border-radius: 5px;
   margin: 0.5%;
-  margin-top: 2.5em;
+  margin-top: 0.5em;
 `;
 
 export const StyledHeading = styled.h1`
@@ -24,9 +24,11 @@ export const FilterContainer = styled.section`
   display: flex;
   flex-direction: column;
   overflow-x: scroll;
+  margin-top: 2.5em;
 `;
 
 export const FilterButtonContainer = styled.section`
   display: flex;
   white-space: nowrap;
+  margin: 0.1em;
 `;
