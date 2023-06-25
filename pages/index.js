@@ -1,7 +1,6 @@
+import { parts } from "@/lib/parts";
+import PartsList from "@/components/PartsList";
+
 export default function HomePage() {
-  return (
-    <div>
-      <h1>Hello from Next.js</h1>
-    </div>
-  );
+  return <PartsList parts={parts} />;
 }
