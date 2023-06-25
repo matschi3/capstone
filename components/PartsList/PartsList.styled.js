@@ -23,12 +23,12 @@ export const StyledHeading = styled.h1`
 export const FilterContainer = styled.section`
   display: flex;
   flex-direction: column;
-  overflow-x: scroll;
   margin-top: 2.5em;
 `;
 
 export const FilterButtonContainer = styled.section`
   display: flex;
   white-space: nowrap;
+  overflow-x: scroll;
   margin: 0.1em;
 `;
