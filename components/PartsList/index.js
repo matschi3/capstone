@@ -1,5 +1,6 @@
 import PartCard from "../PartCard";
 import { PartsListContainer, StyledHeading } from "./PartsList.styled";
+import { useState } from "react";
 
 export default function PartsList({ parts }) {
   return (
