@@ -19,3 +19,13 @@ export const StyledHeading = styled.h1`
   color: blue;
   background-color: white;
 `;
+
+export const FilterButtonContainer = styled.section`
+  display: flex;
+  overflow-x: scroll;
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+`;
