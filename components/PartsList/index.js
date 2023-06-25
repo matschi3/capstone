@@ -28,6 +28,7 @@ export default function PartsList({ parts }) {
       <FilterButtonContainer>
         <button>alle</button>
         <button>in Verarbeitung</button>
+        <button>verbaut</button>
       </FilterButtonContainer>
       <PartsListContainer>
         {filteredParts.map((part) => {
