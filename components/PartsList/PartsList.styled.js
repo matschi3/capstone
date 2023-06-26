@@ -16,8 +16,8 @@ export const StyledHeading = styled.h1`
   top: 0;
   margin-block-start: 0;
   margin-block-end: 0;
-  color: blue;
-  background-color: white;
+  color: var(--color-part);
+  background-color: var(--color-white);
 `;
 
 export const FilterContainer = styled.section`
