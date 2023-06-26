@@ -15,6 +15,8 @@ export default function PartsList({ parts }) {
     if (categoryFilter === "alle" || part.category === categoryFilter) {
       if (statusFilter === "alle") {
         return part;
+      } else if (statusFilter === "!isAssembled") {
+        return part.isAssembled === false;
       } else if (statusFilter === "inAssembler") {
         return part.inAssembler;
       } else if (statusFilter === "isAssembled") {
