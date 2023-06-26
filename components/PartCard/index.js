@@ -14,6 +14,7 @@ export default function PartCard({ part }) {
       </PartCardFlexContainer>
       <PartCardFlexContainer direction={"row"}>
         <PartCardCategory>{part.category}</PartCardCategory>
+        <StatusMarker part={part} />
       </PartCardFlexContainer>
     </PartCardFlexContainer>
   );
