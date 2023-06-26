@@ -1,3 +1,5 @@
+import { StatMarker } from "./StatusMarker.styled";
+
 export default function StatusMarker({ part }) {
   return (
     <>
