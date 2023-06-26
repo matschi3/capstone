@@ -51,9 +51,11 @@ export default function PartsList({ parts }) {
         </FilterButtonContainer>
       </FilterContainer>
       <PartsListContainer>
-        {filteredParts.map((part) => {
-          return <PartCard key={part.id} part={part} />;
-        })}
+        {filteredParts.length === 0 ? (
+          <p>Keine Teile für gewählte Filter gefunden</p>
+        ) : (
+          filteredParts.map((part) => <PartCard key={part.id} part={part} />)
+        )}
       </PartsListContainer>
     </>
   );
