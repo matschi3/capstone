@@ -1,1 +1,3 @@
-export default function StatusMarker({ parts }) {}
+export default function StatusMarker({ part }) {
+  return <>{part.inAssembler === true ? <p>in Verarbeitung</p> : null}</>;
+}
