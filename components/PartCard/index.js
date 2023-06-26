@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PartCardFlexContainer, PartCardCategory } from "./PartCard.styled";
+import StatusMarker from "../StatusMarker";
 
 export default function PartCard({ part }) {
   return (
@@ -13,6 +14,7 @@ export default function PartCard({ part }) {
       </PartCardFlexContainer>
       <PartCardFlexContainer direction={"row"}>
         <PartCardCategory>{part.category}</PartCardCategory>
+        <StatusMarker part={part} />
       </PartCardFlexContainer>
     </PartCardFlexContainer>
   );

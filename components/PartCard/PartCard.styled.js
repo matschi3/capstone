@@ -9,9 +9,9 @@ export const PartCardFlexContainer = styled.article`
 `;
 
 export const PartCardCategory = styled.p`
-  border: 1px solid green;
+  border: 1px solid black;
   border-radius: 5px;
-  background-color: green;
+  background-color: var(--color-category);
   padding: 0.5%;
   margin: 0.5%;
 `;
