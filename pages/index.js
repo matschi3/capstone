@@ -1,7 +1,7 @@
-import PartsList from "@/components/PartsList";
-import StyledHeader from "@/components/StyledHeader";
-import LinkTo from "@/components/LinkTo";
-import usePartStore from "@/components/PartStore/UsePartStore";
+import PartsList from "../components/PartsList/index.js";
+import StyledHeader from "../components/StyledHeader/index.js";
+import LinkTo from "../components/LinkTo/index.js";
+import usePartStore from "../components/PartStore/UsePartStore.js";
 
 export default function HomePage() {
   const { parts, setParts } = usePartStore();
@@ -13,7 +13,7 @@ export default function HomePage() {
         name={"neues TEIL"}
         color={"var(--color-part)"}
       />
-      <PartsList parts={parts} />;
+      <PartsList parts={parts} />
     </>
   );
 }
