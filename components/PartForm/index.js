@@ -1,7 +1,7 @@
-import { categories } from "@/lib/categories";
-import { FormContainer, Label, Input, Select } from "./PartForm.styled";
-import { PartCardFlexContainer } from "../PartCard/PartCard.styled";
-import { PartsListContainer } from "../PartsList/PartsList.styled";
+import { categories } from "../../lib/categories.js";
+import { FormContainer, Label, Input, Select } from "./PartForm.styled.js";
+import { PartCardFlexContainer } from "../PartCard/PartCard.styled.js";
+import { PartsListContainer } from "../PartsList/PartsList.styled.js";
 
 export default function PartForm({ onSubmit, formName, defaultData }) {
   function handleSubmit(event) {

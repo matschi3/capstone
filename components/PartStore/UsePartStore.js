@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { initialParts } from "@/lib/parts";
+import { initialParts } from "../../lib/parts.js";
 
 const usePartStore = create((set) => ({
   parts: initialParts,

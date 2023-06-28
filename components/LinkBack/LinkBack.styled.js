@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledLink } from "../StyledLink/StyledLink.styled";
+import { StyledLink } from "../../components/StyledLink/StyledLink.styled.js";
 
 export const StyledLinkBack = styled(StyledLink)`
   position: fixed;

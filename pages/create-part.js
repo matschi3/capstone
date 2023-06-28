@@ -1,7 +1,7 @@
-import PartForm from "@/components/PartForm";
-import usePartStore from "@/components/PartStore/UsePartStore";
-import StyledHeader from "@/components/StyledHeader";
-import LinkBack from "@/components/LinkBack";
+import PartForm from "../components/PartForm/index.js";
+import usePartStore from "../components/PartStore/UsePartStore.js";
+import StyledHeader from "../components/StyledHeader/index.js";
+import LinkBack from "../components/LinkBack/index.js";
 import { useRouter } from "next/router";
 
 export default function CreatePartPage() {

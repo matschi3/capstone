@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { StyledHeadline } from "./StyledHeader.styled";
+import { StyledHeadline } from "./StyledHeader.styled.js";
 
 export default function StyledHeader({ title, color }) {
   return (

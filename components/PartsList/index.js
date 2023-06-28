@@ -1,9 +1,9 @@
-import PartCard from "../PartCard";
+import PartCard from "../PartCard/index.js";
 import {
   PartsListContainer,
   FilterButtonContainer,
   FilterContainer,
-} from "./PartsList.styled";
+} from "./PartsList.styled.js";
 import { useState } from "react";
 
 export default function PartsList({ parts }) {

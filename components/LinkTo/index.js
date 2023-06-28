@@ -1,4 +1,4 @@
-import { StyledLinkTo } from "./LinkTo.styled";
+import { StyledLinkTo } from "./LinkTo.styled.js";
 
 export default function LinkTo({ href, name, color }) {
   return (
