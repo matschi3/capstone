@@ -1,7 +1,7 @@
-import { parts } from "@/lib/parts";
 import PartsList from "@/components/PartsList";
 import StyledHeader from "@/components/StyledHeader";
 import LinkTo from "@/components/LinkTo";
+import usePartStore from "@/components/PartStore/UsePartStore";
 
 export default function HomePage() {
   return (
