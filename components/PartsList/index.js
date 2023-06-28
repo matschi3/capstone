@@ -1,7 +1,6 @@
 import PartCard from "../PartCard";
 import {
   PartsListContainer,
-  StyledHeading,
   FilterButtonContainer,
   FilterContainer,
 } from "./PartsList.styled";
@@ -30,7 +29,6 @@ export default function PartsList({ parts }) {
 
   return (
     <>
-      <StyledHeading>PARTS</StyledHeading>
       <FilterContainer>
         <FilterButtonContainer>
           <button onClick={() => setCategoryFilter("alle")}>alle</button>
