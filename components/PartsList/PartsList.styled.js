@@ -9,17 +9,6 @@ export const PartsListContainer = styled.section`
   margin-top: 5em;
 `;
 
-export const StyledHeading = styled.h1`
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  color: var(--color-part);
-  background-color: var(--color-white);
-`;
-
 export const FilterContainer = styled.section`
   display: flex;
   flex-direction: column;

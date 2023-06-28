@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { PartCardFlexContainer, PartCardCategory } from "./PartCard.styled";
-import StatusMarker from "../StatusMarker";
+import { PartCardFlexContainer, PartCardCategory } from "./PartCard.styled.js";
+import StatusMarker from "../StatusMarker/index.js";
 
 export default function PartCard({ part }) {
   return (

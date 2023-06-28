@@ -1,10 +1,9 @@
-import PartCard from "../PartCard";
+import PartCard from "../PartCard/index.js";
 import {
   PartsListContainer,
-  StyledHeading,
   FilterButtonContainer,
   FilterContainer,
-} from "./PartsList.styled";
+} from "./PartsList.styled.js";
 import { useState } from "react";
 
 export default function PartsList({ parts }) {
@@ -30,7 +29,6 @@ export default function PartsList({ parts }) {
 
   return (
     <>
-      <StyledHeading>PARTS</StyledHeading>
       <FilterContainer>
         <FilterButtonContainer>
           <button onClick={() => setCategoryFilter("alle")}>alle</button>

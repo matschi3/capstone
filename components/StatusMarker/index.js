@@ -1,4 +1,4 @@
-import { StatMarker } from "./StatusMarker.styled";
+import { StatMarker } from "./StatusMarker.styled.js";
 
 export default function StatusMarker({ part }) {
   return (
