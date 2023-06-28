@@ -4,6 +4,7 @@ import LinkTo from "@/components/LinkTo";
 import usePartStore from "@/components/PartStore/UsePartStore";
 
 export default function HomePage() {
+  const { parts, setParts } = usePartStore();
   return (
     <>
       <StyledHeader title={"TEILE"} color={"var(--color-part)"} />
