@@ -1,4 +1,4 @@
 import Head from "next/head";
 import { StyledHeadline } from "./StyledHeader.styled";
 
-export default function StyledHeader() {}
+export default function StyledHeader({ title, color }) {}
