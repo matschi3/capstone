@@ -13,6 +13,12 @@ const usePartStore = create((set) => ({
         part.uuid === uuid ? { ...part, [key]: newValue } : part
       ),
     })),
+  togglePartValue: (uuid, key) =>
+    set((state) => ({
+      parts: state.parts.map((part) =>
+        part.uuid === uuid ? { ...part, [key]: !part[key] } : part
+      ),
+    })),
 }));
 
 export default usePartStore;
