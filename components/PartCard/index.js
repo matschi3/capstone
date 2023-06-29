@@ -10,7 +10,7 @@ import usePartStore from "../PartStore/UsePartStore.js";
 
 export default function PartCard({ part, isDetail }) {
   function toggleInAssembler() {
-    usePartStore.getState().togglePartValue(uuid, "inAssembler");
+    usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
   }
   return (
     <PartCardFlexContainer direction={"column"} border={"blue"}>
