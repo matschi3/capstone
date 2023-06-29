@@ -18,6 +18,7 @@ export default function PartCard({ part, isDetail }) {
           ) : (
             <>
               <p>EK Ort: {part.partOrigin}</p>
+              <p>EK Tag: {part.dateBuy}</p>
             </>
           )}
         </PartCardFlexContainer>
