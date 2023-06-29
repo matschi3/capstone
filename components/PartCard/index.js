@@ -8,6 +8,7 @@ import {
 import StatusMarker from "../StatusMarker/index.js";
 
 export default function PartCard({ part, isDetail }) {
+  function toggleInAssembler() {}
   return (
     <PartCardFlexContainer direction={"column"} border={"blue"}>
       <PartCardFlexContainer direction={"row"}>
