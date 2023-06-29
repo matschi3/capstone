@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link.js";
 import { PartCardFlexContainer, PartCardCategory } from "./PartCard.styled.js";
 import StatusMarker from "../StatusMarker/index.js";
 
