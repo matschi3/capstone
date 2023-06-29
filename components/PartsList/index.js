@@ -57,7 +57,7 @@ export default function PartsList({ parts }) {
         {filteredParts.length === 0 ? (
           <p>Keine Teile für gewählte Filter gefunden</p>
         ) : (
-          filteredParts.map((part) => <PartCard key={part.id} part={part} />)
+          filteredParts.map((part) => <PartCard key={part.uuid} part={part} />)
         )}
       </PartsListContainer>
     </>

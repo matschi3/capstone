@@ -18,6 +18,9 @@ export default createGlobalStyle`
     --color-isAssembled: orangered;
     --color-isSold: violet;
     --color-test: pink;
+    
+    --border-size: 2px;
+    --border-sizeButton: 2px;
   }
 
   body {

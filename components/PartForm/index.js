@@ -2,6 +2,7 @@ import { categories } from "../../lib/categories.js";
 import { FormContainer, Label, Input, Select } from "./PartForm.styled.js";
 import { PartCardFlexContainer } from "../PartCard/PartCard.styled.js";
 import { PartsListContainer } from "../PartsList/PartsList.styled.js";
+import { v4 as uuidv4 } from "uuid";
 
 export default function PartForm({ onSubmit, formName, defaultData }) {
   function handleSubmit(event) {
@@ -16,6 +17,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     const todayDate = day + "." + month + "." + year;
 
     const newPart = {
+      uuid: uuidv4(),
       name: data.name,
       dateBuy: todayDate,
       dateSold: "",
