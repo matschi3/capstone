@@ -23,4 +23,6 @@ export const PartCardImage = styled(Image)`
   object-fit: cover;
 `;
 
-export const PartCardText = styled.p``;
+export const PartCardText = styled.p`
+  margin: 0.2rem;
+`;
