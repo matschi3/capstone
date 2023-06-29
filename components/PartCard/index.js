@@ -6,6 +6,7 @@ import {
   PartCardText,
 } from "./PartCard.styled.js";
 import StatusMarker from "../StatusMarker/index.js";
+import usePartStore from "../PartStore/UsePartStore.js";
 
 export default function PartCard({ part, isDetail }) {
   function toggleInAssembler() {}
