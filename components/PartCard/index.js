@@ -9,7 +9,9 @@ import StatusMarker from "../StatusMarker/index.js";
 import usePartStore from "../PartStore/UsePartStore.js";
 
 export default function PartCard({ part, isDetail }) {
-  function toggleInAssembler() {}
+  function toggleInAssembler() {
+    usePartStore.getState().togglePartValue(uuid, "inAssembler");
+  }
   return (
     <PartCardFlexContainer direction={"column"} border={"blue"}>
       <PartCardFlexContainer direction={"row"}>
