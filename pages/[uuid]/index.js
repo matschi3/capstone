@@ -8,6 +8,9 @@ export default function PartDetailPage() {
     <>
       <StyledHeader title={"TEIL"} color={"var(--color-part)"} />
       <LinkBack />
+      <PartsListContainer>
+        <PartCard part={part} isDetail />
+      </PartsListContainer>
     </>
   );
 }
