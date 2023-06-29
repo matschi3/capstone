@@ -7,6 +7,12 @@ const usePartStore = create((set) => ({
     set((state) => ({
       parts: [...state.parts, newPart],
     })),
+  updatePartValue: (uuid, key, newValue) =>
+    set((state) => ({
+      parts: state.parts.map((part) =>
+        part.uuid === uuid ? { ...part, [key]: newValue } : part
+      ),
+    })),
 }));
 
 export default usePartStore;
