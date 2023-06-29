@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const PartsListContainer = styled.section`
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: var(--border-size) solid var(--color-black);
   border-radius: 5px;
-  margin: 0.5%;
+  margin: 0.1rem;
   margin-top: 5em;
 `;
 
