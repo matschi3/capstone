@@ -18,7 +18,7 @@ export const PartCardCategory = styled.p`
 `;
 
 export const PartCardImage = styled(Image)`
-  border: 1px solid black;
+  border: 1px solid var(--color-black);
   border-radius: 5px;
   object-fit: cover;
 `;
