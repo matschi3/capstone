@@ -36,6 +36,7 @@ export default function PartCard({ part, isDetail }) {
             </>
           )}
         </PartCardFlexContainer>
+        <PartCardFlexContainer direction={"column"}></PartCardFlexContainer>
       </PartCardFlexContainer>
       <PartCardFlexContainer direction={"row"}>
         <PartCardCategory>{part.category}</PartCardCategory>
