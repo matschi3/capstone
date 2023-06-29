@@ -17,7 +17,11 @@ export default function PartDetailPage() {
       <StyledHeader title={"TEIL"} color={"var(--color-part)"} />
       <LinkBack />
       <PartsListContainer>
-        <PartCard part={detailPart} isDetail />
+        {!detailPart ? (
+          <p>kein Teil gefunden...</p>
+        ) : (
+          <PartCard part={detailPart} isDetail />
+        )}
       </PartsListContainer>
     </>
   );
