@@ -3,7 +3,7 @@ import Link from "next/link.js";
 import { PartCardFlexContainer, PartCardCategory } from "./PartCard.styled.js";
 import StatusMarker from "../StatusMarker/index.js";
 
-export default function PartCard({ part }) {
+export default function PartCard({ part, isDetail }) {
   return (
     <PartCardFlexContainer direction={"column"} border={"blue"}>
       <PartCardFlexContainer direction={"row"}>
