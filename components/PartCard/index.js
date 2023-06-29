@@ -21,16 +21,16 @@ export default function PartCard({ part, isDetail }) {
           />
         </Link>
         <PartCardFlexContainer direction={"column"}>
-          <p>Name: {part.name}</p>
-          <p>Einkaufspreis: {part.purchasingPrice}</p>
+          <PartCardText>Name: {part.name}</PartCardText>
+          <PartCardText>Einkaufspreis: {part.purchasingPrice}</PartCardText>
           {!isDetail ? (
             ""
           ) : (
             <>
-              <p>EK Ort: {part.partOrigin}</p>
-              <p>EK Tag: {part.dateBuy}</p>
-              <p>VK Tag: {part.dateSold}</p>
-              <p>uuid: {part.uuid}</p>
+              <PartCardText>EK Ort: {part.partOrigin}</PartCardText>
+              <PartCardText>EK Tag: {part.dateBuy}</PartCardText>
+              <PartCardText>VK Tag: {part.dateSold}</PartCardText>
+              <PartCardText>uuid: {part.uuid}</PartCardText>
             </>
           )}
         </PartCardFlexContainer>
