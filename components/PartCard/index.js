@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link.js";
-import { PartCardFlexContainer, PartCardCategory } from "./PartCard.styled.js";
+import {
+  PartCardFlexContainer,
+  PartCardCategory,
+  PartCardImage,
+  PartCardText,
+} from "./PartCard.styled.js";
 import StatusMarker from "../StatusMarker/index.js";
 
 export default function PartCard({ part, isDetail }) {
