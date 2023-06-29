@@ -19,6 +19,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     const uuid4 = uuidv4();
 
     const newPart = {
+      uuid: uuid4,
       name: data.name,
       dateBuy: todayDate,
       dateSold: "",
