@@ -13,6 +13,7 @@ export default function PartCard({ part, isDetail }) {
         <PartCardFlexContainer direction={"column"}>
           <p>Name: {part.name}</p>
           <p>Einkaufspreis: {part.purchasingPrice}</p>
+          {!isDetail ? "" : <></>}
         </PartCardFlexContainer>
       </PartCardFlexContainer>
       <PartCardFlexContainer direction={"row"}>
