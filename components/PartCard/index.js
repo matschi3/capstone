@@ -13,7 +13,12 @@ export default function PartCard({ part, isDetail }) {
     <PartCardFlexContainer direction={"column"} border={"blue"}>
       <PartCardFlexContainer direction={"row"}>
         <Link href={!isDetail ? `${part.uuid}` : `/`}>
-          <Image src={part.imgUrl} alt={part.name} width={100} height={100} />
+          <PartCardImage
+            src={part.imgUrl}
+            alt={part.name}
+            width={100}
+            height={100}
+          />
         </Link>
         <PartCardFlexContainer direction={"column"}>
           <p>Name: {part.name}</p>
