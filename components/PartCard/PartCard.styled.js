@@ -22,3 +22,5 @@ export const PartCardImage = styled(Image)`
   border-radius: 5px;
   object-fit: cover;
 `;
+
+export const PartCardText = styled.p``;
