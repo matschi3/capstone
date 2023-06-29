@@ -7,7 +7,9 @@ export default function PartCard({ part }) {
   return (
     <PartCardFlexContainer direction={"column"} border={"blue"}>
       <PartCardFlexContainer direction={"row"}>
-        <Image src={part.imgUrl} alt={part.name} width={100} height={100} />
+        <Link href={`${part.uuid}`}>
+          <Image src={part.imgUrl} alt={part.name} width={100} height={100} />
+        </Link>
         <PartCardFlexContainer direction={"column"}>
           <p>Einkaufspreis: {part.purchasingPrice}</p>
           <p>Name: {part.name}</p>
