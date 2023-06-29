@@ -16,10 +16,8 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     const year = allDate.getFullYear();
     const todayDate = day + "." + month + "." + year;
 
-    const uuid4 = uuidv4();
-
     const newPart = {
-      uuid: uuid4,
+      uuid: uuidv4(),
       name: data.name,
       dateBuy: todayDate,
       dateSold: "",
