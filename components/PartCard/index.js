@@ -37,7 +37,7 @@ export default function PartCard({ part, isDetail }) {
           )}
         </PartCardFlexContainer>
         <PartCardFlexContainer direction={"column"}>
-          <button>verarbeiten</button>
+          <button onClick={toggleInAssembler}>verarbeiten</button>
         </PartCardFlexContainer>
       </PartCardFlexContainer>
       <PartCardFlexContainer direction={"row"}>
