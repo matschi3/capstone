@@ -4,21 +4,21 @@ import Image from "next/image";
 export const PartCardFlexContainer = styled.article`
   display: flex;
   flex-direction: ${(props) => props.direction || "column"};
-  border: 1px solid ${(props) => props.border || "none"};
+  border: var(--border-size) solid ${(props) => props.border || "none"};
   border-radius: 5px;
-  margin: 0.5%;
+  margin: 0.1rem;
 `;
 
 export const PartCardCategory = styled.p`
-  border: 1px solid black;
+  border: var(--border-sizeButton) solid var(--color-black);
   border-radius: 5px;
   background-color: var(--color-category);
-  padding: 0.5%;
-  margin: 0.5%;
+  padding: 0.1rem;
+  margin: 0.1rem;
 `;
 
 export const PartCardImage = styled(Image)`
-  border: 1px solid var(--color-black);
+  border: var(--border-size) solid var(--color-black);
   border-radius: 5px;
   object-fit: cover;
 `;
