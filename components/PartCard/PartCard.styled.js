@@ -17,4 +17,7 @@ export const PartCardCategory = styled.p`
   margin: 0.5%;
 `;
 
-export const PartCardImage = styled(Image)``;
+export const PartCardImage = styled(Image)`
+  border: 1px solid black;
+  border-radius: 5px;
+`;
