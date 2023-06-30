@@ -27,4 +27,11 @@ export const PartCardText = styled.p`
   margin: 0.2rem;
 `;
 
-export const ToggleInAssemblerButton = styled.button``;
+export const ToggleInAssemblerButton = styled.button`
+  font-weight: bold;
+  color: var(--color-black);
+  border: var(--border-sizeButton) solid var(--color-inAssembler);
+  border-radius: 5px;
+  padding: 0.1rem;
+  margin: 0.1rem;
+`;
