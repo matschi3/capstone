@@ -37,7 +37,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
 
   return (
     <PartsListContainer>
-      <PartCardFlexContainer border={"var(--color-part)"}>
+      <PartCardFlexContainer border="var(--color-part)">
         <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
           <Label htmlFor="name">Name</Label>
           <Input
