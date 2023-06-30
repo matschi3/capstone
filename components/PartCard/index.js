@@ -13,6 +13,7 @@ export default function PartCard({ part, isDetail }) {
   function toggleInAssembler() {
     usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
   }
+
   return (
     <PartCardFlexContainer direction={"column"} border={"blue"}>
       <PartCardFlexContainer direction={"row"} justify={"flex-start"}>
