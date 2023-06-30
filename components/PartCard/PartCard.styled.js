@@ -26,3 +26,5 @@ export const PartCardImage = styled(Image)`
 export const PartCardText = styled.p`
   margin: 0.2rem;
 `;
+
+export const ToggleInAssemblerButton = styled.button``;
