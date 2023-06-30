@@ -19,7 +19,7 @@ export default function PartCard({ part, isDetail }) {
         <Link href={!isDetail ? `${part.uuid}` : `/`}>
           <PartCardImage
             src={part.imgUrl}
-            alt={part.name}
+            alt={part.category}
             width={100}
             height={100}
           />
