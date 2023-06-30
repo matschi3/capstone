@@ -15,8 +15,8 @@ export default function PartCard({ part, isDetail }) {
   }
 
   return (
-    <PartCardFlexContainer direction={"column"} border={"blue"}>
-      <PartCardFlexContainer direction={"row"} justify={"flex-start"}>
+    <PartCardFlexContainer direction="column" border="blue">
+      <PartCardFlexContainer direction="row" justify="flex-start">
         <Link href={!isDetail ? `${part.uuid}` : `/`}>
           <PartCardImage
             src={part.imgUrl}
@@ -25,7 +25,7 @@ export default function PartCard({ part, isDetail }) {
             height={100}
           />
         </Link>
-        <PartCardFlexContainer direction={"column"} justify={"flex-start"}>
+        <PartCardFlexContainer direction="column" justify="flex-start">
           <PartCardText>Name: {part.name}</PartCardText>
           <PartCardText>
             EK Preis: {part.purchasingPrice} {part.currency}
@@ -42,13 +42,13 @@ export default function PartCard({ part, isDetail }) {
             </>
           )}
         </PartCardFlexContainer>
-        <PartCardFlexContainer direction={"column"} justify={"flex-start"}>
+        <PartCardFlexContainer direction="column" justify="flex-start">
           <ToggleInAssemblerButton onClick={toggleInAssembler}>
             verarbeiten
           </ToggleInAssemblerButton>
         </PartCardFlexContainer>
       </PartCardFlexContainer>
-      <PartCardFlexContainer direction={"row"} justify={"flex-start"}>
+      <PartCardFlexContainer direction="row" justify="flex-start">
         <PartCardCategory>{part.category}</PartCardCategory>
         <StatusMarker part={part} />
       </PartCardFlexContainer>
