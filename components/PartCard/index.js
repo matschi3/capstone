@@ -47,7 +47,7 @@ export default function PartCard({ part, isDetail }) {
           </ToggleInAssemblerButton>
         </PartCardFlexContainer>
       </PartCardFlexContainer>
-      <PartCardFlexContainer direction={"row"}>
+      <PartCardFlexContainer direction={"row"} justify={"flex-start"}>
         <PartCardCategory>{part.category}</PartCardCategory>
         <StatusMarker part={part} />
       </PartCardFlexContainer>
