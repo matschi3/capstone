@@ -24,7 +24,7 @@ export default function PartCard({ part, isDetail }) {
             height={100}
           />
         </Link>
-        <PartCardFlexContainer direction={"column"}>
+        <PartCardFlexContainer direction={"column"} justify={"flex-start"}>
           <PartCardText>Name: {part.name}</PartCardText>
           <PartCardText>
             EK Preis: {part.purchasingPrice} {part.currency}
