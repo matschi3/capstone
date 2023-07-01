@@ -12,9 +12,9 @@ export default function CreateItemPage() {
     <>
       <StyledHeader title="neues ITEM" color="var(--color-inAssembler)" />
       <LinkBack />
-      <PartsListContainer borderColor="var(--color-inAssembler)">
+      <PartsListContainer borderColor="var(--color-item)">
         {inAssemblerParts.length === 0 ? (
-          <p>Keine Teile zum verarbeiten ausgewählt</p>
+          <p>Keine Teile zum verarbeiten ausgewählt...</p>
         ) : (
           inAssemblerParts.map((part) => (
             <PartCard key={part.uuid} part={part} />
