@@ -8,6 +8,9 @@ export default function ItemsPage() {
     <>
       <StyledHeader title="ITEMS" color="var(--color-item)" />
       <LinkBack />
+      {initialItems.map((item) => (
+        <ItemCard key={item.uuid} item={item} />
+      ))}
     </>
   );
 }
