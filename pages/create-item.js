@@ -17,9 +17,17 @@ export default function CreateItemPage() {
         {inAssemblerParts.length === 0 ? (
           <p>Keine Teile zum verarbeiten ausgewählt...</p>
         ) : (
-          inAssemblerParts.map((part) => (
-            <PartCard key={part.uuid} part={part} />
-          ))
+          <>
+            <LinkTo
+              href="/items"
+              name="verarbeiten"
+              color="var(--color-inAssembler)"
+              poslr="right"
+            />
+            {inAssemblerParts.map((part) => (
+              <PartCard key={part.uuid} part={part} />
+            ))}
+          </>
         )}
       </PartsListContainer>
     </>
