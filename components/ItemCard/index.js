@@ -1,1 +1,1 @@
-export default function ItemCard() {}
+export default function ItemCard({ item }) {}
