@@ -7,6 +7,10 @@ export const PartsListContainer = styled.section`
   border-radius: 5px;
   margin: 0.1rem;
   margin-top: 5em;
+  @media (min-width: 450px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 `;
 
 export const FilterContainer = styled.section`

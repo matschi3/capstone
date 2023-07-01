@@ -4,6 +4,7 @@ import Image from "next/image";
 export const PartCardFlexContainer = styled.article`
   display: flex;
   flex-direction: ${(props) => props.direction || "column"};
+  justify-content: ${(props) => props.justify || "center"};
   border: var(--border-size) solid ${(props) => props.border || "none"};
   border-radius: 5px;
   margin: 0.1rem;
@@ -25,4 +26,13 @@ export const PartCardImage = styled(Image)`
 
 export const PartCardText = styled.p`
   margin: 0.2rem;
+`;
+
+export const ToggleInAssemblerButton = styled.button`
+  font-weight: bold;
+  color: var(--color-black);
+  border: var(--border-sizeButton) solid var(--color-inAssembler);
+  border-radius: 5px;
+  padding: 0.1rem;
+  margin: 0.1rem;
 `;

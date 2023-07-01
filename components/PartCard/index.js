@@ -4,22 +4,28 @@ import {
   PartCardCategory,
   PartCardImage,
   PartCardText,
+  ToggleInAssemblerButton,
 } from "./PartCard.styled.js";
 import StatusMarker from "../StatusMarker/index.js";
+import usePartStore from "../PartStore/UsePartStore.js";
 
 export default function PartCard({ part, isDetail }) {
+  function toggleInAssembler() {
+    usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
+  }
+
   return (
-    <PartCardFlexContainer direction={"column"} border={"blue"}>
-      <PartCardFlexContainer direction={"row"}>
+    <PartCardFlexContainer direction="column" border="blue">
+      <PartCardFlexContainer direction="row" justify="flex-start">
         <Link href={!isDetail ? `${part.uuid}` : `/`}>
           <PartCardImage
             src={part.imgUrl}
-            alt={part.name}
+            alt={part.category}
             width={100}
             height={100}
           />
         </Link>
-        <PartCardFlexContainer direction={"column"}>
+        <PartCardFlexContainer direction="column" justify="flex-start">
           <PartCardText>Name: {part.name}</PartCardText>
           <PartCardText>
             EK Preis: {part.purchasingPrice} {part.currency}
@@ -36,8 +42,13 @@ export default function PartCard({ part, isDetail }) {
             </>
           )}
         </PartCardFlexContainer>
+        <PartCardFlexContainer direction="column" justify="flex-start">
+          <ToggleInAssemblerButton onClick={toggleInAssembler}>
+            verarbeiten
+          </ToggleInAssemblerButton>
+        </PartCardFlexContainer>
       </PartCardFlexContainer>
-      <PartCardFlexContainer direction={"row"}>
+      <PartCardFlexContainer direction="row" justify="flex-start">
         <PartCardCategory>{part.category}</PartCardCategory>
         <StatusMarker part={part} />
       </PartCardFlexContainer>
