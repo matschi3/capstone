@@ -6,8 +6,8 @@ import usePartStore from "../components/PartStore/UsePartStore.js";
 
 export default function CreateItemPage() {
   const { parts, setParts } = usePartStore();
+  const inAssemblerParts = parts.filter((part) => part.inAssembler === true);
 
-  const inAssemblerParts = parts.find((part) => part.inAssembler === true);
   return (
     <>
       <StyledHeader title="neues ITEM" color="var(--color-inAssembler)" />
