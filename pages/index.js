@@ -12,7 +12,7 @@ export default function HomePage() {
         href="/create-item"
         name={"neues ITEM"}
         color={"var(--color-item)"}
-        posLR="left"
+        poslr="left"
       />
       <LinkTo
         href={"/create-part"}
