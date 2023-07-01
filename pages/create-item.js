@@ -6,15 +6,19 @@ import usePartStore from "../components/PartStore/UsePartStore.js";
 
 export default function CreateItemPage() {
   const { parts, setParts } = usePartStore();
+
+  const inAssemblerParts = parts.find((part) => part.inAssembler === true);
   return (
     <>
       <StyledHeader title="neues ITEM" color="var(--color-inAssembler)" />
       <LinkBack />
       <PartsListContainer borderColor="var(--color-inAssembler)">
-        {parts.length === 0 ? (
+        {inAssemblerParts.length === 0 ? (
           <p>Keine Teile zum verarbeiten ausgewählt</p>
         ) : (
-          parts.map((part) => <PartCard key={part.uuid} part={part} />)
+          inAssemblerParts.map((part) => (
+            <PartCard key={part.uuid} part={part} />
+          ))
         )}
       </PartsListContainer>
     </>
