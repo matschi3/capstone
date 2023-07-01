@@ -9,6 +9,12 @@ export default function HomePage() {
     <>
       <StyledHeader title={"TEILE"} color={"var(--color-part)"} />
       <LinkTo
+        href="/create-item"
+        name={"neues ITEM"}
+        color={"var(--color-item)"}
+        posLR="left"
+      />
+      <LinkTo
         href={"/create-part"}
         name={"neues TEIL"}
         color={"var(--color-part)"}
