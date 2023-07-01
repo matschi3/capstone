@@ -7,7 +7,11 @@ export default function CreateItemPage() {
     <>
       <StyledHeader title="neues ITEM" color="var(--color-inAssembler)" />
       <LinkBack />
-      <PartsListContainer borderColor="var(--color-inAssembler)"></PartsListContainer>
+      <PartsListContainer borderColor="var(--color-inAssembler)">
+        {parts.map((part) => (
+          <PartCard key={part.uuid} part={part} />
+        ))}
+      </PartsListContainer>
     </>
   );
 }
