@@ -7,6 +7,7 @@ export default function CreateItemPage() {
     <>
       <StyledHeader title="neues ITEM" color="var(--color-inAssembler)" />
       <LinkBack />
+      <PartsListContainer borderColor="var(--color-inAssembler)"></PartsListContainer>
     </>
   );
 }
