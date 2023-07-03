@@ -18,7 +18,12 @@ export default function ItemCard({ item }) {
           width={100}
           height={100}
         />
-        <PartCardText>{item.dateAssembled}</PartCardText>
+        <PartCardFlexContainer direction="column" justify="flex-start">
+          <PartCardText>{item.dateAssembled}</PartCardText>
+          <PartCardText>
+            {item.totalPurchasingPrice} {item.currency}
+          </PartCardText>
+        </PartCardFlexContainer>
       </PartCardFlexContainer>
       {parts
         .filter((part) => item.parts.includes(part.uuid))
