@@ -1,7 +1,7 @@
 import PartsList from "../components/PartsList/index.js";
 import StyledHeader from "../components/StyledHeader/index.js";
 import LinkTo from "../components/LinkTo/index.js";
-import usePartStore from "../components/PartStore/UsePartStore.js";
+import usePartStore from "../components/UseStore/UsePartStore.js";
 
 export default function HomePage() {
   const { parts, setParts } = usePartStore();

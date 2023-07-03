@@ -8,6 +8,7 @@ export const PartCardFlexContainer = styled.article`
   border: var(--border-size) solid ${(props) => props.border || "none"};
   border-radius: 5px;
   margin: 0.1rem;
+  ${(props) => props.width && `width: ${props.width};`}
 `;
 
 export const PartCardCategory = styled.p`
