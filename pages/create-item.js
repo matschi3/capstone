@@ -19,7 +19,7 @@ export default function CreateItemPage() {
       inAssemblerParts.find((part) => part.isAssembled === true) ||
       inAssemblerParts.find((part) => part.isSold === true)
     ) {
-      alert("entferne bitte alle bereits verarbeiteten oder verkauften Teile");
+      alert("entferne bitte alle bereits verbauten oder verkauften Teile");
     } else {
       const allDate = new Date();
       const day = allDate.getDate();
