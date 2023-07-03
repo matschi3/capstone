@@ -1,5 +1,5 @@
 import PartForm from "../components/PartForm/index.js";
-import usePartStore from "../components/PartStore/UsePartStore.js";
+import usePartStore from "../components/UseStore/UsePartStore.js";
 import StyledHeader from "../components/StyledHeader/index.js";
 import LinkBack from "../components/LinkBack/index.js";
 import { useRouter } from "next/router";
