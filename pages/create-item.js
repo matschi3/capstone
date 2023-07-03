@@ -15,41 +15,48 @@ export default function CreateItemPage() {
   const router = useRouter();
 
   function handleCreateItem() {
-    const allDate = new Date();
-    const day = allDate.getDate();
-    const month = allDate.getMonth() + 1;
-    const year = allDate.getFullYear();
-    const todayDate = day + "." + month + "." + year;
+    if (
+      inAssemblerParts.find((part) => part.isAssembled === true) ||
+      inAssemblerParts.find((part) => part.isSold === true)
+    ) {
+      alert("entferne bitte alle bereits verarbeiteten oder verkauften Teile");
+    } else {
+      const allDate = new Date();
+      const day = allDate.getDate();
+      const month = allDate.getMonth() + 1;
+      const year = allDate.getFullYear();
+      const todayDate = day + "." + month + "." + year;
 
-    const newItem = {
-      uuid: uuidv4(),
-      name: "",
-      dateAssembled: todayDate,
-      parts: inAssemblerParts.map((part) => part.uuid),
-      totalPurchasingPrice: inAssemblerParts.reduce(
-        (sum, part) => sum + part.purchasingPrice,
-        0
-      ),
-      targetPrice: "",
-      soldForPrice: "",
-      currency: "EUR",
-      dateSold: "",
-      imgUrl:
-        "https://res.cloudinary.com/dn4pswuzt/image/upload/v1688228715/etagere_sqk9al.jpg",
-      isSold: false,
-    };
-    inAssemblerParts.forEach((part) => {
-      usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
-      usePartStore.getState().togglePartValue(part.uuid, "isAssembled");
-      usePartStore
-        .getState()
-        .updatePartValue(part.uuid, "dateAssembled", todayDate);
-    });
+      const newItem = {
+        uuid: uuidv4(),
+        name: "",
+        dateAssembled: todayDate,
+        parts: inAssemblerParts.map((part) => part.uuid),
+        totalPurchasingPrice: inAssemblerParts.reduce(
+          (sum, part) => sum + part.purchasingPrice,
+          0
+        ),
+        targetPrice: "",
+        soldForPrice: "",
+        currency: "EUR",
+        dateSold: "",
+        imgUrl:
+          "https://res.cloudinary.com/dn4pswuzt/image/upload/v1688228715/etagere_sqk9al.jpg",
+        isSold: false,
+      };
+      inAssemblerParts.forEach((part) => {
+        usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
+        usePartStore.getState().togglePartValue(part.uuid, "isAssembled");
+        usePartStore
+          .getState()
+          .updatePartValue(part.uuid, "dateAssembled", todayDate);
+      });
 
-    setItems(newItem);
-    console.log(parts);
-    console.log(items);
-    router.push("/items");
+      setItems(newItem);
+      console.log(parts);
+      console.log(items);
+      router.push("/items");
+    }
   }
 
   return (
