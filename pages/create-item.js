@@ -21,10 +21,6 @@ export default function CreateItemPage() {
     const year = allDate.getFullYear();
     const todayDate = day + "." + month + "." + year;
 
-    /*   let partsUuids = []; */
-    /* const partsUuids = inAssemblerParts.map((part) => part.uuid);
-    console.log(partsUuids); */
-
     const newItem = {
       uuid: uuidv4(),
       name: "",
@@ -42,9 +38,17 @@ export default function CreateItemPage() {
         "https://res.cloudinary.com/dn4pswuzt/image/upload/v1688228715/etagere_sqk9al.jpg",
       isSold: false,
     };
+    inAssemblerParts.forEach((part) => {
+      usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
+      usePartStore.getState().togglePartValue(part.uuid, "isAssembled");
+      usePartStore
+        .getState()
+        .updatePartValue(part.uuid, "dateAssembled", todayDate);
+    });
 
-    console.log(newItem);
     setItems(newItem);
+    console.log(parts);
+    console.log(items);
     router.push("/items");
   }
 
