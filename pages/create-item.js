@@ -4,10 +4,15 @@ import { PartsListContainer } from "../components/PartsList/PartsList.styled.js"
 import PartCard from "../components/PartCard/index.js";
 import usePartStore from "../components/PartStore/UsePartStore.js";
 import LinkTo from "../components/LinkTo/index.js";
+import { StyledButton } from "../components/StyledButton/StyledButton.styled.js";
 
 export default function CreateItemPage() {
   const { parts, setParts } = usePartStore();
   const inAssemblerParts = parts.filter((part) => part.inAssembler === true);
+
+  function handleCreateItem() {
+    console.log("success");
+  }
 
   return (
     <>
@@ -18,12 +23,14 @@ export default function CreateItemPage() {
           <p>Keine Teile zum verarbeiten ausgewählt...</p>
         ) : (
           <>
-            <LinkTo
-              href="/items"
+            <StyledButton
+              onClick={handleCreateItem}
               name="verarbeiten"
-              color="var(--color-inAssembler)"
+              color="var(--color-item)"
               poslr="right"
-            />
+            >
+              verarbeiten
+            </StyledButton>
             {inAssemblerParts.map((part) => (
               <PartCard key={part.uuid} part={part} />
             ))}
