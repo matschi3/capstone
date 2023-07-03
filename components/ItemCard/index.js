@@ -1,5 +1,5 @@
 import PartCard from "../PartCard/index.js";
-import usePartStore from "../PartStore/UsePartStore.js";
+import usePartStore from "../UseStore/UsePartStore.js";
 import { PartsListContainer } from "../PartsList/PartsList.styled.js";
 import {
   PartCardFlexContainer,
