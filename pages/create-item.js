@@ -51,10 +51,7 @@ export default function CreateItemPage() {
           .getState()
           .updatePartValue(part.uuid, "dateAssembled", todayDate);
       });
-
       setItems(newItem);
-      console.log(parts);
-      console.log(items);
       router.push("/items");
     }
   }
