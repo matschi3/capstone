@@ -7,12 +7,14 @@ export default function HomePage() {
   const { parts, setParts } = usePartStore();
   return (
     <>
-      <StyledHeader title={"TEILE"} color={"var(--color-part)"} />
+      <StyledHeader title="TEILE" color="var(--color-part)" />
       <LinkTo
-        href={"/create-part"}
-        name={"neues TEIL"}
-        color={"var(--color-part)"}
+        href="/create-item"
+        name="neues ITEM"
+        color="var(--color-item)"
+        poslr="left"
       />
+      <LinkTo href="/create-part" name="neues TEIL" color="var(--color-part)" />
       <PartsList parts={parts} />
     </>
   );

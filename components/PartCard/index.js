@@ -16,7 +16,7 @@ export default function PartCard({ part, isDetail }) {
 
   return (
     <PartCardFlexContainer direction="column" border="blue">
-      <PartCardFlexContainer direction="row" justify="flex-start">
+      <PartCardFlexContainer direction="row" justify="space-between">
         <Link href={!isDetail ? `${part.uuid}` : `/`}>
           <PartCardImage
             src={part.imgUrl}

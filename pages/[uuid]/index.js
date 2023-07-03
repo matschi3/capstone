@@ -14,7 +14,7 @@ export default function PartDetailPage() {
 
   return (
     <>
-      <StyledHeader title={"TEIL"} color={"var(--color-part)"} />
+      <StyledHeader title="TEIL" color="var(--color-part)" />
       <LinkBack />
       <PartsListContainer>
         {!detailPart ? (
