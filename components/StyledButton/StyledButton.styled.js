@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledButton = styled.button`
   position: fixed;
-  ${(props) => props.posbt || "top"}: 0.2rem;
+  ${(props) => (props.posbt ? `${props.posbt}: 0.2rem` : "")};
   ${(props) => props.poslr || "right"}: 0.2rem;
   color: ${({ color }) => (color ? `${color}` : `var(--color-black)`)};
   font-weight: bold;
