@@ -37,15 +37,7 @@ export default function PartsList({ parts }) {
             { funct: setCategoryFilter, value: "figur", name: "figur" },
           ]}
         />
-        <FilterButtonContainer>
-          <button onClick={() => setCategoryFilter("alle")}>alle</button>
-          <button onClick={() => setCategoryFilter("teller")}>teller</button>
-          <button onClick={() => setCategoryFilter("vase")}>vase</button>
-          <button onClick={() => setCategoryFilter("schüssel")}>
-            schüssel
-          </button>
-          <button onClick={() => setCategoryFilter("figur")}>figur</button>
-        </FilterButtonContainer>
+
         <FilterButtonContainer>
           <button onClick={() => setStatusFilter("alle")}>alle</button>
           <button onClick={() => setStatusFilter("!isAssembled")}>
