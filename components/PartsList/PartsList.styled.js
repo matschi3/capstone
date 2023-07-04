@@ -9,18 +9,3 @@ export const PartsListContainer = styled.section`
   margin: 0.1rem;
   margin-top: 5em;
 `;
-
-export const FilterContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  width: 100vw;
-  top: 2em;
-`;
-
-export const FilterButtonContainer = styled.section`
-  display: flex;
-  white-space: nowrap;
-  overflow-x: scroll;
-  margin: 0.05em;
-`;

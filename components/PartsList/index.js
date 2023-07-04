@@ -1,15 +1,14 @@
 import PartCard from "../PartCard/index.js";
-import {
-  PartsListContainer,
-  FilterButtonContainer,
-  FilterContainer,
-} from "./PartsList.styled.js";
+import { PartsListContainer } from "./PartsList.styled.js";
 import { useState } from "react";
+import StyledFilter from "../StyledFilter/index.js";
+import { FilterContainer } from "../StyledFilter/StyledFilter.styled.js";
 
 export default function PartsList({ parts }) {
   const [categoryFilter, setCategoryFilter] = useState("alle");
   const [statusFilter, setStatusFilter] = useState("alle");
 
+  // filter the parts array based on the categoryFilter and statusFilter
   const filteredParts = parts.filter((part) => {
     if (categoryFilter === "alle" || part.category === categoryFilter) {
       if (statusFilter === "alle") {
@@ -30,30 +29,36 @@ export default function PartsList({ parts }) {
   return (
     <>
       <FilterContainer>
-        <FilterButtonContainer>
-          <button onClick={() => setCategoryFilter("alle")}>alle</button>
-          <button onClick={() => setCategoryFilter("teller")}>teller</button>
-          <button onClick={() => setCategoryFilter("vase")}>vase</button>
-          <button onClick={() => setCategoryFilter("schüssel")}>
-            schüssel
-          </button>
-          <button onClick={() => setCategoryFilter("figur")}>figur</button>
-        </FilterButtonContainer>
-        <FilterButtonContainer>
-          <button onClick={() => setStatusFilter("alle")}>alle</button>
-          <button onClick={() => setStatusFilter("!isAssembled")}>
-            unverbaut
-          </button>
-          <button onClick={() => setStatusFilter("inAssembler")}>
-            in Verarbeitung
-          </button>
-          <button onClick={() => setStatusFilter("isAssembled")}>
-            verbaut
-          </button>
-          <button onClick={() => setStatusFilter("isSold")}>verkauft</button>
-        </FilterButtonContainer>
+        {/* render a filterButton for each object in 'sets' with given 'function', 'value to set' and 'name' */}
+        <StyledFilter
+          sets={[
+            { funct: setCategoryFilter, value: "alle", name: "alle" },
+            { funct: setCategoryFilter, value: "teller", name: "teller" },
+            { funct: setCategoryFilter, value: "vase", name: "vase" },
+            { funct: setCategoryFilter, value: "schüssel", name: "schüssel" },
+            { funct: setCategoryFilter, value: "figur", name: "figur" },
+          ]}
+        />
+        <StyledFilter
+          sets={[
+            { funct: setStatusFilter, value: "alle", name: "alle" },
+            {
+              funct: setStatusFilter,
+              value: "!isAssembled",
+              name: "unverbaut",
+            },
+            {
+              funct: setStatusFilter,
+              value: "inAssembler",
+              name: "in Verarbeitung",
+            },
+            { funct: setStatusFilter, value: "isAssembled", name: "verbaut" },
+            { funct: setStatusFilter, value: "isSold", name: "verkauft" },
+          ]}
+        />
       </FilterContainer>
       <PartsListContainer>
+        {/* render PartCard for each object in 'filteredParts' with given 'part' */}
         {filteredParts.length === 0 ? (
           <p>Keine Teile für gewählte Filter gefunden</p>
         ) : (
