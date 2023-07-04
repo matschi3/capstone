@@ -8,6 +8,7 @@ import {
 } from "./PartCard.styled.js";
 import StatusMarker from "../StatusMarker/index.js";
 import usePartStore from "../UseStore/UsePartStore.js";
+import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 
 export default function PartCard({ part, isDetail, isMini }) {
   function toggleInAssembler() {
