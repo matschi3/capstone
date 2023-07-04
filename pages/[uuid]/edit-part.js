@@ -13,7 +13,7 @@ export default function EditPartPage() {
   return (
     <>
       <StyledHeader title="TEIL bearbeiten" color="var(--color-part)" />
-      <LinkTo href="/" name="← zurück" posbt="top" poslr="left" />
+      <LinkTo href={`/${uuid}`} name="← zurück" posbt="top" poslr="left" />
       <PartForm formName="edit-part" defaultData={editPart} />
     </>
   );
