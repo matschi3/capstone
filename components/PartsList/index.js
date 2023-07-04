@@ -37,7 +37,23 @@ export default function PartsList({ parts }) {
             { funct: setCategoryFilter, value: "figur", name: "figur" },
           ]}
         />
-        <StyledFilter />
+        <StyledFilter
+          sets={[
+            { funct: setStatusFilter, value: "alle", name: "alle" },
+            {
+              funct: setStatusFilter,
+              value: "!isAssembled",
+              name: "unverbaut",
+            },
+            {
+              funct: setStatusFilter,
+              value: "inAssembler",
+              name: "in Verarbeitung",
+            },
+            { funct: setStatusFilter, value: "isAssembled", name: "verbaut" },
+            { funct: setStatusFilter, value: "isSold", name: "verkauft" },
+          ]}
+        />
 
         <FilterButtonContainer>
           <button onClick={() => setStatusFilter("alle")}>alle</button>
