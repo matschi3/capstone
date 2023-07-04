@@ -71,6 +71,7 @@ export default function PartCard({ part, isDetail, isMini }) {
               <ToggleInAssemblerButton onClick={toggleInAssembler}>
                 verarbeiten
               </ToggleInAssemblerButton>
+              {!isDetail ? "" : <StyledButton>bearbeiten</StyledButton>}
             </PartCardFlexContainer>
           </PartCardFlexContainer>
           <PartCardFlexContainer direction="row" justify="flex-start">
