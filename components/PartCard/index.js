@@ -11,6 +11,7 @@ import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 
 export default function PartCard({ part, isDetail, isMini }) {
   function toggleInAssembler() {
+    // access 'PartStore' and use the 'togglePartValue' function to toggle the 'inAssembler' value of the part
     usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
   }
 
