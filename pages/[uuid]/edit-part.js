@@ -5,7 +5,7 @@ export default function EditPartPage() {
   return (
     <>
       <StyledHeader title="TEIL bearbeiten" color="var(--color-part)" />
-      <LinkTo href="/" name="← zurück" posbt="top" />
+      <LinkTo href="/" name="← zurück" posbt="top" poslr="left" />
     </>
   );
 }
