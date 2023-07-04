@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledButton = styled.button`
   position: fixed;
+  // if there is a prop posbt or poslr, then use it, otherwise use nothing
   ${(props) => (props.posbt ? `${props.posbt}: 0.2rem` : "")};
   ${(props) => (props.poslr ? `${props.poslr}: 0.2rem` : "")};
   color: ${({ color }) => (color ? `${color}` : `var(--color-black)`)};
