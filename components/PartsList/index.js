@@ -55,7 +55,6 @@ export default function PartsList({ parts }) {
           ]}
         />
       </FilterContainer>
-
       <PartsListContainer>
         {filteredParts.length === 0 ? (
           <p>Keine Teile für gewählte Filter gefunden</p>
