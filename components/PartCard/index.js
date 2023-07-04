@@ -8,6 +8,7 @@ import {
 import StatusMarker from "../StatusMarker/index.js";
 import usePartStore from "../UseStore/UsePartStore.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
+import { StyledLink } from "../StyledLink/StyledLink.styled.js";
 
 export default function PartCard({ part, isDetail, isMini }) {
   function toggleInAssembler() {
@@ -74,7 +75,18 @@ export default function PartCard({ part, isDetail, isMini }) {
               >
                 verarbeiten
               </StyledButton>
-              {!isDetail ? "" : <StyledButton>bearbeiten</StyledButton>}
+              {!isDetail ? (
+                ""
+              ) : (
+                <>
+                  <StyledButton href={`${part.uuid}/edit-part`}>
+                    bearbeiten
+                  </StyledButton>
+                  <StyledLink href={`${part.uuid}/edit-part`}>
+                    bearbeiten
+                  </StyledLink>
+                </>
+              )}
             </PartCardFlexContainer>
           </PartCardFlexContainer>
           <PartCardFlexContainer direction="row" justify="flex-start">
