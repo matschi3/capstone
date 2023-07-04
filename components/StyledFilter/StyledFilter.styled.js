@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
-export const FilterContainer = styled.section``;
+export const FilterContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100vw;
+  top: 2em;
+`;
 
 export const FilterButtonContainer = styled.section`
   display: flex;
