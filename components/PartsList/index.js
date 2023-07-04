@@ -54,20 +54,6 @@ export default function PartsList({ parts }) {
             { funct: setStatusFilter, value: "isSold", name: "verkauft" },
           ]}
         />
-
-        <FilterButtonContainer>
-          <button onClick={() => setStatusFilter("alle")}>alle</button>
-          <button onClick={() => setStatusFilter("!isAssembled")}>
-            unverbaut
-          </button>
-          <button onClick={() => setStatusFilter("inAssembler")}>
-            in Verarbeitung
-          </button>
-          <button onClick={() => setStatusFilter("isAssembled")}>
-            verbaut
-          </button>
-          <button onClick={() => setStatusFilter("isSold")}>verkauft</button>
-        </FilterButtonContainer>
       </FilterContainer>
 
       <PartsListContainer>
