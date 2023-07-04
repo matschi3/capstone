@@ -13,8 +13,6 @@ export const FilterButtonContainer = styled.section`
   white-space: nowrap;
   overflow-x: scroll;
   margin: 0.05em;
-  position: fixed;
-  top: 4.8em;
 `;
 
 export const FilterButton = styled.button``;
