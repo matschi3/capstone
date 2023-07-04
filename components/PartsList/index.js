@@ -58,6 +58,7 @@ export default function PartsList({ parts }) {
         />
       </FilterContainer>
       <PartsListContainer>
+        {/* render PartCard for each object in 'filteredParts' with given 'part' */}
         {filteredParts.length === 0 ? (
           <p>Keine Teile für gewählte Filter gefunden</p>
         ) : (
