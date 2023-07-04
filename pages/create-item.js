@@ -71,6 +71,7 @@ export default function CreateItemPage() {
               color="var(--color-item)"
               posbt="top"
               poslr="right"
+              fontsize="1rem"
             >
               verarbeiten
             </StyledButton>
