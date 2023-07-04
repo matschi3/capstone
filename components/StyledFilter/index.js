@@ -1,9 +1,13 @@
 import { FilterButtonContainer, FilterButton } from "./StyledFilter.styled";
 
-export default function StyledFilter() {
+export default function StyledFilter({ sets }) {
   return (
     <FilterButtonContainer>
-      <FilterButton>alle</FilterButton>
+      {sets.map((set) => (
+        <FilterButton key={set.name} onClick={() => set.funct(set.value)}>
+          {set.name}
+        </FilterButton>
+      ))}
     </FilterButtonContainer>
   );
 }
