@@ -6,3 +6,5 @@ export const FilterButtonContainer = styled.section`
   overflow-x: scroll;
   margin: 0.05em;
 `;
+
+export const FilterButton = styled.button``;
