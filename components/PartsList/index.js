@@ -37,6 +37,7 @@ export default function PartsList({ parts }) {
             { funct: setCategoryFilter, value: "figur", name: "figur" },
           ]}
         />
+        <StyledFilter />
 
         <FilterButtonContainer>
           <button onClick={() => setStatusFilter("alle")}>alle</button>
