@@ -8,6 +8,7 @@ export default function PartsList({ parts }) {
   const [categoryFilter, setCategoryFilter] = useState("alle");
   const [statusFilter, setStatusFilter] = useState("alle");
 
+  // filter the parts array based on the categoryFilter and statusFilter
   const filteredParts = parts.filter((part) => {
     if (categoryFilter === "alle" || part.category === categoryFilter) {
       if (statusFilter === "alle") {
@@ -28,6 +29,7 @@ export default function PartsList({ parts }) {
   return (
     <>
       <FilterContainer>
+        {/* render a filterButton for each object in 'sets' with given 'function', 'value to set' and 'name' */}
         <StyledFilter
           sets={[
             { funct: setCategoryFilter, value: "alle", name: "alle" },
