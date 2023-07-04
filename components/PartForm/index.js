@@ -10,12 +10,14 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
+    // get todays date in Format 'dd.mm.yyyy'
     const allDate = new Date();
     const day = allDate.getDate();
     const month = allDate.getMonth() + 1;
     const year = allDate.getFullYear();
     const todayDate = day + "." + month + "." + year;
 
+    // create new part object
     const newPart = {
       uuid: uuidv4(),
       name: data.name,
