@@ -15,4 +15,6 @@ export const FilterButtonContainer = styled.section`
   margin: 0.05em;
 `;
 
-export const FilterButton = styled.button``;
+export const FilterButton = styled.button`
+  font-weight: bold;
+`;
