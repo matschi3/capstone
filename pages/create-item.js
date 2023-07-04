@@ -69,6 +69,7 @@ export default function CreateItemPage() {
               onClick={handleCreateItem}
               name="verarbeiten"
               color="var(--color-item)"
+              posbt="top"
               poslr="right"
             >
               verarbeiten
