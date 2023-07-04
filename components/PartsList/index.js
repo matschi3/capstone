@@ -5,6 +5,7 @@ import {
   FilterContainer,
 } from "./PartsList.styled.js";
 import { useState } from "react";
+import StyledFilter from "../StyledFilter/index.js";
 
 export default function PartsList({ parts }) {
   const [categoryFilter, setCategoryFilter] = useState("alle");
@@ -53,6 +54,15 @@ export default function PartsList({ parts }) {
           <button onClick={() => setStatusFilter("isSold")}>verkauft</button>
         </FilterButtonContainer>
       </FilterContainer>
+      <StyledFilter
+        sets={[
+          { funct: setCategoryFilter, value: "alle", name: "alle" },
+          { funct: setCategoryFilter, value: "teller", name: "teller" },
+          { funct: setCategoryFilter, value: "vase", name: "vase" },
+          { funct: setCategoryFilter, value: "schüssel", name: "schüssel" },
+          { funct: setCategoryFilter, value: "figur", name: "figur" },
+        ]}
+      />
       <PartsListContainer>
         {filteredParts.length === 0 ? (
           <p>Keine Teile für gewählte Filter gefunden</p>
