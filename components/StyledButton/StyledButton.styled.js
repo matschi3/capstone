@@ -8,7 +8,9 @@ export const StyledButton = styled.button`
   color: ${({ color }) => (color ? `${color}` : `var(--color-black)`)};
   font-weight: bold;
   font-size: ${({ fontsize }) => (fontsize ? `${fontsize}` : "")};
-  border: var(--border-sizeButton) solid var(--color-black);
+  border: var(--border-sizeButton) solid
+    ${(props) =>
+      props.bordercolor ? `${props.bordercolor}` : "var(--color-black)"};
   border-radius: 5px;
   padding: 0.1rem;
   margin: 0.1rem;
