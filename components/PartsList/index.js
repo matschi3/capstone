@@ -1,11 +1,8 @@
 import PartCard from "../PartCard/index.js";
-import {
-  PartsListContainer,
-  FilterButtonContainer,
-  FilterContainer,
-} from "./PartsList.styled.js";
+import { PartsListContainer } from "./PartsList.styled.js";
 import { useState } from "react";
 import StyledFilter from "../StyledFilter/index.js";
+import { FilterContainer } from "../StyledFilter/StyledFilter.styled.js";
 
 export default function PartsList({ parts }) {
   const [categoryFilter, setCategoryFilter] = useState("alle");
