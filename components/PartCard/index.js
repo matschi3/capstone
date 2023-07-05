@@ -20,6 +20,7 @@ export default function PartCard({ part, isDetail, isMini }) {
   }
 
   function deletePart() {
+    // access 'PartStore' and use the 'deletePart' function to delete the part
     usePartStore.getState().deletePart(part.uuid);
     router.push("/");
   }
