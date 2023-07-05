@@ -89,6 +89,7 @@ export default function PartsList({ parts }) {
             { funct: setStatusFilter, value: "isAssembled", name: "verbaut" },
             { funct: setStatusFilter, value: "isSold", name: "verkauft" },
           ]}
+          activeFilter={activeStatusFilter}
         />
       </FilterContainer>
       <PartsListContainer>
