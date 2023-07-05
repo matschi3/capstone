@@ -17,7 +17,7 @@ export default function PartCard({ part, isDetail, isMini }) {
   }
 
   function deletePart() {
-    console.log("delete...");
+    usePartStore.getState().deletePart(uuid);
   }
   return (
     <>
