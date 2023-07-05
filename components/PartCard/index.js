@@ -78,9 +78,12 @@ export default function PartCard({ part, isDetail, isMini }) {
               {!isDetail ? (
                 ""
               ) : (
-                <StyledLink href={`${part.uuid}/edit-part`}>
-                  bearbeiten
-                </StyledLink>
+                <>
+                  <StyledLink href={`${part.uuid}/edit-part`}>
+                    bearbeiten
+                  </StyledLink>
+                  <StyledButton bordercolor="firered"></StyledButton>
+                </>
               )}
             </PartCardFlexContainer>
           </PartCardFlexContainer>
