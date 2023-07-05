@@ -9,12 +9,30 @@ export default function EditPartPage() {
   // get specific-part data for PartForms defaultData from query
   const router = useRouter();
   const { uuid } = router.query;
-  const editPart = parts.find((part) => part.uuid === uuid);
+  const partToEdit = parts.find((part) => part.uuid === uuid);
+
+  async function editPart(newPart) {
+    // update edited values in state
+    usePartStore.getState().updatePartValue(uuid, "name", newPart.name);
+    usePartStore.getState().updatePartValue(uuid, "category", newPart.category);
+    usePartStore
+      .getState()
+      .updatePartValue(uuid, "purchasingPrice", newPart.purchasingPrice);
+    await usePartStore
+      .getState()
+      .updatePartValue(uuid, "partOrigin", newPart.partOrigin);
+    router.push(`/${uuid}`);
+  }
+
   return (
     <>
       <StyledHeader title="TEIL bearbeiten" color="var(--color-part)" />
       <LinkTo href={`/${uuid}`} name="← zurück" posbt="top" poslr="left" />
-      <PartForm formName="edit-part" defaultData={editPart} />
+      <PartForm
+        onSubmit={editPart}
+        formName="edit-part"
+        defaultData={partToEdit}
+      />
     </>
   );
 }
