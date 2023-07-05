@@ -75,19 +75,41 @@ export default function PartsList({ parts }) {
         />
         <StyledFilter
           sets={[
-            { funct: setStatusFilter, value: "alle", name: "alle" },
+            {
+              funct: setStatusFilter,
+              value: "alle",
+              name: "alle",
+              funct2: setActiveStatusFilter,
+              value2: "alle",
+            },
             {
               funct: setStatusFilter,
               value: "!isAssembled",
               name: "unverbaut",
+              funct2: setActiveStatusFilter,
+              value2: "!isAssembled",
             },
             {
               funct: setStatusFilter,
               value: "inAssembler",
               name: "in Verarbeitung",
+              funct2: setActiveStatusFilter,
+              value2: "inAssembler",
             },
-            { funct: setStatusFilter, value: "isAssembled", name: "verbaut" },
-            { funct: setStatusFilter, value: "isSold", name: "verkauft" },
+            {
+              funct: setStatusFilter,
+              value: "isAssembled",
+              name: "verbaut",
+              funct2: setActiveStatusFilter,
+              value2: "isAssembled",
+            },
+            {
+              funct: setStatusFilter,
+              value: "isSold",
+              name: "verkauft",
+              funct2: setActiveStatusFilter,
+              value2: "isSold",
+            },
           ]}
           activeFilter={activeStatusFilter}
         />
