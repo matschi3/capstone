@@ -10,12 +10,17 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    // get todays date in Format 'dd.mm.yyyy'
-    const allDate = new Date();
-    const day = allDate.getDate();
-    const month = allDate.getMonth() + 1;
-    const year = allDate.getFullYear();
-    const todayDate = day + "." + month + "." + year;
+    // get todays date in Format 'dd.mm.yyyy' IF there is no defaultData (edit-part)
+    let todayDate;
+    if (!defaultData) {
+      const date = new Date();
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      todayDate = `${day}.${month}.${year}`;
+    } else {
+      todayDate = defaultData.dateBuy;
+    }
 
     // create new part object
     const newPart = {
