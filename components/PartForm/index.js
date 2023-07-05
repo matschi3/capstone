@@ -13,11 +13,9 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     // get todays date in Format 'dd.mm.yyyy' IF there is no defaultData (edit-part)
     let todayDate;
     if (!defaultData) {
-      const date = new Date();
-      const day = date.getDate();
-      const month = date.getMonth() + 1;
-      const year = date.getFullYear();
-      todayDate = `${day}.${month}.${year}`;
+      todayDate = new Date().toLocaleDateString("de-DE", {
+        dateStyle: "medium",
+      });
     } else {
       todayDate = defaultData.dateBuy;
     }
