@@ -22,6 +22,11 @@ const usePartStore = create((set) => ({
         part.uuid === uuid ? { ...part, [key]: !part[key] } : part
       ),
     })),
+  // delete a part from the 'parts' array in state
+  deletePart: (uuid) =>
+    set((state) => ({
+      parts: state.parts.filter((part) => part.uuid !== uuid),
+    })),
 }));
 
 export default usePartStore;
