@@ -32,6 +32,7 @@ export default function PartsList({ parts }) {
     <>
       <FilterContainer>
         {/* render a filterButton for each object in 'sets' with given 'function', 'value to set' and 'name' */}
+        {/* funct2 + value2 for activeFilter-highlighting */}
         <StyledFilter
           sets={[
             {
@@ -39,13 +40,38 @@ export default function PartsList({ parts }) {
               value: "alle",
               name: "alle",
               funct2: setActiveCategoryFilter,
-              value,
+              value2: "alle",
             },
-            { funct: setCategoryFilter, value: "teller", name: "teller" },
-            { funct: setCategoryFilter, value: "vase", name: "vase" },
-            { funct: setCategoryFilter, value: "schüssel", name: "schüssel" },
-            { funct: setCategoryFilter, value: "figur", name: "figur" },
+            {
+              funct: setCategoryFilter,
+              value: "teller",
+              name: "teller",
+              funct2: setActiveCategoryFilter,
+              value2: "teller",
+            },
+            {
+              funct: setCategoryFilter,
+              value: "vase",
+              name: "vase",
+              funct2: setActiveCategoryFilter,
+              value2: "vase",
+            },
+            {
+              funct: setCategoryFilter,
+              value: "schüssel",
+              name: "schüssel",
+              funct2: setActiveCategoryFilter,
+              value2: "schüssel",
+            },
+            {
+              funct: setCategoryFilter,
+              value: "figur",
+              name: "figur",
+              funct2: setActiveCategoryFilter,
+              value2: "figur",
+            },
           ]}
+          activeFilter={activeCategoryFilter}
         />
         <StyledFilter
           sets={[
