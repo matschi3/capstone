@@ -17,7 +17,7 @@ export default createGlobalStyle`
     --color-isNotAssembled: yellow;
     --color-isAssembled: orangered;
     --color-isSold: violet;
-    --color-test: pink;
+    --color-red: red;
     
     --border-size: 2px;
     --border-sizeButton: 2px;
