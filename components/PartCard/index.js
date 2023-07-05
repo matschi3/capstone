@@ -82,7 +82,9 @@ export default function PartCard({ part, isDetail, isMini }) {
                   <StyledLink href={`${part.uuid}/edit-part`}>
                     bearbeiten
                   </StyledLink>
-                  <StyledButton bordercolor="firered">löschen</StyledButton>
+                  <StyledButton bordercolor="var(--color-red)">
+                    löschen
+                  </StyledButton>
                 </>
               )}
             </PartCardFlexContainer>
