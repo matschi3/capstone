@@ -8,12 +8,12 @@ export default function StyledFilter({ sets, activeFilter }) {
         <FilterButton
           key={set.name}
           onClick={() => {
-            set.funct(set.value);
-            set.funct2(set.value2);
+            set.functionToSet(set.valueToSet);
+            set.activeFunctionToSet(set.activeValueToSet);
           }}
-          isActiveFilter={set.value2 === activeFilter}
+          isActiveFilter={set.activeValueToSet === activeFilter}
         >
-          {set.name}
+          {set.buttonName}
         </FilterButton>
       ))}
     </FilterButtonContainer>
