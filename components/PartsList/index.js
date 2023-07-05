@@ -34,7 +34,7 @@ export default function PartsList({ parts }) {
         {/* render a filterButton for each object in 'sets' with given 'function', 'value to set' and 'name' */}
         {/* funct2 + value2 for activeFilter-highlighting */}
         <StyledFilter
-          sets={[
+          filters={[
             {
               functionToSet: setCategoryFilter,
               valueToSet: "alle",
@@ -74,7 +74,7 @@ export default function PartsList({ parts }) {
           activeFilter={activeCategoryFilter}
         />
         <StyledFilter
-          sets={[
+          filters={[
             {
               functionToSet: setStatusFilter,
               valueToSet: "alle",
