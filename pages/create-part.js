@@ -1,7 +1,7 @@
 import PartForm from "../components/PartForm/index.js";
 import usePartStore from "../components/UseStore/UsePartStore.js";
 import StyledHeader from "../components/StyledHeader/index.js";
-import LinkBack from "../components/LinkBack/index.js";
+import LinkTo from "../components/LinkTo/index.js";
 import { useRouter } from "next/router";
 
 export default function CreatePartPage() {
@@ -16,7 +16,7 @@ export default function CreatePartPage() {
   return (
     <>
       <StyledHeader title={"neues TEIL"} color={"var(--color-part)"} />
-      <LinkBack />
+      <LinkTo href={"/"} name={"← zurück"} posbt={"top"} poslr={"left"} />
       <PartForm onSubmit={createPart} formName={"create-part"} />
     </>
   );

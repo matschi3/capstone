@@ -1,5 +1,5 @@
 import StyledHeader from "../../components/StyledHeader/index.js";
-import LinkBack from "../../components/LinkBack/index.js";
+import LinkTo from "@/components/LinkTo/index.js";
 import { PartsListContainer } from "../../components/PartsList/PartsList.styled.js";
 import PartCard from "../../components/PartCard/index.js";
 import usePartStore from "../../components/UseStore/UsePartStore.js";
@@ -15,7 +15,7 @@ export default function PartDetailPage() {
   return (
     <>
       <StyledHeader title="TEIL" color="var(--color-part)" />
-      <LinkBack />
+      <LinkTo href={"/"} name={"← zurück"} posbt={"top"} poslr={"left"} />
       <PartsListContainer>
         {!detailPart ? (
           <p>kein Teil gefunden...</p>

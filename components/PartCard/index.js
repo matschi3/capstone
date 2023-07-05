@@ -4,13 +4,15 @@ import {
   PartCardCategory,
   PartCardImage,
   PartCardText,
-  ToggleInAssemblerButton,
 } from "./PartCard.styled.js";
 import StatusMarker from "../StatusMarker/index.js";
 import usePartStore from "../UseStore/UsePartStore.js";
+import { StyledButton } from "../StyledButton/StyledButton.styled.js";
+import { StyledLink } from "../StyledLink/StyledLink.styled.js";
 
 export default function PartCard({ part, isDetail, isMini }) {
   function toggleInAssembler() {
+    // access 'PartStore' and use the 'togglePartValue' function to toggle the 'inAssembler' value of the part
     usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
   }
 
@@ -67,9 +69,19 @@ export default function PartCard({ part, isDetail, isMini }) {
               )}
             </PartCardFlexContainer>
             <PartCardFlexContainer direction="column" justify="flex-start">
-              <ToggleInAssemblerButton onClick={toggleInAssembler}>
+              <StyledButton
+                onClick={toggleInAssembler}
+                bordercolor="var(--color-inAssembler)"
+              >
                 verarbeiten
-              </ToggleInAssemblerButton>
+              </StyledButton>
+              {!isDetail ? (
+                ""
+              ) : (
+                <StyledLink href={`${part.uuid}/edit-part`}>
+                  bearbeiten
+                </StyledLink>
+              )}
             </PartCardFlexContainer>
           </PartCardFlexContainer>
           <PartCardFlexContainer direction="row" justify="flex-start">
