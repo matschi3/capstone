@@ -1,12 +1,19 @@
 import { FilterButtonContainer, FilterButton } from "./StyledFilter.styled";
 
-export default function StyledFilter({ sets }) {
-  // Mapping over the "sets" array and rendering a FilterButton component for each element with the given "function", "value to set" and "name"
+export default function StyledFilter({ filters, activeFilter }) {
+  // Mapping over given "filters" array of objects and rendering a FilterButton component for each element with the given "functionToSet", "valueToSet" and "buttonName"
   return (
     <FilterButtonContainer>
-      {sets.map((set) => (
-        <FilterButton key={set.name} onClick={() => set.funct(set.value)}>
-          {set.name}
+      {filters.map((filter) => (
+        <FilterButton
+          key={filter.buttonName}
+          onClick={() => {
+            filter.functionToSet(filter.valueToSet);
+            filter.activeFunctionToSet(filter.activeValueToSet);
+          }}
+          isActiveFilter={filter.activeValueToSet === activeFilter}
+        >
+          {filter.buttonName}
         </FilterButton>
       ))}
     </FilterButtonContainer>

@@ -7,6 +7,8 @@ import { FilterContainer } from "../StyledFilter/StyledFilter.styled.js";
 export default function PartsList({ parts }) {
   const [categoryFilter, setCategoryFilter] = useState("alle");
   const [statusFilter, setStatusFilter] = useState("alle");
+  const [activeCategoryFilter, setActiveCategoryFilter] = useState("alle");
+  const [activeStatusFilter, setActiveStatusFilter] = useState("alle");
 
   // filter the parts array based on the categoryFilter and statusFilter
   const filteredParts = parts.filter((part) => {
@@ -30,31 +32,86 @@ export default function PartsList({ parts }) {
     <>
       <FilterContainer>
         {/* render a filterButton for each object in 'sets' with given 'function', 'value to set' and 'name' */}
+        {/* funct2 + value2 for activeFilter-highlighting */}
         <StyledFilter
-          sets={[
-            { funct: setCategoryFilter, value: "alle", name: "alle" },
-            { funct: setCategoryFilter, value: "teller", name: "teller" },
-            { funct: setCategoryFilter, value: "vase", name: "vase" },
-            { funct: setCategoryFilter, value: "schüssel", name: "schüssel" },
-            { funct: setCategoryFilter, value: "figur", name: "figur" },
+          filters={[
+            {
+              functionToSet: setCategoryFilter,
+              valueToSet: "alle",
+              buttonName: "alle",
+              activeFunctionToSet: setActiveCategoryFilter,
+              activeValueToSet: "alle",
+            },
+            {
+              functionToSet: setCategoryFilter,
+              valueToSet: "teller",
+              buttonName: "teller",
+              activeFunctionToSet: setActiveCategoryFilter,
+              activeValueToSet: "teller",
+            },
+            {
+              functionToSet: setCategoryFilter,
+              valueToSet: "vase",
+              buttonName: "vase",
+              activeFunctionToSet: setActiveCategoryFilter,
+              activeValueToSet: "vase",
+            },
+            {
+              functionToSet: setCategoryFilter,
+              valueToSet: "schüssel",
+              buttonName: "schüssel",
+              activeFunctionToSet: setActiveCategoryFilter,
+              activeValueToSet: "schüssel",
+            },
+            {
+              functionToSet: setCategoryFilter,
+              valueToSet: "figur",
+              buttonName: "figur",
+              activeFunctionToSet: setActiveCategoryFilter,
+              activeValueToSet: "figur",
+            },
           ]}
+          activeFilter={activeCategoryFilter}
         />
         <StyledFilter
-          sets={[
-            { funct: setStatusFilter, value: "alle", name: "alle" },
+          filters={[
             {
-              funct: setStatusFilter,
-              value: "!isAssembled",
-              name: "unverbaut",
+              functionToSet: setStatusFilter,
+              valueToSet: "alle",
+              buttonName: "alle",
+              activeFunctionToSet: setActiveStatusFilter,
+              activeValueToSet: "alle",
             },
             {
-              funct: setStatusFilter,
-              value: "inAssembler",
-              name: "in Verarbeitung",
+              functionToSet: setStatusFilter,
+              valueToSet: "!isAssembled",
+              buttonName: "unverbaut",
+              activeFunctionToSet: setActiveStatusFilter,
+              activeValueToSet: "!isAssembled",
             },
-            { funct: setStatusFilter, value: "isAssembled", name: "verbaut" },
-            { funct: setStatusFilter, value: "isSold", name: "verkauft" },
+            {
+              functionToSet: setStatusFilter,
+              valueToSet: "inAssembler",
+              buttonName: "in Verarbeitung",
+              activeFunctionToSet: setActiveStatusFilter,
+              activeValueToSet: "inAssembler",
+            },
+            {
+              functionToSet: setStatusFilter,
+              valueToSet: "isAssembled",
+              buttonName: "verbaut",
+              activeFunctionToSet: setActiveStatusFilter,
+              activeValueToSet: "isAssembled",
+            },
+            {
+              functionToSet: setStatusFilter,
+              valueToSet: "isSold",
+              buttonName: "verkauft",
+              activeFunctionToSet: setActiveStatusFilter,
+              activeValueToSet: "isSold",
+            },
           ]}
+          activeFilter={activeStatusFilter}
         />
       </FilterContainer>
       <PartsListContainer>
