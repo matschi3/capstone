@@ -16,6 +16,9 @@ export default function PartCard({ part, isDetail, isMini }) {
     usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
   }
 
+  function deletePart() {
+    console.log("delete...");
+  }
   return (
     <>
       {isMini ? (
