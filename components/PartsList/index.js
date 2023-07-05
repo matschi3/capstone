@@ -7,6 +7,8 @@ import { FilterContainer } from "../StyledFilter/StyledFilter.styled.js";
 export default function PartsList({ parts }) {
   const [categoryFilter, setCategoryFilter] = useState("alle");
   const [statusFilter, setStatusFilter] = useState("alle");
+  const [activeCategoryFilter, setActiveCategoryFilter] = useState("alle");
+  const [activeStatusFilter, setActiveStatusFilter] = useState("alle");
 
   // filter the parts array based on the categoryFilter and statusFilter
   const filteredParts = parts.filter((part) => {
@@ -32,7 +34,13 @@ export default function PartsList({ parts }) {
         {/* render a filterButton for each object in 'sets' with given 'function', 'value to set' and 'name' */}
         <StyledFilter
           sets={[
-            { funct: setCategoryFilter, value: "alle", name: "alle" },
+            {
+              funct: setCategoryFilter,
+              value: "alle",
+              name: "alle",
+              funct2: setActiveCategoryFilter,
+              value,
+            },
             { funct: setCategoryFilter, value: "teller", name: "teller" },
             { funct: setCategoryFilter, value: "vase", name: "vase" },
             { funct: setCategoryFilter, value: "schüssel", name: "schüssel" },
