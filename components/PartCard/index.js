@@ -9,11 +9,20 @@ import StatusMarker from "../StatusMarker/index.js";
 import usePartStore from "../UseStore/UsePartStore.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 import { StyledLink } from "../StyledLink/StyledLink.styled.js";
+import { useRouter } from "next/router.js";
 
 export default function PartCard({ part, isDetail, isMini }) {
+  const router = useRouter();
+
   function toggleInAssembler() {
     // access 'PartStore' and use the 'togglePartValue' function to toggle the 'inAssembler' value of the part
     usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
+  }
+
+  function deletePart() {
+    // access 'PartStore' and use the 'deletePart' function to delete the part
+    usePartStore.getState().deletePart(part.uuid);
+    router.push("/");
   }
 
   return (
@@ -78,9 +87,17 @@ export default function PartCard({ part, isDetail, isMini }) {
               {!isDetail ? (
                 ""
               ) : (
-                <StyledLink href={`${part.uuid}/edit-part`}>
-                  bearbeiten
-                </StyledLink>
+                <>
+                  <StyledLink href={`${part.uuid}/edit-part`}>
+                    bearbeiten
+                  </StyledLink>
+                  <StyledButton
+                    onClick={deletePart}
+                    bordercolor="var(--color-red)"
+                  >
+                    löschen
+                  </StyledButton>
+                </>
               )}
             </PartCardFlexContainer>
           </PartCardFlexContainer>
