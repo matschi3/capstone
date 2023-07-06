@@ -8,5 +8,3 @@ export const StyledFooterElement = styled.footer`
   display: flex;
   justify-content: space-around;
 `;
-
-export const StyledNavigation = styled.nav``;
