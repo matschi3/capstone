@@ -8,7 +8,7 @@ import {
 import StatusMarker from "../StatusMarker/index.js";
 import usePartStore from "../UseStore/UsePartStore.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
-import { StyledLink } from "../StyledLink/StyledLink.styled.js";
+import LinkTo from "../LinkTo/index.js";
 import { useRouter } from "next/router.js";
 
 export default function PartCard({ part, isDetail, isMini }) {
@@ -88,9 +88,11 @@ export default function PartCard({ part, isDetail, isMini }) {
                 ""
               ) : (
                 <>
-                  <StyledLink href={`${part.uuid}/edit-part`}>
-                    bearbeiten
-                  </StyledLink>
+                  <LinkTo
+                    href={`${part.uuid}/edit-part`}
+                    name="bearbeiten"
+                    fontsize="13.333px"
+                  />
                   <StyledButton
                     onClick={deletePart}
                     bordercolor="var(--color-red)"
