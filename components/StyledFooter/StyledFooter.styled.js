@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import LinkTo from "../LinkTo/index.js";
 
 export const StyledFooterElement = styled.footer`
   position: fixed;
@@ -8,3 +9,5 @@ export const StyledFooterElement = styled.footer`
   display: flex;
   justify-content: space-around;
 `;
+
+export const LinkToFooter = styled(LinkTo)``;
