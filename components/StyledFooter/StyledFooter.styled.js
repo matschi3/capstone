@@ -6,6 +6,7 @@ export const StyledFooterElement = styled.footer`
   width: 100vw;
   background-color: var(--color-white);
   display: flex;
+  justify-content: space-around;
 `;
 
 export const StyledNavigation = styled.nav``;
