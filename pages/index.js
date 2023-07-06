@@ -13,13 +13,15 @@ export default function HomePage() {
         href="/create-item"
         name="neues ITEM"
         color="var(--color-item)"
-        poslr="left"
+        posbt="top"
+        poslr="right"
       />
       <LinkTo
         href="/create-part"
         name="neues TEIL"
         color="var(--color-part)"
-        poslr="right"
+        posbt="top"
+        poslr="left"
       />
       <PartsList parts={parts} />
       <StyledFooter />
