@@ -15,10 +15,18 @@ import useSWR from "swr";
 export default function PartCard({ part, isDetail, isMini }) {
   const { mutate } = useSWR("/api/parts");
   const router = useRouter();
+  const { id } = router.query;
 
-  function toggleInAssembler() {
-    // access 'PartStore' and use the 'togglePartValue' function to toggle the 'inAssembler' value of the part
-    usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
+  async function toggleInAssembler() {
+    const toggledPart = { ...part, inAssembler: !part.inAssembler };
+    const response = await fetch(`/api/parts/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(toggledPart),
+    });
+    mutate();
+    /*     // access 'PartStore' and use the 'togglePartValue' function to toggle the 'inAssembler' value of the part
+    usePartStore.getState().togglePartValue(part.uuid, "inAssembler"); */
   }
 
   function deletePart() {
