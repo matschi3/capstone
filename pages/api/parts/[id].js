@@ -5,7 +5,7 @@ export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === "GET") {
-    const part = await Part.findById(id);
+    const part = await Part.findById(request.query.id);
     if (!part) {
       return response.status(404).json({ status: "Teil nicht gefunden." });
     }
