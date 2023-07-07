@@ -6,12 +6,9 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 
 export default function EditPartPage() {
-  /*  const { parts, setParts } = usePartStore(); */
-  // get specific-part data for PartForms defaultData from query
   const router = useRouter();
   const { id } = router.query;
   const { data, isLoading, error } = useSWR(`/api/parts/${id}`);
-
   if (isLoading) {
     return <h1>Lädt Teil...</h1>;
   }
@@ -21,9 +18,7 @@ export default function EditPartPage() {
   if (error) {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
-
   const partToEdit = data;
-  /*   const partToEdit = parts.find((part) => part.uuid === uuid); */
 
   async function editPart(newPart) {
     console.log(newPart);
