@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import "./Part.js";
 
 const { Schema } = mongoose;
 
