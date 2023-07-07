@@ -35,8 +35,6 @@ export default function PartCard({ part, isDetail, isMini }) {
     await fetch(`/api/parts/${id}`, {
       method: "DELETE",
     });
-    // access 'PartStore' and use the 'deletePart' function to delete the part
-    /* usePartStore.getState().deletePart(part.uuid); */
     router.push("/");
   }
 
