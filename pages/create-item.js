@@ -2,7 +2,6 @@ import StyledHeader from "../components/StyledHeader/index.js";
 import LinkTo from "../components/LinkTo/index.js";
 import { PartsListContainer } from "../components/PartsList/PartsList.styled.js";
 import PartCard from "../components/PartCard/index.js";
-import usePartStore from "../components/UseStore/UsePartStore.js";
 import useItemStore from "../components/UseStore/UseItemStore.js";
 import { StyledButton } from "../components/StyledButton/StyledButton.styled.js";
 import { v4 as uuidv4 } from "uuid";
@@ -10,8 +9,6 @@ import { useRouter } from "next/router.js";
 import useSWR from "swr";
 
 export default function CreateItemPage() {
-  /*   const { parts, setParts } = usePartStore();
-  const inAssemblerParts = parts.filter((part) => part.inAssembler === true); */
   const { items, setItems } = useItemStore();
   const router = useRouter();
   const { data, mutate } = useSWR("/api/parts");
@@ -70,15 +67,6 @@ export default function CreateItemPage() {
         mutate();
         router.push("/items");
       }
-      /* inAssemblerParts.forEach((part) => {
-        usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
-        usePartStore.getState().togglePartValue(part.uuid, "isAssembled");
-        usePartStore
-          .getState()
-          .updatePartValue(part.uuid, "dateAssembled", todayDate);
-      });
-      setItems(newItem);
-      router.push("/items"); */
     }
   }
 
