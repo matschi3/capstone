@@ -79,7 +79,7 @@ export default function CreateItemPage() {
               verarbeiten
             </StyledButton>
             {inAssemblerParts.map((part) => (
-              <PartCard key={part.uuid} part={part} />
+              <PartCard key={part._id} part={part} />
             ))}
           </>
         )}
