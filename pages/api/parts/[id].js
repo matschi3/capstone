@@ -14,6 +14,9 @@ export default async function handler(request, response) {
   }
 
   if (request.method === "PUT") {
+    const editedPart = request.body;
+    await Part.findByIdAndUpdate(id, editedPart);
+    response.status(200).json({ status: "Teil bearbeitet." });
   }
 
   if (request.method === "DELETE") {
