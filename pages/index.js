@@ -6,7 +6,15 @@ import StyledFooter from "../components/StyledFooter/index.js";
 import useSWR from "swr";
 
 export default function HomePage() {
-  const { data } = useSWR("/api/parts", fetcher);
+  const { data, isLoading } = useSWR("/api/parts");
+
+  if (isLoading) {
+    return <h1>lädt Teile...</h1>;
+  }
+  if (!data) {
+    return <h1>keine Teile gefunden.</h1>;
+  }
+
   console.log(data);
   const parts = data;
   /* const { parts, setParts } = usePartStore(); */
