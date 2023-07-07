@@ -2,7 +2,6 @@ import StyledHeader from "../../components/StyledHeader/index.js";
 import LinkTo from "@/components/LinkTo/index.js";
 import { PartsListContainer } from "../../components/PartsList/PartsList.styled.js";
 import PartCard from "../../components/PartCard/index.js";
-import usePartStore from "../../components/UseStore/UsePartStore.js";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
@@ -10,7 +9,6 @@ export default function PartDetailPage() {
   const router = useRouter();
   const { id } = router.query;
   const { data, isLoading, error } = useSWR(`/api/parts/${id}`);
-  /*  const { parts, setParts } = usePartStore(); */
 
   if (isLoading) {
     return <h1>Lädt Teil...</h1>;
