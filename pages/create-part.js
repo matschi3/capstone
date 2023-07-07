@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 
 export default function CreatePartPage() {
+  const { mutate } = useSWR("/api/parts");
   /* const { parts, setParts } = usePartStore(); */
   const router = useRouter();
 
@@ -15,6 +16,9 @@ export default function CreatePartPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newPart),
     });
+    if (response.ok) {
+      mutate();
+    }
     /* setParts(newPart); */
     router.push("/");
   }
