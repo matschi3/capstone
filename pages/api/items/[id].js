@@ -12,4 +12,10 @@ export default async function handler(request, response) {
     }
     response.status(200).json(item);
   }
+  // update id-specific item from the items db
+  if (request.method === "PUT") {
+    const editedItem = request.body;
+    await Item.findByIdAndUpdate(id, editedItem);
+    response.status(200).json({ status: "Item bearbeitet." });
+  }
 }
