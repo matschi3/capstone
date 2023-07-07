@@ -13,20 +13,24 @@ import { useRouter } from "next/router.js";
 import useSWR from "swr";
 
 export default function PartCard({ part, isDetail, isMini }) {
-  const { mutate } = useSWR("/api/parts");
   const router = useRouter();
   const { id } = router.query;
+  const { mutate } = useSWR(`/api/parts/${id}`);
 
   async function toggleInAssembler() {
+    console.log(part);
     const toggledPart = { ...part, inAssembler: !part.inAssembler };
-    const response = await fetch(`/api/parts/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(toggledPart),
-    });
+    console.log(toggledPart);
+    console.log(part._id);
+    const response = await fetch(
+      !id ? `/api/parts/${part._id}` : `/api/parts/${id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(toggledPart),
+      }
+    );
     mutate();
-    /*     // access 'PartStore' and use the 'togglePartValue' function to toggle the 'inAssembler' value of the part
-    usePartStore.getState().togglePartValue(part.uuid, "inAssembler"); */
   }
 
   function deletePart() {
