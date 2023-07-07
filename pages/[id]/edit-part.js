@@ -20,7 +20,6 @@ export default function EditPartPage() {
   const partToEdit = data;
 
   async function editPart(newPart) {
-    console.log(newPart);
     const response = await fetch(`/api/parts/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
