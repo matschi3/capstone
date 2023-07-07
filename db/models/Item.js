@@ -15,3 +15,7 @@ const itemSchema = new Schema({
   imgUrl: { type: String, required: true },
   isSold: { type: Boolean, required: true },
 });
+
+const Item = mongoose.models.Item || mongoose.model("Item", itemSchema);
+
+export default Item;
