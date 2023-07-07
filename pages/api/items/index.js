@@ -8,4 +8,14 @@ export default async function handler(request, response) {
     const items = await Item.find({}).populate("parts");
     return response.status(200).json(items);
   }
+  // create a new item in items db
+  if (request.method === "POST") {
+    try {
+      const newItem = request.body;
+      await Item.create(newItem);
+      return response.status(201).json({ status: "Item created." });
+    } catch (error) {
+      response.status(400).json({ error: error.message });
+    }
+  }
 }
