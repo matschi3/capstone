@@ -10,8 +10,10 @@ import usePartStore from "../UseStore/UsePartStore.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 import LinkTo from "../LinkTo/index.js";
 import { useRouter } from "next/router.js";
+import useSWR from "swr";
 
 export default function PartCard({ part, isDetail, isMini }) {
+  const { mutate } = useSWR("/api/parts");
   const router = useRouter();
 
   function toggleInAssembler() {
