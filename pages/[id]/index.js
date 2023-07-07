@@ -11,8 +11,6 @@ export default function PartDetailPage() {
   const { id } = router.query;
   const { data, isLoading, error } = useSWR(`/api/parts/${id}`);
   /*  const { parts, setParts } = usePartStore(); */
-  console.log(router.query);
-  console.log(data);
 
   if (isLoading) {
     return <h1>Lädt Teil...</h1>;
