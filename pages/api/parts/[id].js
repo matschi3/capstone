@@ -4,7 +4,7 @@ import Part from "../../../db/models/Part.js";
 export default async function handler(request, response) {
   await dbConnect();
   const { id } = request.query;
-
+  // get id-specific part from the parts db
   if (request.method === "GET") {
     const part = await Part.findById(id);
     if (!part) {
@@ -12,13 +12,13 @@ export default async function handler(request, response) {
     }
     response.status(200).json(part);
   }
-
+  // update id-specific part from the parts db
   if (request.method === "PUT") {
     const editedPart = request.body;
     await Part.findByIdAndUpdate(id, editedPart);
     response.status(200).json({ status: "Teil bearbeitet." });
   }
-
+  // delete id-specific part from the parts db
   if (request.method === "DELETE") {
     await Part.findByIdAndDelete(id);
     response.status(200).json({ status: "Teil gelöscht." });
