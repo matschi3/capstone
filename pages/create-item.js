@@ -17,7 +17,7 @@ export default function CreateItemPage() {
   const { data } = useSWR("/api/parts");
   const inAssemblerParts = data.filter((part) => part.inAssembler === true);
 
-  function handleCreateItem() {
+  async function handleCreateItem() {
     if (
       inAssemblerParts.find((part) => part.isAssembled === true) ||
       inAssemblerParts.find((part) => part.isSold === true)
@@ -45,7 +45,16 @@ export default function CreateItemPage() {
           "https://res.cloudinary.com/dn4pswuzt/image/upload/v1688228715/etagere_sqk9al.jpg",
         isSold: false,
       };
-      inAssemblerParts.forEach((part) => {
+      const response = await fetch("/api/items", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newItem),
+      });
+      if (response.ok) {
+        mutate();
+        router.push("/items");
+      }
+      /* inAssemblerParts.forEach((part) => {
         usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
         usePartStore.getState().togglePartValue(part.uuid, "isAssembled");
         usePartStore
@@ -53,7 +62,7 @@ export default function CreateItemPage() {
           .updatePartValue(part.uuid, "dateAssembled", todayDate);
       });
       setItems(newItem);
-      router.push("/items");
+      router.push("/items"); */
     }
   }
 
