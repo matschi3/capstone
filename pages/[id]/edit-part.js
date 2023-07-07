@@ -8,7 +8,7 @@ import useSWR from "swr";
 export default function EditPartPage() {
   const router = useRouter();
   const { id } = router.query;
-  const { data, isLoading, error } = useSWR(`/api/parts/${id}`);
+  const { data, isLoading, error, mutate } = useSWR(`/api/parts/${id}`);
   if (isLoading) {
     return <h1>Lädt Teil...</h1>;
   }
@@ -22,6 +22,15 @@ export default function EditPartPage() {
 
   async function editPart(newPart) {
     console.log(newPart);
+    const response = await fetch(`/api/parts/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newPart),
+    });
+    if (response.ok) {
+      mutate();
+    }
+    router.push(`/${id}`);
     // update edited values in state
     /* usePartStore.getState().updatePartValue(uuid, "name", newPart.name);
     usePartStore.getState().updatePartValue(uuid, "category", newPart.category);
