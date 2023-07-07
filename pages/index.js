@@ -15,9 +15,7 @@ export default function HomePage() {
     return <h1>keine Teile gefunden.</h1>;
   }
 
-  console.log(data);
   const parts = data;
-  /* const { parts, setParts } = usePartStore(); */
   return (
     <>
       <StyledHeader title="TEILE" color="var(--color-part)" />
