@@ -7,12 +7,15 @@ import useItemStore from "../components/UseStore/UseItemStore.js";
 import { StyledButton } from "../components/StyledButton/StyledButton.styled.js";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router.js";
+import useSWR from "swr";
 
 export default function CreateItemPage() {
-  const { parts, setParts } = usePartStore();
-  const inAssemblerParts = parts.filter((part) => part.inAssembler === true);
+  /*   const { parts, setParts } = usePartStore();
+  const inAssemblerParts = parts.filter((part) => part.inAssembler === true); */
   const { items, setItems } = useItemStore();
   const router = useRouter();
+  const { data } = useSWR("/api/parts");
+  const inAssemblerParts = data.filter((part) => part.inAssembler === true);
 
   function handleCreateItem() {
     if (
