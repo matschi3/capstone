@@ -6,8 +6,10 @@ import StyledFooter from "../components/StyledFooter/index.js";
 import useSWR from "swr";
 
 export default function HomePage() {
-  const { data, mutate } = useSWR("/api/parts");
-  const { parts, setParts } = usePartStore();
+  const { data } = useSWR("/api/parts", fetcher);
+  console.log(data);
+  const parts = data;
+  /* const { parts, setParts } = usePartStore(); */
   return (
     <>
       <StyledHeader title="TEILE" color="var(--color-part)" />
