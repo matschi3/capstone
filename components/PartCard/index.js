@@ -102,7 +102,7 @@ export default function PartCard({ part, isDetail, isMini }) {
               ) : (
                 <>
                   <LinkTo
-                    href={`${part.uuid}/edit-part`}
+                    href={`${part._id}/edit-part`}
                     name="bearbeiten"
                     fontsize="13.333px"
                   />
