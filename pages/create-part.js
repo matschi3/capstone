@@ -3,13 +3,19 @@ import usePartStore from "../components/UseStore/UsePartStore.js";
 import StyledHeader from "../components/StyledHeader/index.js";
 import LinkTo from "../components/LinkTo/index.js";
 import { useRouter } from "next/router";
+import useSWR from "swr";
 
 export default function CreatePartPage() {
-  const { parts, setParts } = usePartStore();
+  /* const { parts, setParts } = usePartStore(); */
   const router = useRouter();
 
-  function createPart(newPart) {
-    setParts(newPart);
+  async function createPart(newPart) {
+    const response = await fetch("/api/parts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newPart),
+    });
+    /* setParts(newPart); */
     router.push("/");
   }
 
