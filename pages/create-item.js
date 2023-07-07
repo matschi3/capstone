@@ -24,11 +24,9 @@ export default function CreateItemPage() {
     ) {
       alert("entferne bitte alle bereits verbauten oder verkauften Teile");
     } else {
-      const allDate = new Date();
-      const day = allDate.getDate();
-      const month = allDate.getMonth() + 1;
-      const year = allDate.getFullYear();
-      const todayDate = day + "." + month + "." + year;
+      todayDate = new Date().toLocaleDateString("de-DE", {
+        dateStyle: "medium",
+      });
 
       const newItem = {
         uuid: uuidv4(),
