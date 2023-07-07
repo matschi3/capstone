@@ -32,7 +32,7 @@ export default function CreateItemPage() {
         uuid: uuidv4(),
         name: "",
         dateAssembled: todayDate,
-        parts: inAssemblerParts.map((part) => part.uuid),
+        parts: inAssemblerParts.map((part) => part._id),
         totalPurchasingPrice: inAssemblerParts.reduce(
           (sum, part) => sum + part.purchasingPrice,
           0
