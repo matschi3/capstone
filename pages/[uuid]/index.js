@@ -9,8 +9,8 @@ export default function PartDetailPage() {
   const { parts, setParts } = usePartStore();
 
   const router = useRouter();
-  const { uuid } = router.query;
-  const detailPart = parts.find((part) => part.uuid === uuid);
+  const { id } = router.query;
+  const detailPart = parts.find((part) => part._id === id);
 
   return (
     <>
