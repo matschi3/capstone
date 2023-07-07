@@ -18,10 +18,8 @@ export default function PartCard({ part, isDetail, isMini }) {
   const { mutate } = useSWR(`/api/parts/${id}`);
 
   async function toggleInAssembler() {
-    console.log(part);
     const toggledPart = { ...part, inAssembler: !part.inAssembler };
-    console.log(toggledPart);
-    console.log(part._id);
+    // fetch url ternary: if toggleButton is clicked on the partsList page, there is no id from router.query; instead use given 'part' to get its '_id' for toggeling
     const response = await fetch(
       !id ? `/api/parts/${part._id}` : `/api/parts/${id}`,
       {
