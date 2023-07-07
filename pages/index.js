@@ -6,6 +6,7 @@ import StyledFooter from "../components/StyledFooter/index.js";
 import useSWR from "swr";
 
 export default function HomePage() {
+  const { data, mutate } = useSWR("/api/parts");
   const { parts, setParts } = usePartStore();
   return (
     <>
