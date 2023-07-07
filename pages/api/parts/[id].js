@@ -3,9 +3,10 @@ import Part from "../../../db/models/Part.js";
 
 export default async function handler(request, response) {
   await dbConnect();
+  const { id } = request.query;
 
   if (request.method === "GET") {
-    const part = await Part.findById(request.query.id);
+    const part = await Part.findById(id);
     if (!part) {
       return response.status(404).json({ status: "Teil nicht gefunden." });
     }
