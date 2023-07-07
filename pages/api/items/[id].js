@@ -6,7 +6,7 @@ export default async function handler(request, response) {
   const { id } = request.query;
   // get id-specific item from the items db
   if (request.method === "GET") {
-    const item = await Item.findById(id);
+    const item = await Item.findById(id).populate("parts");
     if (!item) {
       return response.status(404).json({ status: "Item nicht gefunden." });
     }
