@@ -5,7 +5,7 @@ import StyledFooter from "../components/StyledFooter/index.js";
 import useSWR from "swr";
 
 export default function HomePage() {
-  const { data, isLoading } = useSWR("/api/parts");
+  const { data, isLoading, error } = useSWR("/api/parts");
 
   if (isLoading) {
     return <h1>lädt Teile...</h1>;
@@ -13,7 +13,9 @@ export default function HomePage() {
   if (!data) {
     return <h1>keine Teile gefunden.</h1>;
   }
-
+  if (error) {
+    return <h1>error! fehlerhafte Daten.</h1>;
+  }
   const parts = data;
   return (
     <>
