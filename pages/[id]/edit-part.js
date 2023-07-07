@@ -1,7 +1,6 @@
 import StyledHeader from "../../components/StyledHeader/index.js";
 import LinkTo from "../../components/LinkTo/index.js";
 import PartForm from "../../components/PartForm/index.js";
-import usePartStore from "../../components/UseStore/UsePartStore.js";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
@@ -31,16 +30,6 @@ export default function EditPartPage() {
       mutate();
     }
     router.push(`/${id}`);
-    // update edited values in state
-    /* usePartStore.getState().updatePartValue(uuid, "name", newPart.name);
-    usePartStore.getState().updatePartValue(uuid, "category", newPart.category);
-    usePartStore
-      .getState()
-      .updatePartValue(uuid, "purchasingPrice", newPart.purchasingPrice);
-    await usePartStore
-      .getState()
-      .updatePartValue(uuid, "partOrigin", newPart.partOrigin);
-    router.push(`/${uuid}`); */
   }
 
   return (
