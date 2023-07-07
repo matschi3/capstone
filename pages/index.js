@@ -3,6 +3,7 @@ import StyledHeader from "../components/StyledHeader/index.js";
 import LinkTo from "../components/LinkTo/index.js";
 import usePartStore from "../components/UseStore/UsePartStore.js";
 import StyledFooter from "../components/StyledFooter/index.js";
+import useSWR from "swr";
 
 export default function HomePage() {
   const { parts, setParts } = usePartStore();
