@@ -22,5 +22,7 @@ export default async function handler(request, response) {
   if (request.method === "DELETE") {
     await Part.findByIdAndDelete(id);
     response.status(200).json({ status: "Teil gelöscht." });
+  } else {
+    return response.status(405).json({ status: "Methode nicht erlaubt." });
   }
 }
