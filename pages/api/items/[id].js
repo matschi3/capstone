@@ -18,4 +18,11 @@ export default async function handler(request, response) {
     await Item.findByIdAndUpdate(id, editedItem);
     response.status(200).json({ status: "Item bearbeitet." });
   }
+  // delete id-specific item from the items db
+  if (request.method === "DELETE") {
+    await Item.findByIdAndDelete(id);
+    response.status(200).json({ status: "Item gelöscht." });
+  } else {
+    return response.status(405).json({ status: "Methode nicht erlaubt." });
+  }
 }
