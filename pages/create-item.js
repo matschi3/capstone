@@ -14,20 +14,22 @@ export default function CreateItemPage() {
   const inAssemblerParts = parts.filter((part) => part.inAssembler === true); */
   const { items, setItems } = useItemStore();
   const router = useRouter();
-  const { data } = useSWR("/api/parts");
+  const { data, mutate } = useSWR("/api/parts");
   const inAssemblerParts = data.filter((part) => part.inAssembler === true);
 
   async function handleCreateItem() {
+    // check for already assembled or sold parts in Assembler
     if (
       inAssemblerParts.find((part) => part.isAssembled === true) ||
       inAssemblerParts.find((part) => part.isSold === true)
     ) {
       alert("entferne bitte alle bereits verbauten oder verkauften Teile");
     } else {
-      todayDate = new Date().toLocaleDateString("de-DE", {
+      // get today's date for new item and assembled parts
+      const todayDate = new Date().toLocaleDateString("de-DE", {
         dateStyle: "medium",
       });
-
+      // create new item from inAssemblerParts
       const newItem = {
         uuid: uuidv4(),
         name: "",
@@ -45,12 +47,26 @@ export default function CreateItemPage() {
           "https://res.cloudinary.com/dn4pswuzt/image/upload/v1688228715/etagere_sqk9al.jpg",
         isSold: false,
       };
+
       const response = await fetch("/api/items", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newItem),
       });
       if (response.ok) {
+        inAssemblerParts.forEach((part) => {
+          const assembledPart = {
+            ...part,
+            inAssembler: false,
+            isAssembled: true,
+            dateAssembled: todayDate,
+          };
+          const response = fetch(`/api/parts/${part._id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(assembledPart),
+          });
+        });
         mutate();
         router.push("/items");
       }
