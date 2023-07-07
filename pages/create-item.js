@@ -2,14 +2,12 @@ import StyledHeader from "../components/StyledHeader/index.js";
 import LinkTo from "../components/LinkTo/index.js";
 import { PartsListContainer } from "../components/PartsList/PartsList.styled.js";
 import PartCard from "../components/PartCard/index.js";
-import useItemStore from "../components/UseStore/UseItemStore.js";
 import { StyledButton } from "../components/StyledButton/StyledButton.styled.js";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
 
 export default function CreateItemPage() {
-  const { items, setItems } = useItemStore();
   const router = useRouter();
   const { data, mutate } = useSWR("/api/parts");
   const inAssemblerParts = data.filter((part) => part.inAssembler === true);
@@ -22,7 +20,7 @@ export default function CreateItemPage() {
     ) {
       alert("entferne bitte alle bereits verbauten oder verkauften Teile");
     } else {
-      // get today's date for new item and assembled parts
+      // get today's date for new item and assembled parts as 'dd.mm.yyyy'
       const todayDate = new Date().toLocaleDateString("de-DE", {
         dateStyle: "medium",
       });
