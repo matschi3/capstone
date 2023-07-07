@@ -17,3 +17,7 @@ const partSchema = new Schema({
   isAssembled: { type: Boolean, required: true },
   isSold: { type: Boolean, required: true },
 });
+
+const Part = mongoose.models.Part || mongoose.model("Part", partSchema);
+
+export default Part;
