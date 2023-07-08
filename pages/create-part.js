@@ -6,7 +6,6 @@ import useSWR from "swr";
 
 export default function CreatePartPage() {
   const { mutate } = useSWR("/api/parts");
-  /* const { parts, setParts } = usePartStore(); */
   const router = useRouter();
 
   async function createPart(newPart) {
@@ -18,7 +17,6 @@ export default function CreatePartPage() {
     if (response.ok) {
       mutate();
     }
-    /* setParts(newPart); */
     router.push("/");
   }
 
