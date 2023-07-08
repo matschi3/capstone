@@ -5,18 +5,18 @@ import StyledFooter from "../components/StyledFooter/index.js";
 import useSWR from "swr";
 
 export default function HomePage() {
-  const { data, isLoading, error } = useSWR("/api/parts");
+  const { data: parts, isLoading, error } = useSWR("/api/parts");
 
   if (isLoading) {
     return <h1>lädt Teile...</h1>;
   }
-  if (!data) {
+  if (!parts) {
     return <h1>keine Teile gefunden.</h1>;
   }
   if (error) {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
-  const parts = data;
+
   return (
     <>
       <StyledHeader title="TEILE" color="var(--color-part)" />
