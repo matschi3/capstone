@@ -23,7 +23,7 @@ export default function ItemCard({ item }) {
           </PartCardText>
         </PartCardFlexContainer>
       </PartCardFlexContainer>
-      {/* render miniPartCard for each part in populated item.parts */}
+      {/* render miniPartCard for each part in populated item.parts (parts of item */}
       {item.parts.map((part) => (
         <PartCard key={part._id} part={part} isMini />
       ))}
