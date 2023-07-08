@@ -6,17 +6,18 @@ import {
   PartCardText,
 } from "./PartCard.styled.js";
 import StatusMarker from "../StatusMarker/index.js";
-import usePartStore from "../UseStore/UsePartStore.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 import LinkTo from "../LinkTo/index.js";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
 
+// isDetail is for parts-detail-page, isMini is for mini-part-card on corresponding item-card
 export default function PartCard({ part, isDetail, isMini }) {
   const router = useRouter();
   const { id } = router.query;
   const { mutate } = useSWR(`/api/parts/${id}`);
 
+  // toggle part.inAssembler for assembling parts into an item
   async function toggleInAssembler() {
     const toggledPart = { ...part, inAssembler: !part.inAssembler };
     // fetch url ternary: if toggleButton is clicked on the partsList page, there is no id from router.query; instead use given 'part' to get its '_id' for toggeling
