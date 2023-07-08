@@ -29,8 +29,9 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
       category: data.category,
       currency: "EUR",
       purchasingPrice: data.purchasingPrice,
-      imgUrl:
-        "https://res.cloudinary.com/dn4pswuzt/image/upload/v1687168427/test/teller_adog0o.jpg",
+      imgUrl: defaultData
+        ? defaultData.imgUrl
+        : "https://res.cloudinary.com/dn4pswuzt/image/upload/v1687168427/test/teller_adog0o.jpg",
       partOrigin: data.partOrigin,
       inAssembler: false,
       isAssembled: false,
