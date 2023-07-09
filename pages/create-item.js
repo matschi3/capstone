@@ -9,7 +9,10 @@ import useSWR from "swr";
 
 export default function CreateItemPage() {
   const router = useRouter();
-  const { data, mutate } = useSWR("/api/parts");
+  const { data, isLoading, mutate } = useSWR("/api/parts");
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   const inAssemblerParts = data.filter((part) => part.inAssembler === true);
 
   async function handleCreateItem() {
