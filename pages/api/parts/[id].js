@@ -6,7 +6,7 @@ export default async function handler(request, response) {
   const { id } = request.query;
   // get id-specific part from the parts db
   if (request.method === "GET") {
-    const part = await Part.findById(id);
+    const part = await Part.findById(id).populate("category");
     if (!part) {
       return response.status(404).json({ status: "Teil nicht gefunden." });
     }
