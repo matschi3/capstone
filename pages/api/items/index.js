@@ -5,7 +5,10 @@ export default async function handler(request, response) {
   await dbConnect();
   // get all items from the items db + populate parts
   if (request.method === "GET") {
-    const items = await Item.find({}).populate("parts");
+    const items = await Item.find({}).populate({
+      path: "parts",
+      populate: { path: "category" },
+    });
     return response.status(200).json(items);
   }
   // create a new item in items db
