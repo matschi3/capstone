@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import "../../db/models/Category.js";
+import "./Category.js";
 
 const { Schema } = mongoose;
 
