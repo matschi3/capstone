@@ -11,7 +11,7 @@ export const StyledButton = styled.button`
   /* conditional css: only for borders color here */
   border: var(--border-sizeButton) solid
     ${(props) =>
-      props.bordercolor ? `${props.bordercolor}` : "var(--color-black)"};
+      props.borderColor ? `${props.borderColor}` : "var(--color-black)"};
   border-radius: 5px;
   padding: 0.1rem;
   margin: 0.1rem;
