@@ -10,7 +10,6 @@ export default function PartsList({ parts }) {
   const [activeCategoryFilter, setActiveCategoryFilter] = useState("alle");
   const [activeStatusFilter, setActiveStatusFilter] = useState("alle");
   // filter the parts array based on the categoryFilter and statusFilter
-  console.log(parts);
   const filteredParts = parts.filter((part) => {
     if (categoryFilter === "alle" || part.category[0].name === categoryFilter) {
       if (statusFilter === "alle") {
