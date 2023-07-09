@@ -5,7 +5,7 @@ export default async function handler(request, response) {
   await dbConnect();
   // get all parts from the parts db
   if (request.method === "GET") {
-    const parts = await Part.find({});
+    const parts = await Part.find({}).populate("category");
     return response.status(200).json(parts);
   }
   // create a new part in parts db
