@@ -38,7 +38,7 @@ export default function PartCard({ part, isDetail, isMini }) {
     });
     router.push("/");
   }
-  console.log(part.category[0].name); // this  Gooooooooooooooood
+
   return (
     <>
       {isMini ? (
