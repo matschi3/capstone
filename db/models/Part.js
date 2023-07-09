@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import "./Category.js";
 
 const { Schema } = mongoose;
 
@@ -8,7 +9,7 @@ const partSchema = new Schema({
   dateBuy: { type: String, required: true },
   dateAssembled: { type: String, required: false },
   dateSold: { type: String, required: false },
-  category: { type: String, required: true },
+  category: { type: [Schema.Types.ObjectId], ref: "Category" },
   currency: { type: String, required: true },
   purchasingPrice: { type: Number, required: true },
   imgUrl: { type: String, required: true },
