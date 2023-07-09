@@ -1,10 +1,22 @@
-import { categories } from "../../lib/categories.js";
+/* import { categories } from "../../lib/categories.js"; */
 import { FormContainer, Label, Input, Select } from "./PartForm.styled.js";
 import { PartCardFlexContainer } from "../PartCard/PartCard.styled.js";
 import { PartsListContainer } from "../PartsList/PartsList.styled.js";
 import { v4 as uuidv4 } from "uuid";
+import useSWR from "swr";
 
 export default function PartForm({ onSubmit, formName, defaultData }) {
+  const { data: categories, isLoading, error } = useSWR("/api/categories");
+  if (isLoading) {
+    return <h1>lädt Kategorien...</h1>;
+  }
+  if (!categories) {
+    return <h1>keine Kategorien gefunden.</h1>;
+  }
+  if (error) {
+    return <h1>error! fehlerhafte Daten.</h1>;
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -63,8 +75,8 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
           >
             <option value="">hier auswählen</option>
             {categories.map((category) => (
-              <option key={category.title} value={category.title}>
-                {category.title}
+              <option key={category.name} value={category.name}>
+                {category.name}
               </option>
             ))}
           </Select>
