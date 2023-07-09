@@ -52,7 +52,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
 
     onSubmit(newPart);
   }
-  console.log(defaultData);
+
   return (
     <PartsListContainer>
       <PartCardFlexContainer border="var(--color-part)">
@@ -65,7 +65,6 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
             defaultValue={defaultData?.name}
             required
           />
-          {console.log(defaultData?.category[0].name)}
           <Label htmlFor="category">Kategorie</Label>
           <Select
             name="category"
