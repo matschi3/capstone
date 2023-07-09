@@ -38,7 +38,7 @@ export default function PartCard({ part, isDetail, isMini }) {
     });
     router.push("/");
   }
-
+  console.log(part.category[0].name); // this  Gooooooooooooooood
   return (
     <>
       {isMini ? (
@@ -50,7 +50,7 @@ export default function PartCard({ part, isDetail, isMini }) {
           <PartCardFlexContainer width="15%"></PartCardFlexContainer>
           <PartCardImage
             src={part.imgUrl}
-            alt={part.category}
+            alt={part.category[0].name}
             width={100}
             height={100}
           />
@@ -59,7 +59,7 @@ export default function PartCard({ part, isDetail, isMini }) {
               EK: {part.purchasingPrice} {part.currency}
             </PartCardText>
             <PartCardFlexContainer direction="row" justify="flex-start">
-              <PartCardCategory>{part.category}</PartCardCategory>
+              <PartCardCategory>{part.category[0].name}</PartCardCategory>
             </PartCardFlexContainer>
           </PartCardFlexContainer>
         </PartCardFlexContainer>
@@ -69,7 +69,7 @@ export default function PartCard({ part, isDetail, isMini }) {
             <Link href={!isDetail ? `${part._id}` : `/`}>
               <PartCardImage
                 src={part.imgUrl}
-                alt={part.category}
+                alt={part.category[0].name}
                 width={100}
                 height={100}
               />
@@ -118,7 +118,7 @@ export default function PartCard({ part, isDetail, isMini }) {
             </PartCardFlexContainer>
           </PartCardFlexContainer>
           <PartCardFlexContainer direction="row" justify="flex-start">
-            <PartCardCategory>{part.category}</PartCardCategory>
+            <PartCardCategory>{part.category[0].name}</PartCardCategory>
             <StatusMarker part={part} />
           </PartCardFlexContainer>
         </PartCardFlexContainer>
