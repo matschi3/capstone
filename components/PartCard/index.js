@@ -94,7 +94,7 @@ export default function PartCard({ part, isDetail, isMini }) {
             <PartCardFlexContainer direction="column" justify="flex-start">
               <StyledButton
                 onClick={toggleInAssembler}
-                bordercolor="var(--color-inAssembler)"
+                borderColor="var(--color-inAssembler)"
               >
                 verarbeiten
               </StyledButton>
@@ -109,7 +109,7 @@ export default function PartCard({ part, isDetail, isMini }) {
                   />
                   <StyledButton
                     onClick={deletePart}
-                    bordercolor="var(--color-red)"
+                    borderColor="var(--color-red)"
                   >
                     löschen
                   </StyledButton>
