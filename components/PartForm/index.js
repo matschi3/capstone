@@ -52,7 +52,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
 
     onSubmit(newPart);
   }
-
+  console.log(defaultData);
   return (
     <PartsListContainer>
       <PartCardFlexContainer border="var(--color-part)">
@@ -65,22 +65,21 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
             defaultValue={defaultData?.name}
             required
           />
-
+          {console.log(defaultData?.category[0].name)}
           <Label htmlFor="category">Kategorie</Label>
           <Select
             name="category"
             id="category"
-            defaultValue={defaultData?.category}
+            defaultValue={defaultData?.category[0]._id}
             required
           >
             <option value="">hier auswählen</option>
             {categories.map((category) => (
-              <option key={category.name} value={category.name}>
+              <option key={category.name} value={category._id}>
                 {category.name}
               </option>
             ))}
           </Select>
-
           <Label htmlFor="purchasingPrice">Kaufpreis</Label>
           <Input
             id="purchasingPrice"
@@ -90,7 +89,6 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
             defaultValue={defaultData?.purchasingPrice}
             required
           />
-
           <Label htmlFor="partOrigin">Fundort</Label>
           <Input
             id="partOrigin"
