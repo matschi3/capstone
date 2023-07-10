@@ -24,13 +24,17 @@ export default function CategoriesPage() {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
 
+  async function handleAddCategory() {
+    console.log("lol");
+  }
+
   return (
     <>
       <StyledHeader title="KATEGORIEN" color="var(--color-category)" />
       <PartsListContainer>
         <FormContainer
           aria-labelledby="add new category"
-          onClick={console.log("click")}
+          onClick={handleAddCategory}
         >
           <Label htmlFor="name">neue Kategorie</Label>
           <Input id="name" name="name" type="text" required />
