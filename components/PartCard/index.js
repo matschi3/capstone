@@ -6,22 +6,36 @@ import {
   PartCardText,
 } from "./PartCard.styled.js";
 import StatusMarker from "../StatusMarker/index.js";
-import usePartStore from "../UseStore/UsePartStore.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 import LinkTo from "../LinkTo/index.js";
 import { useRouter } from "next/router.js";
+import useSWR from "swr";
 
+// isDetail is for parts-detail-page, isMini is for mini-part-card on corresponding item-card
 export default function PartCard({ part, isDetail, isMini }) {
   const router = useRouter();
+  const { id } = router.query;
+  const { mutate } = useSWR(`/api/parts/${id}`);
 
-  function toggleInAssembler() {
-    // access 'PartStore' and use the 'togglePartValue' function to toggle the 'inAssembler' value of the part
-    usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
+  // toggle part.inAssembler for assembling parts into an item
+  async function toggleInAssembler() {
+    const toggledPart = { ...part, inAssembler: !part.inAssembler };
+    // fetch url ternary: if toggleButton is clicked on the partsList page, there is no id from router.query; instead use given 'part' to get its '_id' for toggeling
+    const response = await fetch(
+      !id ? `/api/parts/${part._id}` : `/api/parts/${id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(toggledPart),
+      }
+    );
+    mutate();
   }
 
-  function deletePart() {
-    // access 'PartStore' and use the 'deletePart' function to delete the part
-    usePartStore.getState().deletePart(part.uuid);
+  async function deletePart() {
+    await fetch(`/api/parts/${id}`, {
+      method: "DELETE",
+    });
     router.push("/");
   }
 
@@ -36,7 +50,7 @@ export default function PartCard({ part, isDetail, isMini }) {
           <PartCardFlexContainer width="15%"></PartCardFlexContainer>
           <PartCardImage
             src={part.imgUrl}
-            alt={part.category}
+            alt={part.category[0].name}
             width={100}
             height={100}
           />
@@ -45,17 +59,17 @@ export default function PartCard({ part, isDetail, isMini }) {
               EK: {part.purchasingPrice} {part.currency}
             </PartCardText>
             <PartCardFlexContainer direction="row" justify="flex-start">
-              <PartCardCategory>{part.category}</PartCardCategory>
+              <PartCardCategory>{part.category[0].name}</PartCardCategory>
             </PartCardFlexContainer>
           </PartCardFlexContainer>
         </PartCardFlexContainer>
       ) : (
         <PartCardFlexContainer direction="column" border="blue">
           <PartCardFlexContainer direction="row" justify="space-between">
-            <Link href={!isDetail ? `${part.uuid}` : `/`}>
+            <Link href={!isDetail ? `${part._id}` : `/`}>
               <PartCardImage
                 src={part.imgUrl}
-                alt={part.category}
+                alt={part.category[0].name}
                 width={100}
                 height={100}
               />
@@ -80,7 +94,7 @@ export default function PartCard({ part, isDetail, isMini }) {
             <PartCardFlexContainer direction="column" justify="flex-start">
               <StyledButton
                 onClick={toggleInAssembler}
-                bordercolor="var(--color-inAssembler)"
+                borderColor="var(--color-inAssembler)"
               >
                 verarbeiten
               </StyledButton>
@@ -89,13 +103,13 @@ export default function PartCard({ part, isDetail, isMini }) {
               ) : (
                 <>
                   <LinkTo
-                    href={`${part.uuid}/edit-part`}
+                    href={`${part._id}/edit-part`}
                     name="bearbeiten"
-                    fontsize="13.333px"
+                    fontSize="13.333px"
                   />
                   <StyledButton
                     onClick={deletePart}
-                    bordercolor="var(--color-red)"
+                    borderColor="var(--color-red)"
                   >
                     löschen
                   </StyledButton>
@@ -104,7 +118,7 @@ export default function PartCard({ part, isDetail, isMini }) {
             </PartCardFlexContainer>
           </PartCardFlexContainer>
           <PartCardFlexContainer direction="row" justify="flex-start">
-            <PartCardCategory>{part.category}</PartCardCategory>
+            <PartCardCategory>{part.category[0].name}</PartCardCategory>
             <StatusMarker part={part} />
           </PartCardFlexContainer>
         </PartCardFlexContainer>

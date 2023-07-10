@@ -2,36 +2,37 @@ import StyledHeader from "../components/StyledHeader/index.js";
 import LinkTo from "../components/LinkTo/index.js";
 import { PartsListContainer } from "../components/PartsList/PartsList.styled.js";
 import PartCard from "../components/PartCard/index.js";
-import usePartStore from "../components/UseStore/UsePartStore.js";
-import useItemStore from "../components/UseStore/UseItemStore.js";
 import { StyledButton } from "../components/StyledButton/StyledButton.styled.js";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router.js";
+import useSWR from "swr";
 
 export default function CreateItemPage() {
-  const { parts, setParts } = usePartStore();
-  const inAssemblerParts = parts.filter((part) => part.inAssembler === true);
-  const { items, setItems } = useItemStore();
   const router = useRouter();
+  const { data, isLoading, mutate } = useSWR("/api/parts");
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  const inAssemblerParts = data.filter((part) => part.inAssembler === true);
 
-  function handleCreateItem() {
+  async function handleCreateItem() {
+    // check for already assembled or sold parts in Assembler
     if (
       inAssemblerParts.find((part) => part.isAssembled === true) ||
       inAssemblerParts.find((part) => part.isSold === true)
     ) {
       alert("entferne bitte alle bereits verbauten oder verkauften Teile");
     } else {
-      const allDate = new Date();
-      const day = allDate.getDate();
-      const month = allDate.getMonth() + 1;
-      const year = allDate.getFullYear();
-      const todayDate = day + "." + month + "." + year;
-
+      // get today's date for new item and assembled parts as 'dd.mm.yyyy'
+      const todayDate = new Date().toLocaleDateString("de-DE", {
+        dateStyle: "medium",
+      });
+      // create new item from inAssemblerParts
       const newItem = {
         uuid: uuidv4(),
         name: "",
         dateAssembled: todayDate,
-        parts: inAssemblerParts.map((part) => part.uuid),
+        parts: inAssemblerParts.map((part) => part._id),
         totalPurchasingPrice: inAssemblerParts.reduce(
           (sum, part) => sum + part.purchasingPrice,
           0
@@ -44,15 +45,29 @@ export default function CreateItemPage() {
           "https://res.cloudinary.com/dn4pswuzt/image/upload/v1688228715/etagere_sqk9al.jpg",
         isSold: false,
       };
-      inAssemblerParts.forEach((part) => {
-        usePartStore.getState().togglePartValue(part.uuid, "inAssembler");
-        usePartStore.getState().togglePartValue(part.uuid, "isAssembled");
-        usePartStore
-          .getState()
-          .updatePartValue(part.uuid, "dateAssembled", todayDate);
+
+      const response = await fetch("/api/items", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newItem),
       });
-      setItems(newItem);
-      router.push("/items");
+      if (response.ok) {
+        inAssemblerParts.forEach((part) => {
+          const assembledPart = {
+            ...part,
+            inAssembler: false,
+            isAssembled: true,
+            dateAssembled: todayDate,
+          };
+          const response = fetch(`/api/parts/${part._id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(assembledPart),
+          });
+        });
+        mutate();
+        router.push("/items");
+      }
     }
   }
 
@@ -71,12 +86,12 @@ export default function CreateItemPage() {
               color="var(--color-item)"
               posbt="top"
               poslr="right"
-              fontsize="1rem"
+              fontSize="1rem"
             >
               verarbeiten
             </StyledButton>
             {inAssemblerParts.map((part) => (
-              <PartCard key={part.uuid} part={part} />
+              <PartCard key={part._id} part={part} />
             ))}
           </>
         )}

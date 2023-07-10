@@ -1,10 +1,22 @@
-import { categories } from "../../lib/categories.js";
+/* import { categories } from "../../lib/categories.js"; */
 import { FormContainer, Label, Input, Select } from "./PartForm.styled.js";
 import { PartCardFlexContainer } from "../PartCard/PartCard.styled.js";
 import { PartsListContainer } from "../PartsList/PartsList.styled.js";
 import { v4 as uuidv4 } from "uuid";
+import useSWR from "swr";
 
 export default function PartForm({ onSubmit, formName, defaultData }) {
+  const { data: categories, isLoading, error } = useSWR("/api/categories");
+  if (isLoading) {
+    return <h1>lädt Kategorien...</h1>;
+  }
+  if (!categories) {
+    return <h1>keine Kategorien gefunden.</h1>;
+  }
+  if (error) {
+    return <h1>error! fehlerhafte Daten.</h1>;
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -29,8 +41,9 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
       category: data.category,
       currency: "EUR",
       purchasingPrice: data.purchasingPrice,
-      imgUrl:
-        "https://res.cloudinary.com/dn4pswuzt/image/upload/v1687168427/test/teller_adog0o.jpg",
+      imgUrl: defaultData
+        ? defaultData.imgUrl
+        : "https://res.cloudinary.com/dn4pswuzt/image/upload/v1687168427/test/teller_adog0o.jpg",
       partOrigin: data.partOrigin,
       inAssembler: false,
       isAssembled: false,
@@ -52,22 +65,20 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
             defaultValue={defaultData?.name}
             required
           />
-
           <Label htmlFor="category">Kategorie</Label>
           <Select
             name="category"
             id="category"
-            defaultValue={defaultData?.category}
+            defaultValue={defaultData?.category[0]._id}
             required
           >
             <option value="">hier auswählen</option>
             {categories.map((category) => (
-              <option key={category.title} value={category.title}>
-                {category.title}
+              <option key={category.name} value={category._id}>
+                {category.name}
               </option>
             ))}
           </Select>
-
           <Label htmlFor="purchasingPrice">Kaufpreis</Label>
           <Input
             id="purchasingPrice"
@@ -77,7 +88,6 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
             defaultValue={defaultData?.purchasingPrice}
             required
           />
-
           <Label htmlFor="partOrigin">Fundort</Label>
           <Input
             id="partOrigin"

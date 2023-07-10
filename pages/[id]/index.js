@@ -2,16 +2,25 @@ import StyledHeader from "../../components/StyledHeader/index.js";
 import LinkTo from "@/components/LinkTo/index.js";
 import { PartsListContainer } from "../../components/PartsList/PartsList.styled.js";
 import PartCard from "../../components/PartCard/index.js";
-import usePartStore from "../../components/UseStore/UsePartStore.js";
 import { useRouter } from "next/router";
+import useSWR from "swr";
 
 export default function PartDetailPage() {
-  const { parts, setParts } = usePartStore();
-
   const router = useRouter();
-  const { uuid } = router.query;
-  const detailPart = parts.find((part) => part.uuid === uuid);
+  const { id } = router.query;
+  const { data, isLoading, error } = useSWR(`/api/parts/${id}`);
 
+  if (isLoading) {
+    return <h1>Lädt Teil...</h1>;
+  }
+  if (!data) {
+    return <h1>kein Teil gefunden.</h1>;
+  }
+  if (error) {
+    return <h1>error! fehlerhafte Daten.</h1>;
+  }
+
+  const detailPart = data;
   return (
     <>
       <StyledHeader title="TEIL" color="var(--color-part)" />
