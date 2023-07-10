@@ -11,5 +11,15 @@ export default async function handler(request, response) {
     }
     return response.status(200).json(categories);
   }
+  // create a new category in categories db
+  if (request.method === "POST") {
+    try {
+      const newCategory = request.body;
+      await Category.create(newCategory);
+      return response.status(201).json({ status: "Category created" });
+    } catch (error) {
+      response.status(400).json({ error: error.message });
+    }
+  }
   return response.status(405).json({ message: "Method not allowed" });
 }
