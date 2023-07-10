@@ -70,8 +70,13 @@ export default function CategoriesPage() {
           >
             <PartCardCategory>{category.name}</PartCardCategory>
             <PartCardFlexContainer direction="row" justify="flex-start">
-              <StyledButton>bearbeiten</StyledButton>
-              <StyledButton borderColor="var(--color-red)">
+              <StyledButton onClick={handleEditCategory}>
+                bearbeiten
+              </StyledButton>
+              <StyledButton
+                onClick={handleDeleteCategory}
+                borderColor="var(--color-red)"
+              >
                 löschen
               </StyledButton>
             </PartCardFlexContainer>
