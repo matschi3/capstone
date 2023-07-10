@@ -11,6 +11,7 @@ import {
   Input,
   Label,
 } from "../components/PartForm/PartForm.styled.js";
+import { StyledButton } from "../components/StyledButton/StyledButton.styled.js";
 
 export default function CategoriesPage() {
   const { data: categories, isLoading, error } = useSWR("/api/categories");
@@ -61,7 +62,10 @@ export default function CategoriesPage() {
           >
             <PartCardCategory>{category.name}</PartCardCategory>
             <PartCardFlexContainer direction="row" justify="flex-start">
-              {/* place for other category(edit/delete) buttons */}
+              <StyledButton>bearbeiten</StyledButton>
+              <StyledButton borderColor="var(--color-red)">
+                löschen
+              </StyledButton>
             </PartCardFlexContainer>
           </PartCardFlexContainer>
         ))}
