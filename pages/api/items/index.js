@@ -9,6 +9,9 @@ export default async function handler(request, response) {
       path: "parts",
       populate: { path: "category" },
     });
+    if (!items) {
+      return response.status(404).json({ message: "No items found" });
+    }
     return response.status(200).json(items);
   }
   // create a new item in items db
@@ -21,4 +24,5 @@ export default async function handler(request, response) {
       response.status(400).json({ error: error.message });
     }
   }
+  return response.status(405).json({ status: "Method not allowed" });
 }
