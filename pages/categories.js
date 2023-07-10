@@ -6,6 +6,11 @@ import {
   PartCardFlexContainer,
 } from "../components/PartCard/PartCard.styled.js";
 import { PartsListContainer } from "../components/PartsList/PartsList.styled.js";
+import {
+  FormContainer,
+  Input,
+  Label,
+} from "../components/PartForm/PartForm.styled.js";
 
 export default function CategoriesPage() {
   const { data: categories, isLoading, error } = useSWR("/api/categories");
@@ -18,10 +23,19 @@ export default function CategoriesPage() {
   if (error) {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
+
   return (
     <>
       <StyledHeader title="KATEGORIEN" color="var(--color-category)" />
       <PartsListContainer>
+        <FormContainer
+          aria-labelledby="add new category"
+          onClick={console.log("click")}
+        >
+          <Label htmlFor="name">neue Kategorie</Label>
+          <Input id="name" name="name" type="text" required />
+          <button type="submit">hinzufügen</button>
+        </FormContainer>
         {categories.map((category) => (
           <>
             <PartCardFlexContainer direction="row" justify="space-between">
