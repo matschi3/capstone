@@ -11,6 +11,12 @@ export default function StyledFooter() {
         color="var(--color-item)"
         fontsize="20px"
       />
+      <LinkTo
+        href="/categories"
+        name="KATEGORIEN"
+        color="var(--color-category)"
+        fontsize="20px"
+      />
     </StyledFooterElement>
   );
 }
