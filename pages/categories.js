@@ -24,8 +24,20 @@ export default function CategoriesPage() {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
 
-  async function handleAddCategory() {
-    console.log("lol");
+  async function handleAddCategory(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+
+    const newCategory = {
+      name: data.name,
+      text: `Standardkategorie für ${data.name}`,
+    };
+    const response = await fetch("/api/categories", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newCategory),
+    });
   }
 
   return (
