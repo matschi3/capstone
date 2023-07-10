@@ -31,7 +31,7 @@ export default function CategoriesPage() {
     // create new category object
     const newCategory = {
       name: data.name,
-      text: `Standardkategorie für ${data.name}`,
+      text: `Kategorie für ${data.name}`,
     };
     const response = await fetch("/api/categories", {
       method: "POST",
