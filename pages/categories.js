@@ -1,6 +1,7 @@
 import StyledHeader from "../components/StyledHeader/index.js";
 import StyledFooter from "../components/StyledFooter/index.js";
 import useSWR from "swr";
+import { PartCardCategory } from "../components/PartCard/PartCard.styled.js";
 
 export default function CategoriesPage() {
   const { data: categories, isLoading, error } = useSWR("/api/categories");
