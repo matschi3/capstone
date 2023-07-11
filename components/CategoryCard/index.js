@@ -35,11 +35,13 @@ export default function CategoryCard({ category }) {
           </StyledButton>
         </PartCardFlexContainer>
       </PartCardFlexContainer>
-      <CategoryForm
-        onSubmit={handleEditCategory}
-        formName="edit-category"
-        defaultData={category}
-      />
+      {!isEdit ? null : (
+        <CategoryForm
+          onSubmit={handleEditCategory}
+          formName="edit-category"
+          defaultData={category}
+        />
+      )}
     </>
   );
 }
