@@ -9,7 +9,7 @@ import CategoryForm from "../CategoryForm/index.js";
 export default function CategoryCard({ category }) {
   const [isEdit, setIsEdit] = useState(false);
 
-  async function handleEditCategory() {
+  async function handleEditCategory(newCategory) {
     console.log("edit category");
   }
 
@@ -26,7 +26,9 @@ export default function CategoryCard({ category }) {
       >
         <PartCardCategory>{category.name}</PartCardCategory>
         <PartCardFlexContainer direction="row" justify="flex-start">
-          <StyledButton onClick={handleEditCategory}>bearbeiten</StyledButton>
+          <StyledButton onClick={() => setIsEdit(!isEdit)}>
+            bearbeiten
+          </StyledButton>
           <StyledButton
             onClick={handleDeleteCategory}
             borderColor="var(--color-red)"
