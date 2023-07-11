@@ -59,7 +59,7 @@ export default function CategoriesPage() {
           <button type="submit">hinzufügen</button>
         </FormContainer>
         {categories.map((category) => (
-          <CategoryCard key={category._id} categories={categories} />
+          <CategoryCard key={category._id} category={category} />
         ))}
       </PartsListContainer>
       <StyledFooter />
