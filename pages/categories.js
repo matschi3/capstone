@@ -1,17 +1,13 @@
 import StyledHeader from "../components/StyledHeader/index.js";
 import StyledFooter from "../components/StyledFooter/index.js";
 import useSWR from "swr";
-import {
-  PartCardCategory,
-  PartCardFlexContainer,
-} from "../components/PartCard/PartCard.styled.js";
 import { PartsListContainer } from "../components/PartsList/PartsList.styled.js";
 import {
   FormContainer,
   Input,
   Label,
 } from "../components/PartForm/PartForm.styled.js";
-import { StyledButton } from "../components/StyledButton/StyledButton.styled.js";
+import CategoryCard from "../components/CategoryCard/index.js";
 
 export default function CategoriesPage() {
   const { data: categories, isLoading, error } = useSWR("/api/categories");
@@ -63,24 +59,7 @@ export default function CategoriesPage() {
           <button type="submit">hinzufügen</button>
         </FormContainer>
         {categories.map((category) => (
-          <PartCardFlexContainer
-            key={category._id}
-            direction="row"
-            justify="space-between"
-          >
-            <PartCardCategory>{category.name}</PartCardCategory>
-            <PartCardFlexContainer direction="row" justify="flex-start">
-              <StyledButton onClick={handleEditCategory}>
-                bearbeiten
-              </StyledButton>
-              <StyledButton
-                onClick={handleDeleteCategory}
-                borderColor="var(--color-red)"
-              >
-                löschen
-              </StyledButton>
-            </PartCardFlexContainer>
-          </PartCardFlexContainer>
+          <CategoryCard key={category._id} categories={categories} />
         ))}
       </PartsListContainer>
       <StyledFooter />
