@@ -12,8 +12,6 @@ export default function CategoryCard({ category }) {
   async function handleEditCategory(newCategory, defaultData) {
     // get id from defaultData for the fetch
     const id = defaultData._id;
-    console.log(newCategory);
-    console.log(id);
     const response = await fetch(`/api/categories/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
