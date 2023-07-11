@@ -11,7 +11,7 @@ export default function CategoryForm({ onSubmit, formName, defaultData }) {
       name: data.name,
       text: `Kategorie für ${data.name}`,
     };
-    onSubmit(newCategory, defaultData);
+    onSubmit(newCategory);
     event.target.reset();
   }
 
