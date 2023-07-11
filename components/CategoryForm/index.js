@@ -22,7 +22,9 @@ export default function CategoryForm({ onSubmit, formName, defaultData }) {
       flex
       direction="column"
     >
-      <Label htmlFor="name">neue Kategorie</Label>
+      <Label htmlFor="name">
+        {defaultData ? "bearbeiten" : "neue Kategorie"}
+      </Label>
       <PartCardFlexContainer direction="row" justify="flex-start">
         <Input
           id="name"
@@ -31,9 +33,7 @@ export default function CategoryForm({ onSubmit, formName, defaultData }) {
           defaultValue={defaultData?.name}
           required
         />
-        <button type="submit">
-          {defaultData ? "bearbeiten ✓" : "hinzufügen"}
-        </button>
+        <button type="submit">{defaultData ? "ok ✓" : "hinzufügen"}</button>
       </PartCardFlexContainer>
     </FormContainer>
   );
