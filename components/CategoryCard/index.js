@@ -20,8 +20,12 @@ export default function CategoryCard({ category }) {
     setIsEdit(!isEdit);
   }
 
-  async function handleDeleteCategory() {
-    console.log("delete category");
+  async function handleDeleteCategory(defaultData) {
+    // get id from defaultData for the fetch
+    const id = defaultData._id;
+    const response = await fetch(`/api/categories/${id}`, {
+      method: "DELETE",
+    });
   }
 
   return (
