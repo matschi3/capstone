@@ -38,14 +38,6 @@ export default function CategoriesPage() {
     event.target.reset();
   }
 
-  async function handleEditCategory() {
-    console.log("edit category");
-  }
-
-  async function handleDeleteCategory() {
-    console.log("delete category");
-  }
-
   return (
     <>
       <StyledHeader title="KATEGORIEN" color="var(--color-category)" />

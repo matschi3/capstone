@@ -4,7 +4,15 @@ import {
 } from "../components/PartCard/PartCard.styled.js";
 import { StyledButton } from "../components/StyledButton/StyledButton.styled.js";
 
-export default function CategoryCard() {
+export default function CategoryCard({ category }) {
+  async function handleEditCategory() {
+    console.log("edit category");
+  }
+
+  async function handleDeleteCategory() {
+    console.log("delete category");
+  }
+
   return (
     <PartCardFlexContainer
       key={category._id}
