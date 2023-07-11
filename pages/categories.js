@@ -32,7 +32,7 @@ export default function CategoriesPage() {
     <>
       <StyledHeader title="KATEGORIEN" color="var(--color-category)" />
       <PartsListContainer>
-        <CategoryForm onSubmit={handleAddCategory} />
+        <CategoryForm onSubmit={handleAddCategory} formName="add-category" />
         {categories.map((category) => (
           <CategoryCard key={category._id} category={category} />
         ))}
