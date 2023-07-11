@@ -1,4 +1,5 @@
 import { FormContainer, Input, Label } from "../PartForm/PartForm.styled.js";
+import { PartCardFlexContainer } from "../PartCard/PartCard.styled.js";
 
 export default function CategoryForm({ onSubmit, formName, defaultData }) {
   function handleSubmit(event) {
@@ -11,21 +12,29 @@ export default function CategoryForm({ onSubmit, formName, defaultData }) {
       text: `Kategorie für ${data.name}`,
     };
     onSubmit(newCategory);
+    event.target.reset();
   }
 
   return (
-    <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
+    <FormContainer
+      aria-labelledby={formName}
+      onSubmit={handleSubmit}
+      flex
+      direction="column"
+    >
       <Label htmlFor="name">neue Kategorie</Label>
-      <Input
-        id="name"
-        name="name"
-        type="text"
-        defaultValue={defaultData?.name}
-        required
-      />
-      <button type="submit">
-        {defaultData ? "bearbeiten ✓" : "hinzufügen"}
-      </button>
+      <PartCardFlexContainer direction="row" justify="flex-start">
+        <Input
+          id="name"
+          name="name"
+          type="text"
+          defaultValue={defaultData?.name}
+          required
+        />
+        <button type="submit">
+          {defaultData ? "bearbeiten ✓" : "hinzufügen"}
+        </button>
+      </PartCardFlexContainer>
     </FormContainer>
   );
 }
