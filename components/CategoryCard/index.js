@@ -9,9 +9,8 @@ import CategoryForm from "../CategoryForm/index.js";
 export default function CategoryCard({ category }) {
   const [isEdit, setIsEdit] = useState(false);
 
-  async function handleEditCategory(newCategory, defaultData) {
-    // get id from defaultData for the fetch
-    const id = defaultData._id;
+  async function handleEditCategory(newCategory) {
+    const id = category._id;
     const response = await fetch(`/api/categories/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
