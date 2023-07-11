@@ -22,4 +22,9 @@ export default async function handler(request, response) {
       response.status(400).json({ error: error.message });
     }
   }
+  // delete id-specific category from the categories db
+  if (request.method === "DELETE") {
+    await Category.findByIdAndDelete(id);
+    response.status(200).json({ status: "Category deleted" });
+  }
 }
