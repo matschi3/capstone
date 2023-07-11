@@ -24,8 +24,12 @@ export default async function handler(request, response) {
   }
   // delete id-specific category from the categories db
   if (request.method === "DELETE") {
-    await Category.findByIdAndDelete(id);
-    response.status(200).json({ status: "Category deleted" });
+    try {
+      await Category.findByIdAndDelete(id);
+      response.status(200).json({ status: "Category deleted" });
+    } catch (error) {
+      response.status(500).json({ error: "An error occurred" });
+    }
   }
   return response.status(405).json({ status: "Method not allowed" });
 }
