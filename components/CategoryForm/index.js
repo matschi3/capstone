@@ -23,7 +23,7 @@ export default function CategoryForm({ onSubmit, formName, defaultData }) {
       direction="column"
     >
       <Label htmlFor="name">
-        {defaultData ? "bearbeiten" : "neue Kategorie"}
+        {defaultData ? `"${defaultData.name}" bearbeiten` : "neue Kategorie"}
       </Label>
       <PartCardFlexContainer direction="row" justify="flex-start">
         <Input
