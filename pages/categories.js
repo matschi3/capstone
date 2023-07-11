@@ -2,11 +2,6 @@ import StyledHeader from "../components/StyledHeader/index.js";
 import StyledFooter from "../components/StyledFooter/index.js";
 import useSWR from "swr";
 import { PartsListContainer } from "../components/PartsList/PartsList.styled.js";
-import {
-  FormContainer,
-  Input,
-  Label,
-} from "../components/PartForm/PartForm.styled.js";
 import CategoryCard from "../components/CategoryCard/index.js";
 
 export default function CategoriesPage() {
@@ -42,14 +37,6 @@ export default function CategoriesPage() {
     <>
       <StyledHeader title="KATEGORIEN" color="var(--color-category)" />
       <PartsListContainer>
-        <FormContainer
-          aria-labelledby="add new category"
-          onSubmit={handleAddCategory}
-        >
-          <Label htmlFor="name">neue Kategorie</Label>
-          <Input id="name" name="name" type="text" required />
-          <button type="submit">hinzufügen</button>
-        </FormContainer>
         {categories.map((category) => (
           <CategoryCard key={category._id} category={category} />
         ))}
