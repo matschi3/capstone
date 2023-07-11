@@ -1,8 +1,8 @@
 import {
   PartCardCategory,
   PartCardFlexContainer,
-} from "../components/PartCard/PartCard.styled.js";
-import { StyledButton } from "../components/StyledButton/StyledButton.styled.js";
+} from "../PartCard/PartCard.styled.js";
+import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 
 export default function CategoryCard({ category }) {
   async function handleEditCategory() {
