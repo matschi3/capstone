@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const FormContainer = styled.form`
-  display: grid;
+  ${(props) => (props.flex ? `display: flex` : `display: grid`)};
+  ${(props) => (props.direction ? `flex-direction: ${props.direction}` : "")};
   gap: 0.5rem;
   margin: 1rem;
 `;

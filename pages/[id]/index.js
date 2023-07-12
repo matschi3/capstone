@@ -8,19 +8,18 @@ import useSWR from "swr";
 export default function PartDetailPage() {
   const router = useRouter();
   const { id } = router.query;
-  const { data, isLoading, error } = useSWR(`/api/parts/${id}`);
+  const { data: detailPart, isLoading, error } = useSWR(`/api/parts/${id}`);
 
   if (isLoading) {
     return <h1>Lädt Teil...</h1>;
   }
-  if (!data) {
+  if (!detailPart) {
     return <h1>kein Teil gefunden.</h1>;
   }
   if (error) {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
 
-  const detailPart = data;
   return (
     <>
       <StyledHeader title="TEIL" color="var(--color-part)" />

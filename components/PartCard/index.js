@@ -9,13 +9,12 @@ import StatusMarker from "../StatusMarker/index.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 import LinkTo from "../LinkTo/index.js";
 import { useRouter } from "next/router.js";
-import useSWR from "swr";
+import { mutate } from "swr";
 
 // isDetail is for parts-detail-page, isMini is for mini-part-card on corresponding item-card
 export default function PartCard({ part, isDetail, isMini }) {
   const router = useRouter();
   const { id } = router.query;
-  const { mutate } = useSWR(`/api/parts/${id}`);
 
   // toggle part.inAssembler for assembling parts into an item
   async function toggleInAssembler() {
@@ -29,7 +28,8 @@ export default function PartCard({ part, isDetail, isMini }) {
         body: JSON.stringify(toggledPart),
       }
     );
-    mutate();
+    // mutate partsList or partDetailPage depending on where toggleButton is clicked
+    !id ? mutate(`/api/parts`) : mutate(`/api/parts/${id}`);
   }
 
   async function deletePart() {
@@ -38,7 +38,6 @@ export default function PartCard({ part, isDetail, isMini }) {
     });
     router.push("/");
   }
-
   return (
     <>
       {isMini ? (
@@ -50,7 +49,7 @@ export default function PartCard({ part, isDetail, isMini }) {
           <PartCardFlexContainer width="15%"></PartCardFlexContainer>
           <PartCardImage
             src={part.imgUrl}
-            alt={part.category[0].name}
+            alt={part.category[0]?.name}
             width={100}
             height={100}
           />
@@ -59,7 +58,7 @@ export default function PartCard({ part, isDetail, isMini }) {
               EK: {part.purchasingPrice} {part.currency}
             </PartCardText>
             <PartCardFlexContainer direction="row" justify="flex-start">
-              <PartCardCategory>{part.category[0].name}</PartCardCategory>
+              <PartCardCategory>{part.category[0]?.name}</PartCardCategory>
             </PartCardFlexContainer>
           </PartCardFlexContainer>
         </PartCardFlexContainer>
@@ -69,7 +68,7 @@ export default function PartCard({ part, isDetail, isMini }) {
             <Link href={!isDetail ? `${part._id}` : `/`}>
               <PartCardImage
                 src={part.imgUrl}
-                alt={part.category[0].name}
+                alt={part.category[0]?.name}
                 width={100}
                 height={100}
               />
@@ -118,7 +117,7 @@ export default function PartCard({ part, isDetail, isMini }) {
             </PartCardFlexContainer>
           </PartCardFlexContainer>
           <PartCardFlexContainer direction="row" justify="flex-start">
-            <PartCardCategory>{part.category[0].name}</PartCardCategory>
+            <PartCardCategory>{part.category[0]?.name}</PartCardCategory>
             <StatusMarker part={part} />
           </PartCardFlexContainer>
         </PartCardFlexContainer>
