@@ -49,7 +49,11 @@ export default function PartCard({ part, isDetail, isMini }) {
           <PartCardFlexContainer width="15%"></PartCardFlexContainer>
           <PartCardImage
             src={part.imgUrl}
-            alt={part.category[0]?.name}
+            alt={
+              part.category[0]?.name
+                ? part.category[0]?.name
+                : "part of an etagery"
+            }
             width={100}
             height={100}
           />
@@ -68,7 +72,11 @@ export default function PartCard({ part, isDetail, isMini }) {
             <Link href={!isDetail ? `${part._id}` : `/`}>
               <PartCardImage
                 src={part.imgUrl}
-                alt={part.category[0]?.name}
+                alt={
+                  part.category[0]?.name
+                    ? part.category[0]?.name
+                    : "part of an etagery"
+                }
                 width={100}
                 height={100}
               />
