@@ -4,6 +4,7 @@ import { PartCardFlexContainer } from "../PartCard/PartCard.styled.js";
 import { PartsListContainer } from "../PartsList/PartsList.styled.js";
 import { v4 as uuidv4 } from "uuid";
 import useSWR from "swr";
+import ImageUploadForm from "../ImageUploadForm/index.js";
 
 export default function PartForm({ onSubmit, formName, defaultData }) {
   const { data: categories, isLoading, error } = useSWR("/api/categories");
@@ -55,6 +56,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
 
   return (
     <PartsListContainer>
+      <ImageUploadForm />
       <PartCardFlexContainer border="var(--color-part)">
         <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
           <Label htmlFor="name">Name</Label>
@@ -95,6 +97,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
             type="text"
             defaultValue={defaultData?.partOrigin}
           />
+
           <button type="submit">
             {defaultData ? "bearbeitung bestätigen" : "Teil hinzufügen"}
           </button>
