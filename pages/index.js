@@ -6,7 +6,6 @@ import useSWR from "swr";
 
 export default function HomePage() {
   const { data: parts, isLoading, error } = useSWR("/api/parts");
-
   if (isLoading) {
     return <h1>lädt Teile...</h1>;
   }
