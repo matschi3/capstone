@@ -1,4 +1,3 @@
-/* import { categories } from "../../lib/categories.js"; */
 import { FormContainer, Label, Input, Select } from "./PartForm.styled.js";
 import { PartCardFlexContainer } from "../PartCard/PartCard.styled.js";
 import { PartsListContainer } from "../PartsList/PartsList.styled.js";
@@ -7,18 +6,18 @@ import useSWR from "swr";
 import React, { useState } from "react";
 
 export default function PartForm({ onSubmit, formName, defaultData }) {
-  // for image Upload; define some states to give some feedback to the user what happened to our upload
-  const { mutate } = useSWR("/api/images/");
-  const [uploadStatus, setUploadStatus] = useState("");
-  const [error, setError] = useState(undefined);
-
-  // categories fetching for select-dropdown
   const {
     data: categories,
-    isLoading,
+    isLoading: isCategoryLoading,
     error: categoriesError,
   } = useSWR("/api/categories");
-  if (isLoading) {
+  // for image upload
+  const { mutate } = useSWR("/api/images");
+  const [imageUrl, setImageUrl] = useState(null);
+  const [error, setError] = useState(null);
+  const [uploadStatus, setUploadStatus] = useState("");
+
+  if (isCategoryLoading) {
     return <h1>lädt Kategorien...</h1>;
   }
   if (!categories) {
@@ -28,31 +27,38 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
 
-  async function handleSubmit(event) {
+  async function handleImageUpload(event) {
+    // just handle img upload and set the returned imgUrl into state
+    setUploadStatus("Foto upload lädt...");
     event.preventDefault();
-    setUploadStatus("Uploading...");
     const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-    console.log(data);
-    // upload image and get url ?!?
+    console.log(formData);
     try {
       const response = await fetch("/api/upload", {
         method: "POST",
-        body: formData.image,
+        body: formData,
       });
-      // once the file is uploaded (= the promise in our api upload is resolved)
+      console.log(response);
       if (response.status === 201) {
-        // we call mutate to refresh our image data
-        const { uploadedImgUrl } = await response.json();
+        setUploadStatus("Upload erfolgreich!");
+        const result = await response.json();
+        const url = result.url;
+        console.log(response);
+        console.log(url);
+
         mutate();
-        // and set a successful state
-        setUploadStatus("Upload complete!");
+        setImageUrl(url);
       }
     } catch (error) {
-      // in case of error, we set the state accordingly
+      setUploadStatus("");
       setError(error);
     }
-    console.log(uploadedImgUrl);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
 
     // get todays date in Format 'dd.mm.yyyy' IF there is no defaultData (edit-part)
     let todayDate;
@@ -73,9 +79,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
       category: data.category,
       currency: "EUR",
       purchasingPrice: data.purchasingPrice,
-      imgUrl: defaultData
-        ? defaultData.imgUrl
-        : "https://res.cloudinary.com/dn4pswuzt/image/upload/v1687168427/test/teller_adog0o.jpg",
+      imgUrl: defaultData ? defaultData.imgUrl : imageUrl,
       partOrigin: data.partOrigin,
       inAssembler: false,
       isAssembled: false,
@@ -88,6 +92,13 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
   return (
     <PartsListContainer>
       <PartCardFlexContainer border="var(--color-part)">
+        <FormContainer aria-labelledby="file" onSubmit={handleImageUpload}>
+          <Label htmlFor="file">Foto</Label>
+          <Input id="file" name="file" type="file" />
+          <button type="submit">Foto hochladen</button>
+          <p>{uploadStatus}</p>
+          {error && <p>{error.message}</p>}
+        </FormContainer>
         <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
           <Label htmlFor="name">Name</Label>
           <Input
@@ -101,17 +112,12 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
           <Select
             name="category"
             id="category"
-            // error handling for: parts category got deleted and is not available anymore for listing or editing
-            defaultValue={
-              defaultData !== undefined
-                ? defaultData.category[0]?._id
-                : "keine Kategorie"
-            }
+            defaultValue={defaultData?.category[0]._id}
             required
           >
             <option value="">hier auswählen</option>
             {categories.map((category) => (
-              <option key={category._id} value={category._id}>
+              <option key={category.name} value={category._id}>
                 {category.name}
               </option>
             ))}
@@ -132,8 +138,6 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
             type="text"
             defaultValue={defaultData?.partOrigin}
           />
-          <Label htmlFor="image">Foto</Label>
-          <Input type="file" name="image" id="image" />
           <button type="submit">
             {defaultData ? "bearbeitung bestätigen" : "Teil hinzufügen"}
           </button>
