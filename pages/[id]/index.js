@@ -10,7 +10,7 @@ export default function PartDetailPage() {
   const router = useRouter();
   const { id } = router.query;
   const { data: detailPart, isLoading, error } = useSWR(`/api/parts/${id}`);
-  mutate(`/api/parts/${id}`);
+  mutate();
   if (isLoading) {
     return <h1>Lädt Teil...</h1>;
   }
