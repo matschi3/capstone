@@ -20,7 +20,7 @@ export default function PartDetailPage() {
   if (error) {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
-  mutate();
+  mutate(`/api/parts/${id}`);
   return (
     <>
       <StyledHeader title="TEIL" color="var(--color-part)" />
