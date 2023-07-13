@@ -69,7 +69,7 @@ export default function PartCard({ part, isDetail, isMini }) {
       ) : (
         <PartCardFlexContainer direction="column" border="blue">
           <PartCardFlexContainer direction="row" justify="space-between">
-            <Link href={!isDetail ? `${part._id}` : `/`}>
+            <Link href={!isDetail ? `/${part._id}` : `/`}>
               <PartCardImage
                 src={part.imgUrl}
                 alt={
