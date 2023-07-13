@@ -15,7 +15,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
   const { mutate } = useSWR("/api/images");
   const [imageUrl, setImageUrl] = useState(null);
   const [error, setError] = useState(null);
-  const [uploadStatus, setUploadStatus] = useState("");
+  const [uploadStatus, setUploadStatus] = useState(null);
 
   if (isCategoryLoading) {
     return <h1>lädt Kategorien...</h1>;
@@ -50,7 +50,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
         setImageUrl(url);
       }
     } catch (error) {
-      setUploadStatus("");
+      setUploadStatus(null);
       setError(error);
     }
   }
