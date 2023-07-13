@@ -4,7 +4,6 @@ import { PartsListContainer } from "../../components/PartsList/PartsList.styled.
 import PartCard from "../../components/PartCard/index.js";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import { mutate } from "swr";
 
 export default function PartDetailPage() {
   const router = useRouter();
@@ -20,7 +19,7 @@ export default function PartDetailPage() {
   if (error) {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
-  mutate(`/api/parts/${id}`);
+
   return (
     <>
       <StyledHeader title="TEIL" color="var(--color-part)" />
