@@ -21,7 +21,7 @@ export default function PartCard({ part, isDetail, isMini }) {
     const toggledPart = { ...part, inAssembler: !part.inAssembler };
     // fetch url ternary: if toggleButton is clicked on the partsList page, there is no id from router.query; instead use given 'part' to get its '_id' for toggeling
     const response = await fetch(
-      !id ? `api/parts/${part._id}` : `api/parts/${id}`,
+      !id ? `/api/parts/${part._id}` : `/api/parts/${id}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
