@@ -8,7 +8,7 @@ import useSWR from "swr";
 export default function PartDetailPage() {
   const router = useRouter();
   const { id } = router.query;
-  const { data: detailPart, isLoading, error } = useSWR(`/api/parts/${id}`);
+  const { data: detailPart, isLoading, error } = useSWR(`api/parts/${id}`);
 
   if (isLoading) {
     return <h1>Lädt Teil...</h1>;
