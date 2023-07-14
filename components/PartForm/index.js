@@ -8,7 +8,7 @@ import React, { useState } from "react";
 export default function PartForm({ onSubmit, formName, defaultData }) {
   // for image upload
   const { mutate } = useSWR("/api/images");
-  const [imageUrl, setImageUrl] = useState(null);
+  const [uploadImageUrl, setUploadImageUrl] = useState(null);
   const [error, setError] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
 
@@ -47,7 +47,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
         console.log(response);
         console.log(url);
         mutate();
-        setImageUrl(url);
+        setUploadImageUrl(url);
       }
     } catch (error) {
       setUploadStatus(null);
@@ -81,8 +81,8 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
       currency: "EUR",
       purchasingPrice: data.purchasingPrice,
       imgUrl:
-        imageUrl !== null
-          ? imageUrl
+        uploadImageUrl !== null
+          ? uploadImageUrl
           : defaultData
           ? defaultData.imgUrl
           : "https://res.cloudinary.com/dn4pswuzt/image/upload/v1689263603/0e2f1d94b07d3ab7a7edced00.jpg",
