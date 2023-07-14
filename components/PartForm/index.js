@@ -33,19 +33,15 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     setUploadStatus("Foto upload lädt...");
     event.preventDefault();
     const formData = new FormData(event.target);
-    console.log(formData);
     try {
       const response = await fetch("/api/upload", {
         method: "POST",
         body: formData,
       });
-      console.log(response);
       if (response.status === 201) {
         setUploadStatus("Upload erfolgreich!");
         const result = await response.json();
         const url = result.url;
-        console.log(response);
-        console.log(url);
         mutate();
         setUploadImageUrl(url);
       }
