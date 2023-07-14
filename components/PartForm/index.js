@@ -12,7 +12,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     error: categoriesError,
   } = useSWR("/api/categories");
   // for image upload
-  const { mutate } = useSWR("api/images");
+  const { mutate } = useSWR("/api/images");
   const [imageUrl, setImageUrl] = useState(null);
   const [error, setError] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
@@ -34,7 +34,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     const formData = new FormData(event.target);
     console.log(formData);
     try {
-      const response = await fetch("api/upload", {
+      const response = await fetch("/api/upload", {
         method: "POST",
         body: formData,
       });
