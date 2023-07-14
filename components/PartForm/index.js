@@ -6,17 +6,18 @@ import useSWR from "swr";
 import React, { useState } from "react";
 
 export default function PartForm({ onSubmit, formName, defaultData }) {
-  const {
-    data: categories,
-    isLoading: isCategoryLoading,
-    error: categoriesError,
-  } = useSWR("/api/categories");
   // for image upload
   const { mutate } = useSWR("/api/images");
   const [imageUrl, setImageUrl] = useState(null);
   const [error, setError] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
 
+  // get categories for select-options
+  const {
+    data: categories,
+    isLoading: isCategoryLoading,
+    error: categoriesError,
+  } = useSWR("/api/categories");
   if (isCategoryLoading) {
     return <h1>lädt Kategorien...</h1>;
   }
@@ -27,8 +28,8 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
 
+  // just handle img upload and set the returned imgUrl into state for use on form submit
   async function handleImageUpload(event) {
-    // just handle img upload and set the returned imgUrl into state
     setUploadStatus("Foto upload lädt...");
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -45,7 +46,6 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
         const url = result.url;
         console.log(response);
         console.log(url);
-
         mutate();
         setImageUrl(url);
       }
@@ -55,6 +55,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     }
   }
 
+  // handle submit of form
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -79,7 +80,12 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
       category: data.category,
       currency: "EUR",
       purchasingPrice: data.purchasingPrice,
-      imgUrl: defaultData ? defaultData.imgUrl : imageUrl,
+      imgUrl:
+        imageUrl !== null
+          ? imageUrl
+          : defaultData
+          ? defaultData.imgUrl
+          : "https://res.cloudinary.com/dn4pswuzt/image/upload/v1689263603/0e2f1d94b07d3ab7a7edced00.jpg",
       partOrigin: data.partOrigin,
       inAssembler: false,
       isAssembled: false,
