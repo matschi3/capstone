@@ -8,4 +8,5 @@ export const PartsListContainer = styled.section`
   border-radius: 5px;
   margin: 0.1rem;
   margin-top: 5em;
+  margin-bottom: 2.5em;
 `;
