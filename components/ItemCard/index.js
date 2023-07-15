@@ -6,6 +6,7 @@ import {
   PartCardText,
 } from "../PartCard/PartCard.styled.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
+import { useState } from "react";
 
 export default function ItemCard({ item }) {
   return (
