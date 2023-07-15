@@ -6,6 +6,9 @@ import { StyledButton } from "../StyledButton/StyledButton.styled";
 export default function Popup() {
   const [isActive, setIsActive] = useState(false);
 
+  function toggleIsActive() {
+    setIsActive(!isActive);
+  }
   return (
     <StyledPopup>
       <PartCardFlexContainer align="center">input</PartCardFlexContainer>
