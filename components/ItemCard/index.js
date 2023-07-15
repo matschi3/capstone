@@ -40,7 +40,11 @@ export default function ItemCard({ item }) {
           <PartCard key={part._id} part={part} isMini />
         ))}
       </PartsListContainer>
-      <Popup id={item._id} isActive={isTargetPricePopupActive} />
+      <Popup
+        id={item._id}
+        isActive={isTargetPricePopupActive}
+        onClosePopup={closeTargetPricePopup}
+      />
     </>
   );
 }
