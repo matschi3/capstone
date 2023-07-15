@@ -17,18 +17,15 @@ export default function ItemCard({ item }) {
   const closeTargetPricePopup = () => setIsTargetPricePopupActive(false);
   // handle confirm of popup
   async function handleConfirm(keyToChange) {
-    console.log(item);
-    console.log(keyToChange);
     const editedItem = { ...item, [keyToChange]: inputValue };
-    /* const response = await fetch(`/api/items/${item._id}`, {
+    const response = await fetch(`/api/items/${item._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(editedItem),
-    }); */
-    console.log(editedItem);
-    /* if (response.ok) {
+    });
+    if (response.ok) {
       closeTargetPricePopup();
-    } */
+    }
   }
 
   return (
