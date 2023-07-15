@@ -5,6 +5,7 @@ import {
   PartCardImage,
   PartCardText,
 } from "../PartCard/PartCard.styled.js";
+import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 
 export default function ItemCard({ item }) {
   return (
