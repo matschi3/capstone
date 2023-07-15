@@ -24,7 +24,9 @@ export default function ItemCard({ item }) {
           </PartCardText>
         </PartCardFlexContainer>
         <PartCardFlexContainer direction="column" justify="flex-start">
-          <StyledButton>VK einstellen</StyledButton>
+          <StyledButton onClick={console.log("setVK")}>
+            VK einstellen
+          </StyledButton>
         </PartCardFlexContainer>
       </PartCardFlexContainer>
       {/* render miniPartCard for each part in populated item.parts (parts of item */}
