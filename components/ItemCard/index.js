@@ -12,7 +12,9 @@ import { useState } from "react";
 export default function ItemCard({ item }) {
   const [isTargetPricePopupActive, setIsTargetPricePopupActive] =
     useState(false);
+  const [inputValue, setInputValue] = useState(null);
   const closeTargetPricePopup = () => setIsTargetPricePopupActive(false);
+
   return (
     <>
       <PartsListContainer borderColor="var(--color-item)">
@@ -46,6 +48,7 @@ export default function ItemCard({ item }) {
         inputName="targetPrice"
         isActive={isTargetPricePopupActive}
         onCancel={closeTargetPricePopup}
+        onConfirm={() => console.log("confirm")}
       />
     </>
   );
