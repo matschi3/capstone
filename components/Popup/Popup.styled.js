@@ -10,7 +10,7 @@ export const StyledPopup = styled.section`
   width: 80vw;
   height: 40vh;
   background-color: grey;
-  opacity: 0.75;
+  opacity: 0.9;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
