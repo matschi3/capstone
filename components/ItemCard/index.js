@@ -10,20 +10,25 @@ import Popup from "../Popup/index.js";
 import { useState } from "react";
 
 export default function ItemCard({ item }) {
+  // state + close-function for popup
   const [isTargetPricePopupActive, setIsTargetPricePopupActive] =
     useState(false);
   const [inputValue, setInputValue] = useState(null);
   const closeTargetPricePopup = () => setIsTargetPricePopupActive(false);
-  async function handleConfirm() {
-    const editedItem = { ...item, targetPrice: inputValue };
-    const response = await fetch(`/api/items/${item._id}`, {
+  // handle confirm of popup
+  async function handleConfirm(keyToChange) {
+    console.log(item);
+    console.log(keyToChange);
+    const editedItem = { ...item, [keyToChange]: inputValue };
+    /* const response = await fetch(`/api/items/${item._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(editedItem),
-    });
-    if (response.ok) {
+    }); */
+    console.log(editedItem);
+    /* if (response.ok) {
       closeTargetPricePopup();
-    }
+    } */
   }
 
   return (
@@ -56,7 +61,7 @@ export default function ItemCard({ item }) {
       <Popup
         id={item._id}
         name="VK-soll-Preis einstellen"
-        inputName="targetPrice"
+        keyToChange="targetPrice"
         isActive={isTargetPricePopupActive}
         setInputValue={setInputValue}
         onCancel={closeTargetPricePopup}
