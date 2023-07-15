@@ -7,6 +7,7 @@ import {
 } from "../PartCard/PartCard.styled.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 import Popup from "../Popup/index.js";
+import { useState } from "react";
 
 export default function ItemCard({ item }) {
   return (
@@ -26,9 +27,7 @@ export default function ItemCard({ item }) {
             </PartCardText>
           </PartCardFlexContainer>
           <PartCardFlexContainer direction="column" justify="flex-start">
-            <StyledButton onClick={console.log("setVK")}>
-              VK einstellen
-            </StyledButton>
+            <StyledButton onClick={null}>VK einstellen</StyledButton>
           </PartCardFlexContainer>
         </PartCardFlexContainer>
         {/* render miniPartCard for each part in populated item.parts (parts of item */}
@@ -36,7 +35,7 @@ export default function ItemCard({ item }) {
           <PartCard key={part._id} part={part} isMini />
         ))}
       </PartsListContainer>
-      <Popup />
+      <Popup id={item._id} />
     </>
   );
 }
