@@ -9,8 +9,8 @@ export default function Popup() {
     <StyledPopup>
       <PartCardFlexContainer align="center">input</PartCardFlexContainer>
       <PartCardFlexContainer direction="row" justify="space-around">
-        <button>abbrechen</button>
-        <button>bestätigen</button>
+        <StyledButton>abbrechen</StyledButton>
+        <StyledButton>bestätigen</StyledButton>
       </PartCardFlexContainer>
     </StyledPopup>
   );
