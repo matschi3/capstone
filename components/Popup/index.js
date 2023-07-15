@@ -1,6 +1,7 @@
 import { StyledPopup } from "./Popup.styled.js";
 import { PartCardFlexContainer } from "../PartCard/PartCard.styled.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled";
+import { Label, Input } from "../PartForm/PartForm.styled.js";
 
 export default function Popup({ id, isActive, onCancel }) {
   return isActive ? (
