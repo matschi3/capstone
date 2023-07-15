@@ -5,11 +5,12 @@ import { StyledButton } from "../StyledButton/StyledButton.styled";
 
 export default function Popup() {
   const [isActive, setIsActive] = useState(false);
+
   return (
     <StyledPopup>
       <PartCardFlexContainer align="center">input</PartCardFlexContainer>
       <PartCardFlexContainer direction="row" justify="space-around">
-        <StyledButton>abbrechen</StyledButton>
+        <StyledButton onClick={toggleIsActive}>abbrechen</StyledButton>
         <StyledButton>bestätigen</StyledButton>
       </PartCardFlexContainer>
     </StyledPopup>
