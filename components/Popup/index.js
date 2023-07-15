@@ -21,6 +21,7 @@ export default function Popup({
           step="0.01"
           id={inputName}
           name={inputName}
+          onChange={(event) => setInputValue(event.target.value)}
         ></Input>
       </PartCardFlexContainer>
       <PartCardFlexContainer direction="row" justify="space-around">
