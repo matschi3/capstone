@@ -6,11 +6,9 @@ import {
   PartCardText,
 } from "../PartCard/PartCard.styled.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
-import { useState } from "react";
 import Popup from "../Popup/index.js";
 
 export default function ItemCard({ item }) {
-  const [targetPricePopupActive, setTargetPricePopupActive] = useState(false);
   return (
     <>
       <PartsListContainer borderColor="var(--color-item)">
