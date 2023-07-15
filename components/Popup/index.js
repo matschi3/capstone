@@ -9,7 +9,8 @@ export default function Popup() {
   function toggleIsActive() {
     setIsActive(!isActive);
   }
-  return (
+
+  return isActive ? (
     <StyledPopup>
       <PartCardFlexContainer align="center">input</PartCardFlexContainer>
       <PartCardFlexContainer direction="row" justify="space-around">
@@ -17,5 +18,5 @@ export default function Popup() {
         <StyledButton>bestätigen</StyledButton>
       </PartCardFlexContainer>
     </StyledPopup>
-  );
+  ) : null;
 }
