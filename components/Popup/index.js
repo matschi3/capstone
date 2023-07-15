@@ -3,7 +3,14 @@ import { PartCardFlexContainer } from "../PartCard/PartCard.styled.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled";
 import { Label, Input } from "../PartForm/PartForm.styled.js";
 
-export default function Popup({ id, name, inputName, isActive, onCancel }) {
+export default function Popup({
+  id,
+  name,
+  inputName,
+  isActive,
+  onCancel,
+  onConfirm,
+}) {
   return isActive ? (
     <StyledPopup>
       <PartCardFlexContainer align="center">
@@ -18,7 +25,7 @@ export default function Popup({ id, name, inputName, isActive, onCancel }) {
       </PartCardFlexContainer>
       <PartCardFlexContainer direction="row" justify="space-around">
         <StyledButton onClick={onCancel}>abbrechen</StyledButton>
-        <StyledButton>bestätigen</StyledButton>
+        <StyledButton onClick={onConfirm}>bestätigen</StyledButton>
       </PartCardFlexContainer>
     </StyledPopup>
   ) : null;
