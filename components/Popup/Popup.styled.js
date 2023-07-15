@@ -13,4 +13,6 @@ export const StyledPopup = styled.section`
   opacity: 0.75;
   border-radius: 25px;
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 `;
