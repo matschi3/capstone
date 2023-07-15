@@ -10,6 +10,8 @@ import Popup from "../Popup/index.js";
 import { useState } from "react";
 
 export default function ItemCard({ item }) {
+  const [isTargetPricePopupActive, setIsTargetPricePopupActive] =
+    useState(false);
   return (
     <>
       <PartsListContainer borderColor="var(--color-item)">
