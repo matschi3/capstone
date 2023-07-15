@@ -1,22 +1,57 @@
-/* import { categories } from "../../lib/categories.js"; */
 import { FormContainer, Label, Input, Select } from "./PartForm.styled.js";
 import { PartCardFlexContainer } from "../PartCard/PartCard.styled.js";
 import { PartsListContainer } from "../PartsList/PartsList.styled.js";
 import { v4 as uuidv4 } from "uuid";
 import useSWR from "swr";
+import React, { useState } from "react";
 
 export default function PartForm({ onSubmit, formName, defaultData }) {
-  const { data: categories, isLoading, error } = useSWR("/api/categories");
-  if (isLoading) {
+  // for image upload
+  const { mutate } = useSWR("/api/images");
+  const [uploadImageUrl, setUploadImageUrl] = useState(null);
+  const [error, setError] = useState(null);
+  const [uploadStatus, setUploadStatus] = useState(null);
+
+  // get categories for select-options
+  const {
+    data: categories,
+    isLoading: isCategoryLoading,
+    error: categoriesError,
+  } = useSWR("/api/categories");
+  if (isCategoryLoading) {
     return <h1>lädt Kategorien...</h1>;
   }
   if (!categories) {
     return <h1>keine Kategorien gefunden.</h1>;
   }
-  if (error) {
+  if (categoriesError) {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
 
+  // just handle img upload and set the returned imgUrl into state for use on form submit
+  async function handleImageUpload(event) {
+    setUploadStatus("Foto upload lädt...");
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      if (response.status === 201) {
+        setUploadStatus("Upload erfolgreich!");
+        const result = await response.json();
+        const url = result.url;
+        mutate();
+        setUploadImageUrl(url);
+      }
+    } catch (error) {
+      setUploadStatus(null);
+      setError(error);
+    }
+  }
+
+  // handle submit of form
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -41,9 +76,12 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
       category: data.category,
       currency: "EUR",
       purchasingPrice: data.purchasingPrice,
-      imgUrl: defaultData
-        ? defaultData.imgUrl
-        : "https://res.cloudinary.com/dn4pswuzt/image/upload/v1687168427/test/teller_adog0o.jpg",
+      imgUrl:
+        uploadImageUrl !== null
+          ? uploadImageUrl
+          : defaultData
+          ? defaultData.imgUrl
+          : "https://res.cloudinary.com/dn4pswuzt/image/upload/v1689263603/0e2f1d94b07d3ab7a7edced00.jpg",
       partOrigin: data.partOrigin,
       inAssembler: false,
       isAssembled: false,
@@ -56,6 +94,13 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
   return (
     <PartsListContainer>
       <PartCardFlexContainer border="var(--color-part)">
+        <FormContainer aria-labelledby="file" onSubmit={handleImageUpload}>
+          <Label htmlFor="file">Foto</Label>
+          <Input id="file" name="file" type="file" />
+          <button type="submit">Foto hochladen</button>
+          <p>{uploadStatus}</p>
+          {error && <p>{error.message}</p>}
+        </FormContainer>
         <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
           <Label htmlFor="name">Name</Label>
           <Input

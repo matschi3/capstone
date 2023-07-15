@@ -38,6 +38,9 @@ export default function PartCard({ part, isDetail, isMini }) {
     });
     router.push("/");
   }
+
+  const noImageDefaultImgUrl =
+    "https://res.cloudinary.com/dn4pswuzt/image/upload/v1689263603/0e2f1d94b07d3ab7a7edced00.jpg";
   return (
     <>
       {isMini ? (
@@ -48,8 +51,12 @@ export default function PartCard({ part, isDetail, isMini }) {
         >
           <PartCardFlexContainer width="15%"></PartCardFlexContainer>
           <PartCardImage
-            src={part.imgUrl}
-            alt={part.category[0]?.name}
+            src={part.imgUrl ? part.imgUrl : noImageDefaultImgUrl}
+            alt={
+              part.category[0]?.name
+                ? part.category[0]?.name
+                : "part of an etagery"
+            }
             width={100}
             height={100}
           />
@@ -65,10 +72,14 @@ export default function PartCard({ part, isDetail, isMini }) {
       ) : (
         <PartCardFlexContainer direction="column" border="blue">
           <PartCardFlexContainer direction="row" justify="space-between">
-            <Link href={!isDetail ? `${part._id}` : `/`}>
+            <Link href={!isDetail ? `/${part._id}` : `/`}>
               <PartCardImage
-                src={part.imgUrl}
-                alt={part.category[0]?.name}
+                src={part.imgUrl ? part.imgUrl : noImageDefaultImgUrl}
+                alt={
+                  part.category[0]?.name
+                    ? part.category[0]?.name
+                    : "part of an etagery"
+                }
                 width={100}
                 height={100}
               />
