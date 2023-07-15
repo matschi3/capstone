@@ -9,6 +9,7 @@ import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 import { useState } from "react";
 
 export default function ItemCard({ item }) {
+  const [targetPricePopupActive, setTargetPricePopupActive] = useState(false);
   return (
     <PartsListContainer borderColor="var(--color-item)">
       <PartCardFlexContainer direction="row" justify="flex-start">
