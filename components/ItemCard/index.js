@@ -22,6 +22,10 @@ export default function ItemCard({ item }) {
             {item.totalPurchasingPrice} {item.currency}
           </PartCardText>
         </PartCardFlexContainer>
+        <PartCardFlexContainer
+          direction="column"
+          justify="flex-start"
+        ></PartCardFlexContainer>
       </PartCardFlexContainer>
       {/* render miniPartCard for each part in populated item.parts (parts of item */}
       {item.parts.map((part) => (
