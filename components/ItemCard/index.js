@@ -14,9 +14,10 @@ export default function ItemCard({ item }) {
     useState(false);
   const [inputValue, setInputValue] = useState(null);
   const closeTargetPricePopup = () => setIsTargetPricePopupActive(false);
-  const handleConfirm = () => {
+  async function handleConfirm() {
     console.log(inputValue);
-  };
+    closeTargetPricePopup();
+  }
 
   return (
     <>
