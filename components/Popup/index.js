@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { StyledPopup } from "./Popup.styled";
 
 export default function Popup() {
   const [isActive, setIsActive] = useState(false);
-  return <section>lol</section>;
+  return <StyledPopup>lol</StyledPopup>;
 }
