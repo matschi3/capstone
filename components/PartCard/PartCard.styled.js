@@ -5,6 +5,7 @@ export const PartCardFlexContainer = styled.article`
   display: flex;
   flex-direction: ${(props) => props.direction || "column"};
   justify-content: ${(props) => props.justify || "center"};
+  ${(props) => props.align && `align-items: ${props.align};`}
   border: var(--border-size) solid ${(props) => props.border || "none"};
   border-radius: 5px;
   margin: 0.1rem;
