@@ -48,6 +48,10 @@ export default function ItemCard({ item }) {
               {"VK(soll): "}
               {item.targetPrice} {item.currency}
             </PartCardText>
+            <PartCardText>
+              {"Gewinn(soll): "}
+              {item.targetPrice - item.totalPurchasingPrice} {item.currency}
+            </PartCardText>
           </PartCardFlexContainer>
           <PartCardFlexContainer direction="column" justify="flex-start">
             <StyledButton onClick={() => setIsTargetPricePopupActive(true)}>
