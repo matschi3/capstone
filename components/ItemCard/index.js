@@ -51,7 +51,7 @@ export default function ItemCard({ item }) {
         inputName="targetPrice"
         isActive={isTargetPricePopupActive}
         onCancel={closeTargetPricePopup}
-        onConfirm={() => console.log("confirm")}
+        onConfirm={handleConfirm}
       />
     </>
   );
