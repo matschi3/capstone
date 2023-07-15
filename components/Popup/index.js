@@ -3,12 +3,12 @@ import { PartCardFlexContainer } from "../PartCard/PartCard.styled.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled";
 import { Label, Input } from "../PartForm/PartForm.styled.js";
 
-export default function Popup({ id, inputName, isActive, onCancel }) {
+export default function Popup({ id, name, inputName, isActive, onCancel }) {
   return isActive ? (
     <StyledPopup>
       <PartCardFlexContainer align="center">
         {id}
-        <Label htmlFor={inputName}></Label>
+        <Label htmlFor={inputName}>{name}</Label>
         <Input
           type="number"
           step="0.01"
