@@ -12,6 +12,7 @@ import { useState } from "react";
 export default function ItemCard({ item }) {
   const [isTargetPricePopupActive, setIsTargetPricePopupActive] =
     useState(false);
+  const closeTargetPricePopup = () => setIsTargetPricePopupActive(false);
   return (
     <>
       <PartsListContainer borderColor="var(--color-item)">
