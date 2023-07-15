@@ -6,7 +6,15 @@ import { Label, Input } from "../PartForm/PartForm.styled.js";
 export default function Popup({ id, isActive, onCancel }) {
   return isActive ? (
     <StyledPopup>
-      <PartCardFlexContainer align="center">input</PartCardFlexContainer>
+      <PartCardFlexContainer align="center">
+        <Label htmlFor={inputName}></Label>
+        <Input
+          type="number"
+          step="0.01"
+          id={inputName}
+          name={inputName}
+        ></Input>
+      </PartCardFlexContainer>
       <PartCardFlexContainer direction="row" justify="space-around">
         <StyledButton onClick={onCancel}>abbrechen</StyledButton>
         <StyledButton>bestätigen</StyledButton>
