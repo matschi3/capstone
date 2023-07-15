@@ -7,9 +7,11 @@ import {
 } from "../PartCard/PartCard.styled.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 import Popup from "../Popup/index.js";
-import { useState } from "react";
+import React, { useState } from "react";
+import useSWR from "swr";
 
 export default function ItemCard({ item }) {
+  const { mutate } = useSWR(`/api/items`);
   // states + close-function for popup
   const [isTargetPricePopupActive, setIsTargetPricePopupActive] =
     useState(false);
@@ -25,7 +27,10 @@ export default function ItemCard({ item }) {
       body: JSON.stringify(editedItem),
     });
     if (response.ok) {
+      mutate();
       closeTargetPricePopup();
+    } else {
+      alert("Fehler beim setzen des VK-Preises");
     }
   }
 
