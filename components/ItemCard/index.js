@@ -10,12 +10,13 @@ import Popup from "../Popup/index.js";
 import { useState } from "react";
 
 export default function ItemCard({ item }) {
-  // state + close-function for popup
+  // states + close-function for popup
   const [isTargetPricePopupActive, setIsTargetPricePopupActive] =
     useState(false);
   const [inputValue, setInputValue] = useState(null);
   const closeTargetPricePopup = () => setIsTargetPricePopupActive(false);
-  // handle confirm of popup
+
+  // handle confirm of popup (set item data) with entered inputValue and the keyToChange
   async function handleConfirm(keyToChange) {
     const editedItem = { ...item, [keyToChange]: inputValue };
     const response = await fetch(`/api/items/${item._id}`, {
@@ -31,7 +32,7 @@ export default function ItemCard({ item }) {
   return (
     <>
       <PartsListContainer borderColor="var(--color-item)">
-        <PartCardFlexContainer direction="row" justify="flex-start">
+        <PartCardFlexContainer direction="row" justify="space-between">
           <PartCardImage
             src={item.imgUrl}
             alt={item.name}
@@ -42,6 +43,10 @@ export default function ItemCard({ item }) {
             <PartCardText>{item.dateAssembled}</PartCardText>
             <PartCardText>
               {item.totalPurchasingPrice} {item.currency}
+            </PartCardText>
+            <PartCardText>
+              {"VK(soll): "}
+              {item.targetPrice} {item.currency}
             </PartCardText>
           </PartCardFlexContainer>
           <PartCardFlexContainer direction="column" justify="flex-start">
