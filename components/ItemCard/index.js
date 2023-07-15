@@ -43,7 +43,7 @@ export default function ItemCard({ item }) {
       <Popup
         id={item._id}
         isActive={isTargetPricePopupActive}
-        onClosePopup={closeTargetPricePopup}
+        onCancel={closeTargetPricePopup}
       />
     </>
   );
