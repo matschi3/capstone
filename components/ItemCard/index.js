@@ -42,6 +42,7 @@ export default function ItemCard({ item }) {
       </PartsListContainer>
       <Popup
         id={item._id}
+        inputName="targetPrice"
         isActive={isTargetPricePopupActive}
         onCancel={closeTargetPricePopup}
       />
