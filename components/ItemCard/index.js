@@ -50,6 +50,7 @@ export default function ItemCard({ item }) {
         name="VK-soll-Preis einstellen"
         inputName="targetPrice"
         isActive={isTargetPricePopupActive}
+        setInputValue={setInputValue}
         onCancel={closeTargetPricePopup}
         onConfirm={handleConfirm}
       />
