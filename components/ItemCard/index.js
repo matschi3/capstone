@@ -26,12 +26,14 @@ export default function ItemCard({ item }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(editedItem),
     });
-    if (response.ok) {
-      mutate();
-      closeTargetPricePopup();
-    } else {
-      alert("Fehler beim setzen des VK-Preises");
-    }
+    setTimeout(() => {
+      if (response.ok) {
+        mutate();
+        closeTargetPricePopup();
+      } else {
+        alert("Fehler beim setzen des VK-Preises");
+      }
+    }, 2000);
   }
 
   return (
