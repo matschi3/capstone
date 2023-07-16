@@ -23,7 +23,7 @@ export default function ItemCard({ item }) {
     setIsSoldForPricePopupActive(false);
   };
 
-  // handle confirm of popup (set item data) with entered inputValue and the keyToChange
+  // handle confirm of popup (set item data) with entered inputValue and the keyToChange for multi-purpose
   async function handleConfirm(keyToChange) {
     const editedItem = { ...item, [keyToChange]: inputValue };
     try {
@@ -102,6 +102,7 @@ export default function ItemCard({ item }) {
               </>
             ) : null}
           </PartCardFlexContainer>
+          {/* right hand Buttons */}
           <PartCardFlexContainer direction="column" justify="flex-start">
             <StyledButton onClick={() => setIsTargetPricePopupActive(true)}>
               VK einstellen
@@ -111,11 +112,12 @@ export default function ItemCard({ item }) {
             </StyledButton>
           </PartCardFlexContainer>
         </PartCardFlexContainer>
-        {/* render miniPartCard for each part in populated item.parts (parts of item */}
+        {/* render miniPartCard for each part in populated item.parts (parts of item) */}
         {item.parts.map((part) => (
           <PartCard key={part._id} part={part} isMini />
         ))}
       </PartsListContainer>
+      {/* available PopUps */}
       <Popup
         id={item._id}
         name="VK-soll-Preis einstellen"
