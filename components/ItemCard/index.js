@@ -12,8 +12,10 @@ import useSWR from "swr";
 
 export default function ItemCard({ item }) {
   const { mutate } = useSWR(`/api/items`);
-  // states + close-function for popup
+  // states + close-function for popup's
   const [isTargetPricePopupActive, setIsTargetPricePopupActive] =
+    useState(false);
+  const [isSoldForPricePopupActive, setIsSoldForPricePopupActive] =
     useState(false);
   const [inputValue, setInputValue] = useState(null);
   const closeTargetPricePopup = () => setIsTargetPricePopupActive(false);
