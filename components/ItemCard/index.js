@@ -27,8 +27,8 @@ export default function ItemCard({ item }) {
       body: JSON.stringify(editedItem),
     });
     if (response.ok) {
-      mutate();
       closeTargetPricePopup();
+      mutate();
     } else {
       alert("Fehler beim setzen des VK-Preises");
     }
