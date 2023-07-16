@@ -91,7 +91,7 @@ export default function ItemCard({ item }) {
         keyToChange="targetPrice"
         isActive={isTargetPricePopupActive}
         setInputValue={setInputValue}
-        onCancel={closeTargetPricePopup}
+        onCancel={closeAllPopups}
         onConfirm={handleConfirm}
       />
       <Popup
