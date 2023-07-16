@@ -23,8 +23,12 @@ export default async function handler(request, response) {
       }
     } else if (request.method === "DELETE") {
       // delete id-specific item from the items db
-      await Item.findByIdAndDelete(id);
-      response.status(200).json({ status: "Item deleted" });
+      try {
+        await Item.findByIdAndDelete(id);
+        response.status(200).json({ status: "Item deleted" });
+      } catch (error) {
+        response.status(500).json({ error: "An error occurred" });
+      }
     } else {
       return response.status(405).json({ status: "Method not allowed" });
     }
