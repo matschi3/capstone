@@ -58,7 +58,8 @@ export default function ItemCard({ item }) {
             <PartCardText>
               {item.totalPurchasingPrice} {item.currency}
             </PartCardText>
-            {item.targetPrice ? (
+            {/* Ternarys for correct display of Price-information depending on which data has been given */}
+            {item.targetPrice && !item.soldForPrice ? (
               <>
                 <PartCardText>
                   {"VK(soll): "}
@@ -70,6 +71,48 @@ export default function ItemCard({ item }) {
                 </PartCardText>
               </>
             ) : null}
+            {item.targetPrice && item.soldForPrice ? (
+              <>
+                <PartCardText>
+                  {"VK(soll): "}
+                  {item.targetPrice} {item.currency}
+                </PartCardText>
+                <PartCardText>
+                  {"VK(ist): "}
+                  {item.soldForPrice} {item.currency}
+                </PartCardText>
+                <PartCardText>
+                  {"Gewinn(ist): "}
+                  {item.soldForPrice - item.totalPurchasingPrice}{" "}
+                  {item.currency}
+                </PartCardText>
+              </>
+            ) : null}
+            {!item.targetPrice && item.soldForPrice ? (
+              <>
+                <PartCardText>
+                  {"VK(ist): "}
+                  {item.soldForPrice} {item.currency}
+                </PartCardText>
+                <PartCardText>
+                  {"Gewinn(ist): "}
+                  {item.soldForPrice - item.totalPurchasingPrice}{" "}
+                  {item.currency}
+                </PartCardText>
+              </>
+            ) : null}
+            {/* {item.targetPrice ? (
+              <>
+                <PartCardText>
+                  {"VK(soll): "}
+                  {item.targetPrice} {item.currency}
+                </PartCardText>
+                <PartCardText>
+                  {"Gewinn(soll): "}
+                  {item.targetPrice - item.totalPurchasingPrice} {item.currency}
+                </PartCardText>
+              </>
+            ) : null} */}
           </PartCardFlexContainer>
           <PartCardFlexContainer direction="column" justify="flex-start">
             <StyledButton onClick={() => setIsTargetPricePopupActive(true)}>
