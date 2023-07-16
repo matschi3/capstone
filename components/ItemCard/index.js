@@ -36,7 +36,7 @@ export default function ItemCard({ item }) {
         closeAllPopups();
         mutate();
       } else {
-        alert("Fehler beim setzen des VK-Preises");
+        alert("Fehler beim setzen des neuen Wertes");
       }
     } catch (error) {
       alert("Fehler beim Zugriff auf Datenbank");
