@@ -101,18 +101,6 @@ export default function ItemCard({ item }) {
                 </PartCardText>
               </>
             ) : null}
-            {/* {item.targetPrice ? (
-              <>
-                <PartCardText>
-                  {"VK(soll): "}
-                  {item.targetPrice} {item.currency}
-                </PartCardText>
-                <PartCardText>
-                  {"Gewinn(soll): "}
-                  {item.targetPrice - item.totalPurchasingPrice} {item.currency}
-                </PartCardText>
-              </>
-            ) : null} */}
           </PartCardFlexContainer>
           <PartCardFlexContainer direction="column" justify="flex-start">
             <StyledButton onClick={() => setIsTargetPricePopupActive(true)}>
