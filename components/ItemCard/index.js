@@ -75,6 +75,9 @@ export default function ItemCard({ item }) {
             <StyledButton onClick={() => setIsTargetPricePopupActive(true)}>
               VK einstellen
             </StyledButton>
+            <StyledButton onClick={() => setIsSoldForPricePopupActive(true)}>
+              verkauft...
+            </StyledButton>
           </PartCardFlexContainer>
         </PartCardFlexContainer>
         {/* render miniPartCard for each part in populated item.parts (parts of item */}
