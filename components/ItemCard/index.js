@@ -18,7 +18,10 @@ export default function ItemCard({ item }) {
   const [isSoldForPricePopupActive, setIsSoldForPricePopupActive] =
     useState(false);
   const [inputValue, setInputValue] = useState(null);
-  const closeTargetPricePopup = () => setIsTargetPricePopupActive(false);
+  const closeAllPopups = () => {
+    setIsTargetPricePopupActive(false);
+    setIsSoldForPricePopupActive(false);
+  };
 
   // handle confirm of popup (set item data) with entered inputValue and the keyToChange
   async function handleConfirm(keyToChange) {
@@ -30,7 +33,7 @@ export default function ItemCard({ item }) {
         body: JSON.stringify(editedItem),
       });
       if (response.ok) {
-        closeTargetPricePopup();
+        closeAllPopups();
         mutate();
       } else {
         alert("Fehler beim setzen des VK-Preises");
