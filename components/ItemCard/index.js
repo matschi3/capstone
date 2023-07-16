@@ -21,16 +21,20 @@ export default function ItemCard({ item }) {
   // handle confirm of popup (set item data) with entered inputValue and the keyToChange
   async function handleConfirm(keyToChange) {
     const editedItem = { ...item, [keyToChange]: inputValue };
-    const response = await fetch(`/api/items/${item._id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(editedItem),
-    });
-    if (response.ok) {
-      closeTargetPricePopup();
-      mutate();
-    } else {
-      alert("Fehler beim setzen des VK-Preises");
+    try {
+      const response = await fetch(`/api/items/${item._id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(editedItem),
+      });
+      if (response.ok) {
+        closeTargetPricePopup();
+        mutate();
+      } else {
+        alert("Fehler beim setzen des VK-Preises");
+      }
+    } catch (error) {
+      alert("Fehler beim Zugriff auf Datenbank");
     }
   }
 
