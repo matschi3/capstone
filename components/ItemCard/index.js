@@ -94,6 +94,15 @@ export default function ItemCard({ item }) {
         onCancel={closeTargetPricePopup}
         onConfirm={handleConfirm}
       />
+      <Popup
+        id={item._id}
+        name="VK-ist-Preis einstellen"
+        keyToChange="soldForPrice"
+        isActive={isSoldForPricePopupActive}
+        setInputValue={setInputValue}
+        onCancel={closeAllPopups}
+        onConfirm={handleConfirm}
+      />
     </>
   );
 }
