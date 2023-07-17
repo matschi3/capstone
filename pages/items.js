@@ -5,6 +5,8 @@ import useSWR from "swr";
 import { useState } from "react";
 
 export default function ItemsPage() {
+  const [sorting, setSorting] = useState("verbaut(neueste)");
+
   const { data: items, isLoading, error } = useSWR("/api/items");
   if (isLoading) {
     return <h1>lädt Items...</h1>;
