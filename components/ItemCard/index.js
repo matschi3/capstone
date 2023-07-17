@@ -12,13 +12,18 @@ import useSWR from "swr";
 
 export default function ItemCard({ item }) {
   const { mutate } = useSWR(`/api/items`);
-  // states + close-function for popup
+  // states + close-function for popup's
   const [isTargetPricePopupActive, setIsTargetPricePopupActive] =
     useState(false);
+  const [isSoldForPricePopupActive, setIsSoldForPricePopupActive] =
+    useState(false);
   const [inputValue, setInputValue] = useState(null);
-  const closeTargetPricePopup = () => setIsTargetPricePopupActive(false);
+  const closeAllPopups = () => {
+    setIsTargetPricePopupActive(false);
+    setIsSoldForPricePopupActive(false);
+  };
 
-  // handle confirm of popup (set item data) with entered inputValue and the keyToChange
+  // handle confirm of popup (set item data) with entered inputValue and the keyToChange for multi-purpose
   async function handleConfirm(keyToChange) {
     const editedItem = { ...item, [keyToChange]: inputValue };
     try {
@@ -28,10 +33,10 @@ export default function ItemCard({ item }) {
         body: JSON.stringify(editedItem),
       });
       if (response.ok) {
-        closeTargetPricePopup();
+        closeAllPopups();
         mutate();
       } else {
-        alert("Fehler beim setzen des VK-Preises");
+        alert("Fehler beim setzen des neuen Wertes");
       }
     } catch (error) {
       alert("Fehler beim Zugriff auf Datenbank");
@@ -53,7 +58,8 @@ export default function ItemCard({ item }) {
             <PartCardText>
               {item.totalPurchasingPrice} {item.currency}
             </PartCardText>
-            {item.targetPrice ? (
+            {/* Ternarys for correct display of Price-information depending on which data has been given */}
+            {item.targetPrice && !item.soldForPrice ? (
               <>
                 <PartCardText>
                   {"VK(soll): "}
@@ -65,25 +71,69 @@ export default function ItemCard({ item }) {
                 </PartCardText>
               </>
             ) : null}
+            {item.targetPrice && item.soldForPrice ? (
+              <>
+                <PartCardText>
+                  {"VK(soll): "}
+                  {item.targetPrice} {item.currency}
+                </PartCardText>
+                <PartCardText>
+                  {"VK(ist): "}
+                  {item.soldForPrice} {item.currency}
+                </PartCardText>
+                <PartCardText>
+                  {"Gewinn(ist): "}
+                  {item.soldForPrice - item.totalPurchasingPrice}{" "}
+                  {item.currency}
+                </PartCardText>
+              </>
+            ) : null}
+            {!item.targetPrice && item.soldForPrice ? (
+              <>
+                <PartCardText>
+                  {"VK(ist): "}
+                  {item.soldForPrice} {item.currency}
+                </PartCardText>
+                <PartCardText>
+                  {"Gewinn(ist): "}
+                  {item.soldForPrice - item.totalPurchasingPrice}{" "}
+                  {item.currency}
+                </PartCardText>
+              </>
+            ) : null}
           </PartCardFlexContainer>
+          {/* right hand Buttons */}
           <PartCardFlexContainer direction="column" justify="flex-start">
             <StyledButton onClick={() => setIsTargetPricePopupActive(true)}>
               VK einstellen
             </StyledButton>
+            <StyledButton onClick={() => setIsSoldForPricePopupActive(true)}>
+              verkauft...
+            </StyledButton>
           </PartCardFlexContainer>
         </PartCardFlexContainer>
-        {/* render miniPartCard for each part in populated item.parts (parts of item */}
+        {/* render miniPartCard for each part in populated item.parts (parts of item) */}
         {item.parts.map((part) => (
           <PartCard key={part._id} part={part} isMini />
         ))}
       </PartsListContainer>
+      {/* available PopUps */}
       <Popup
         id={item._id}
         name="VK-soll-Preis einstellen"
         keyToChange="targetPrice"
         isActive={isTargetPricePopupActive}
         setInputValue={setInputValue}
-        onCancel={closeTargetPricePopup}
+        onCancel={closeAllPopups}
+        onConfirm={handleConfirm}
+      />
+      <Popup
+        id={item._id}
+        name="VK-ist-Preis einstellen"
+        keyToChange="soldForPrice"
+        isActive={isSoldForPricePopupActive}
+        setInputValue={setInputValue}
+        onCancel={closeAllPopups}
         onConfirm={handleConfirm}
       />
     </>
