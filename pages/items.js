@@ -2,6 +2,7 @@ import StyledHeader from "../components/StyledHeader/index.js";
 import ItemCard from "../components/ItemCard/index.js";
 import StyledFooter from "../components/StyledFooter/index.js";
 import useSWR from "swr";
+import { useState } from "react";
 
 export default function ItemsPage() {
   const { data: items, isLoading, error } = useSWR("/api/items");
