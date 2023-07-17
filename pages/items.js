@@ -21,6 +21,18 @@ export default function ItemsPage() {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
 
+  const sortedItems = items.sort((a, b) => {
+    if (sorting === "verbaut(neueste)") {
+      return new Date(b.dateAssembled) - new Date(a.dateAssembled);
+    } else if (sorting === "verbaut(älteste)") {
+      return new Date(a.dateAssembled) - new Date(b.dateAssembled);
+    } else if (sorting === "verkauft(neueste)") {
+      return new Date(b.dateSold) - new Date(a.dateSold);
+    } else if (sorting === "verkauft(älteste)") {
+      return new Date(a.dateSold) - new Date(b.dateSold);
+    }
+  });
+
   return (
     <>
       <StyledHeader title="ITEMS" color="var(--color-item)" />
@@ -61,7 +73,7 @@ export default function ItemsPage() {
           activeFilter={activeSorting}
         />
       </FilterContainer>
-      {items.map((item) => (
+      {sortedItems.map((item) => (
         <ItemCard key={item._id} item={item} />
       ))}
       <StyledFooter />
