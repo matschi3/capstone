@@ -3,6 +3,8 @@ import ItemCard from "../components/ItemCard/index.js";
 import StyledFooter from "../components/StyledFooter/index.js";
 import useSWR from "swr";
 import { useState } from "react";
+import StyledFilter from "../StyledFilter/index.js";
+import { FilterContainer } from "../StyledFilter/StyledFilter.styled.js";
 
 export default function ItemsPage() {
   const [sorting, setSorting] = useState("verbaut(neueste)");
