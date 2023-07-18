@@ -23,15 +23,11 @@ export default function CreateItemPage() {
     ) {
       alert("entferne bitte alle bereits verbauten oder verkauften Teile");
     } else {
-      // get today's date for new item and assembled parts as 'dd.mm.yyyy'
-      const todayDate = new Date().toLocaleDateString("de-DE", {
-        dateStyle: "medium",
-      });
       // create new item from inAssemblerParts
       const newItem = {
         uuid: uuidv4(),
         name: "",
-        dateAssembled: todayDate,
+        dateAssembled: new Date(),
         parts: inAssemblerParts.map((part) => part._id),
         totalPurchasingPrice: inAssemblerParts.reduce(
           (sum, part) => sum + part.purchasingPrice,
@@ -57,7 +53,7 @@ export default function CreateItemPage() {
             ...part,
             inAssembler: false,
             isAssembled: true,
-            dateAssembled: todayDate,
+            dateAssembled: newItem.dateAssembled,
           };
           const response = fetch(`/api/parts/${part._id}`, {
             method: "PUT",
