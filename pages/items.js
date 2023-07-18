@@ -52,12 +52,6 @@ export default function ItemsPage() {
     return 0;
   });
 
-  sortedItems.map((item) => {
-    console.log(item._id);
-    console.log(item.dateAssembled);
-    console.log(item.dateSold);
-  });
-
   return (
     <>
       <StyledHeader title="ITEMS" color="var(--color-item)" />
