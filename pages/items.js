@@ -26,6 +26,7 @@ export default function ItemsPage() {
       return new Date(b.dateAssembled) - new Date(a.dateAssembled);
     } else if (sorting === "verbaut(älteste)") {
       return new Date(a.dateAssembled) - new Date(b.dateAssembled);
+      // in this case, there are items with NO dateSold set -> sort them to the end
     } else if (sorting === "verkauft(neueste)") {
       if (a.dateSold && b.dateSold) {
         return new Date(b.dateSold) - new Date(a.dateSold);
@@ -36,6 +37,7 @@ export default function ItemsPage() {
       } else {
         return new Date(b.dateAssembled) - new Date(a.dateAssembled);
       }
+      // in this case, there are items with NO dateSold set -> sort them to the end
     } else if (sorting === "verkauft(älteste)") {
       if (a.dateSold && b.dateSold) {
         return new Date(a.dateSold) - new Date(b.dateSold);
