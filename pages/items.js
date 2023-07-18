@@ -21,7 +21,7 @@ export default function ItemsPage() {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
 
-  const sortedItems = items.sort((a, b) => {
+  const sortedItems = items.slice().sort((a, b) => {
     if (sorting === "verbaut(neueste)") {
       return new Date(b.dateAssembled) - new Date(a.dateAssembled);
     } else if (sorting === "verbaut(älteste)") {
