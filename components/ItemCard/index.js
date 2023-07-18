@@ -54,7 +54,11 @@ export default function ItemCard({ item }) {
             height={100}
           />
           <PartCardFlexContainer direction="column" justify="flex-start">
-            <PartCardText>{item.dateAssembled}</PartCardText>
+            <PartCardText>
+              {new Date(item.dateAssembled).toLocaleString("de-DE", {
+                medium: "medium",
+              })}
+            </PartCardText>
             <PartCardText>
               {item.totalPurchasingPrice} {item.currency}
             </PartCardText>

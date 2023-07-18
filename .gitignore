@@ -40,3 +40,6 @@ next-env.d.ts
 /lib/items.json
 /lib/categories.json
 /lib/parts_testExport.json
+/lib/capstone.categories_reset.json
+/lib/capstone.items_reset.json
+/lib/capstone.parts_reset.json
