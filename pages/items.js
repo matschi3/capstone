@@ -27,10 +27,33 @@ export default function ItemsPage() {
     } else if (sorting === "verbaut(älteste)") {
       return new Date(a.dateAssembled) - new Date(b.dateAssembled);
     } else if (sorting === "verkauft(neueste)") {
-      return new Date(b.dateSold) - new Date(a.dateSold);
+      if (a.dateSold && b.dateSold) {
+        return new Date(b.dateSold) - new Date(a.dateSold);
+      } else if (a.dateSold && !b.dateSold) {
+        return -1;
+      } else if (!a.dateSold && b.dateSold) {
+        return 1;
+      } else {
+        return new Date(b.dateAssembled) - new Date(a.dateAssembled);
+      }
     } else if (sorting === "verkauft(älteste)") {
-      return new Date(a.dateSold) - new Date(b.dateSold);
+      if (a.dateSold && b.dateSold) {
+        return new Date(a.dateSold) - new Date(b.dateSold);
+      } else if (a.dateSold && !b.dateSold) {
+        return -1;
+      } else if (!a.dateSold && b.dateSold) {
+        return 1;
+      } else {
+        return new Date(a.dateAssembled) - new Date(b.dateAssembled);
+      }
     }
+    return 0;
+  });
+
+  sortedItems.map((item) => {
+    console.log(item._id);
+    console.log(item.dateAssembled);
+    console.log(item.dateSold);
   });
 
   return (
