@@ -21,6 +21,16 @@ export default function ItemsPage() {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
 
+  const filteredItems = items.filter((item) => {
+    if (statusFilter === "!isSold") {
+      return !item.isSold;
+    } else if (statusFilter === "isSold") {
+      return item.isSold;
+    } else if (statusFilter === "all") {
+      return item;
+    } else return 0;
+  });
+
   const sortedItems = items.slice().sort((a, b) => {
     if (sorting === "dateAssembled(DESC)") {
       return new Date(b.dateAssembled) - new Date(a.dateAssembled);
