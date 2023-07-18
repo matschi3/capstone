@@ -91,6 +91,26 @@ export default function ItemsPage() {
             setSorting(newSorting);
           }}
         />
+        <StyledFilter
+          options={[
+            {
+              value: "!isSold",
+              label: "unverkauft",
+            },
+            {
+              value: "isSold",
+              label: "verkauft",
+            },
+            {
+              value: "all",
+              label: "alle",
+            },
+          ]}
+          value={statusFilter}
+          onChange={(newSorting) => {
+            setStatusFilter(newSorting);
+          }}
+        />
       </FilterContainer>
       {sortedItems.map((item) => (
         <ItemCard key={item._id} item={item} />
