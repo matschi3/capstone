@@ -8,6 +8,7 @@ import { FilterContainer } from "../components/StyledFilter/StyledFilter.styled.
 
 export default function ItemsPage() {
   const [sorting, setSorting] = useState("dateAssembled(DESC)");
+  const [statusFilter, setStatusFilter] = useState("!isSold");
 
   const { data: items, isLoading, error } = useSWR("/api/items");
   if (isLoading) {
