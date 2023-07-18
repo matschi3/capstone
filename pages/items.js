@@ -31,7 +31,7 @@ export default function ItemsPage() {
     } else return 0;
   });
 
-  const sortedItems = items.slice().sort((a, b) => {
+  const sortedItems = filteredItems.slice().sort((a, b) => {
     if (sorting === "dateAssembled(DESC)") {
       return new Date(b.dateAssembled) - new Date(a.dateAssembled);
     } else if (sorting === "dateAssembled(ASC)") {
