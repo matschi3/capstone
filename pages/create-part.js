@@ -17,6 +17,7 @@ export default function CreatePartPage() {
     });
     if (response.ok) {
       mutate();
+      toast("✅ Teil erfolgreich erstellt");
     }
     router.push("/");
   }
