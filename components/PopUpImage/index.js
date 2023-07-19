@@ -12,6 +12,9 @@ export default function PopUpImage({
   onCancel,
   onConfirm,
 }) {
+  const [error, setError] = useState(null);
+  const [uploadStatus, setUploadStatus] = useState(null);
+
   async function handleImageUpload(event) {
     setUploadStatus("Foto upload lädt...");
     event.preventDefault();
