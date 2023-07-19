@@ -26,7 +26,7 @@ export default function CategoryCard({ category }) {
     const response = await fetch(`/api/categories/${id}`, {
       method: "DELETE",
     });
-    alert("Kategorie erfolgreich gelöscht");
+    toast("✅ Kategorie erfolgreich gelöscht 🗑️");
   }
 
   return (
