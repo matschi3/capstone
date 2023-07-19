@@ -3,6 +3,7 @@ import LinkTo from "../../components/LinkTo/index.js";
 import PartForm from "../../components/PartForm/index.js";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import { toast } from "react-toastify";
 
 export default function EditPartPage() {
   const router = useRouter();
