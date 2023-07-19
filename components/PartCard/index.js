@@ -37,6 +37,7 @@ export default function PartCard({ part, isDetail, isMini }) {
     await fetch(`/api/parts/${id}`, {
       method: "DELETE",
     });
+    toast("✅ Teil erfolgreich gelöscht 🗑️");
     router.push("/");
   }
 
