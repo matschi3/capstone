@@ -12,7 +12,7 @@ export default function Popup({
   onCancel,
   onConfirm,
 }) {
-  return isActive ? (
+  return isActive === keyToChange ? (
     <StyledPopup>
       <PartCardFlexContainer align="center">
         {id}

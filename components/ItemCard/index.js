@@ -13,22 +13,10 @@ import useSWR from "swr";
 
 export default function ItemCard({ item }) {
   const { mutate } = useSWR(`/api/items`);
-  // states + close-function for popup's
-  // refactor here
-  const [isTargetPricePopupActive, setIsTargetPricePopupActive] =
-    useState(false);
-  const [isSoldForPricePopupActive, setIsSoldForPricePopupActive] =
-    useState(false);
-  const [isImagePopUpActive, setIsImagePopUpActive] = useState(false);
+  const [activePopUp, setActivePopUp] = useState("none");
   const [inputValue, setInputValue] = useState(null);
 
-  const closeAllPopups = () => {
-    setIsTargetPricePopupActive(false);
-    setIsSoldForPricePopupActive(false);
-    setIsImagePopUpActive(false);
-  };
-
-  // handle confirm of popup (set item data) with entered inputValue and the keyToChange for multi-purpose
+  // handle confirm of popups (set item data) with entered inputValue and the keyToChange for multi-purpose
   async function handleConfirm(keyToChange) {
     const editedItem = { ...item, [keyToChange]: inputValue };
     try {
@@ -38,7 +26,7 @@ export default function ItemCard({ item }) {
         body: JSON.stringify(editedItem),
       });
       if (response.ok) {
-        closeAllPopups();
+        setActivePopUp("none");
         mutate();
       } else {
         alert("Fehler beim setzen des neuen Wertes");
@@ -117,13 +105,13 @@ export default function ItemCard({ item }) {
           </PartCardFlexContainer>
           {/* right hand Buttons */}
           <PartCardFlexContainer direction="column" justify="flex-start">
-            <StyledButton onClick={() => setIsImagePopUpActive(true)}>
+            <StyledButton onClick={() => setActivePopUp("imgUrl")}>
               + Foto
             </StyledButton>
-            <StyledButton onClick={() => setIsTargetPricePopupActive(true)}>
+            <StyledButton onClick={() => setActivePopUp("targetPrice")}>
               VK einstellen
             </StyledButton>
-            <StyledButton onClick={() => setIsSoldForPricePopupActive(true)}>
+            <StyledButton onClick={() => setActivePopUp("soldForPrice")}>
               verkauft...
             </StyledButton>
           </PartCardFlexContainer>
@@ -138,27 +126,27 @@ export default function ItemCard({ item }) {
         id={item._id}
         name="VK-soll-Preis einstellen"
         keyToChange="targetPrice"
-        isActive={isTargetPricePopupActive}
+        isActive={activePopUp}
         setInputValue={setInputValue}
-        onCancel={closeAllPopups}
+        onCancel={() => setActivePopUp("none")}
         onConfirm={handleConfirm}
       />
       <Popup
         id={item._id}
         name="VK-ist-Preis einstellen"
         keyToChange="soldForPrice"
-        isActive={isSoldForPricePopupActive}
+        isActive={activePopUp}
         setInputValue={setInputValue}
-        onCancel={closeAllPopups}
+        onCancel={() => setActivePopUp("none")}
         onConfirm={handleConfirm}
       />
       <PopUpImage
         id={item._id}
         name="Foto hinzufügen"
         keyToChange="imgUrl"
-        isActive={isImagePopUpActive}
+        isActive={activePopUp}
         setInputValue={setInputValue}
-        onCancel={closeAllPopups}
+        onCancel={() => setActivePopUp("none")}
         onConfirm={handleConfirm}
       />
     </>
