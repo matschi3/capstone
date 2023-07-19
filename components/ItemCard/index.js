@@ -7,6 +7,7 @@ import {
 } from "../PartCard/PartCard.styled.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 import Popup from "../Popup/index.js";
+import PopUpImage from "../PopUpImage/index.js";
 import React, { useState } from "react";
 import useSWR from "swr";
 
