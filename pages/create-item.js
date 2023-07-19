@@ -63,6 +63,7 @@ export default function CreateItemPage() {
           });
         });
         mutate();
+        toast("✅ Item erfolgreich zusammengestellt");
         router.push("/items");
       }
     }
