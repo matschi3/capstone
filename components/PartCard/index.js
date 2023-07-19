@@ -10,6 +10,7 @@ import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 import LinkTo from "../LinkTo/index.js";
 import { useRouter } from "next/router.js";
 import { mutate } from "swr";
+import { toast } from "react-toastify";
 
 // isDetail is for parts-detail-page, isMini is for mini-part-card on corresponding item-card
 export default function PartCard({ part, isDetail, isMini }) {
