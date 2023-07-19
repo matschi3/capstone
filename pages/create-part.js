@@ -3,6 +3,7 @@ import StyledHeader from "../components/StyledHeader/index.js";
 import LinkTo from "../components/LinkTo/index.js";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import { toast } from "react-toastify";
 
 export default function CreatePartPage() {
   const { mutate } = useSWR("/api/parts");
