@@ -2,6 +2,7 @@ import { StyledPopup } from "../Popup/Popup.styled.js";
 import { PartCardFlexContainer } from "../PartCard/PartCard.styled.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 import { FormContainer, Label, Input } from "../PartForm/PartForm.styled.js";
+import { useState } from "react";
 
 export default function PopUpImage({
   id,
