@@ -141,6 +141,15 @@ export default function ItemCard({ item }) {
         onCancel={closeAllPopups}
         onConfirm={handleConfirm}
       />
+      <PopUpImage
+        id={item._id}
+        name="Foto hinzufügen"
+        keyToChange="imgUrl"
+        isActive={isImagePopUpActive}
+        setInputValue={setInputValue}
+        onCancel={closeAllPopups}
+        onConfirm={handleConfirm}
+      />
     </>
   );
 }
