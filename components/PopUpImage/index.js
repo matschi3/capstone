@@ -29,7 +29,6 @@ export default function PopUpImage({
         setUploadStatus("Upload erfolgreich!");
         const result = await response.json();
         const url = result.url;
-        mutate();
         setInputValue(url);
       }
     } catch (error) {
