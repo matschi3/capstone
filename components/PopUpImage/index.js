@@ -37,7 +37,7 @@ export default function PopUpImage({
     }
   }
 
-  return isActive ? (
+  return isActive === keyToChange ? (
     <StyledPopup>
       <PartCardFlexContainer align="center">
         {id}
