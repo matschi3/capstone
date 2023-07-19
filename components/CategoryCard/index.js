@@ -5,6 +5,7 @@ import {
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 import { useState } from "react";
 import CategoryForm from "../CategoryForm/index.js";
+import { toast } from "react-toastify";
 
 export default function CategoryCard({ category }) {
   const [isEdit, setIsEdit] = useState(false);
