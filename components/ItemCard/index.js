@@ -21,9 +21,11 @@ export default function ItemCard({ item }) {
     useState(false);
   const [isImagePopUpActive, setIsImagePopUpActive] = useState(false);
   const [inputValue, setInputValue] = useState(null);
+
   const closeAllPopups = () => {
     setIsTargetPricePopupActive(false);
     setIsSoldForPricePopupActive(false);
+    setIsImagePopUpActive(false);
   };
 
   // handle confirm of popup (set item data) with entered inputValue and the keyToChange for multi-purpose
