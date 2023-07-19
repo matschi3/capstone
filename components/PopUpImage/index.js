@@ -12,12 +12,34 @@ export default function PopUpImage({
   onCancel,
   onConfirm,
 }) {
+  async function handleImageUpload(event) {
+    setUploadStatus("Foto upload lädt...");
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    try {
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      if (response.status === 201) {
+        setUploadStatus("Upload erfolgreich!");
+        const result = await response.json();
+        const url = result.url;
+        mutate();
+        setInputValue(url);
+      }
+    } catch (error) {
+      setUploadStatus(null);
+      setError(error);
+    }
+  }
+
   return isActive ? (
     <StyledPopup>
       <PartCardFlexContainer align="center">
         {id}
         <FormContainer aria-labelledby="file" onSubmit={handleImageUpload}>
-          <Label htmlFor="file">Foto</Label>
+          <Label htmlFor="file">{name}</Label>
           <Input id="file" name="file" type="file" />
           <button type="submit">Foto hochladen</button>
           <p>{uploadStatus}</p>
