@@ -1,5 +1,7 @@
 import GlobalStyle from "../styles.js";
 import { SWRConfig } from "swr";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const fetcher = async (url) => {
   try {
