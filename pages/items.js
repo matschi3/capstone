@@ -8,6 +8,7 @@ import { FilterContainer } from "../components/StyledFilter/StyledFilter.styled.
 
 export default function ItemsPage() {
   const [sorting, setSorting] = useState("dateAssembled(DESC)");
+  const [statusFilter, setStatusFilter] = useState("!isSold");
 
   const { data: items, isLoading, error } = useSWR("/api/items");
   if (isLoading) {
@@ -20,7 +21,17 @@ export default function ItemsPage() {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
 
-  const sortedItems = items.slice().sort((a, b) => {
+  const filteredItems = items.filter((item) => {
+    if (statusFilter === "!isSold") {
+      return !item.isSold;
+    } else if (statusFilter === "isSold") {
+      return item.isSold;
+    } else if (statusFilter === "all") {
+      return item;
+    } else return 0;
+  });
+
+  const sortedItems = filteredItems.slice().sort((a, b) => {
     if (sorting === "dateAssembled(DESC)") {
       return new Date(b.dateAssembled) - new Date(a.dateAssembled);
     } else if (sorting === "dateAssembled(ASC)") {
@@ -78,6 +89,26 @@ export default function ItemsPage() {
           value={sorting}
           onChange={(newSorting) => {
             setSorting(newSorting);
+          }}
+        />
+        <StyledFilter
+          options={[
+            {
+              value: "!isSold",
+              label: "unverkauft",
+            },
+            {
+              value: "isSold",
+              label: "verkauft",
+            },
+            {
+              value: "all",
+              label: "alle",
+            },
+          ]}
+          value={statusFilter}
+          onChange={(newSorting) => {
+            setStatusFilter(newSorting);
           }}
         />
       </FilterContainer>
