@@ -28,6 +28,7 @@ export default function EditPartPage() {
     });
     if (response.ok) {
       mutate();
+      toast("✅ Teil erfolgreich bearbeitet");
     }
     router.push(`/${id}`);
   }
