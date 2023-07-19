@@ -22,7 +22,10 @@ export default function CreateItemPage() {
       inAssemblerParts.find((part) => part.isAssembled === true) ||
       inAssemblerParts.find((part) => part.isSold === true)
     ) {
-      alert("entferne bitte alle bereits verbauten oder verkauften Teile");
+      toast.warning(
+        "entferne bitte alle bereits verbauten oder verkauften Teile",
+        { autoClose: 6000 }
+      );
     } else {
       // create new item from inAssemblerParts
       const newItem = {
