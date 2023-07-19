@@ -111,6 +111,9 @@ export default function ItemCard({ item }) {
           </PartCardFlexContainer>
           {/* right hand Buttons */}
           <PartCardFlexContainer direction="column" justify="flex-start">
+            <StyledButton onClick={() => setIsImagePopUpActive(true)}>
+              + Foto
+            </StyledButton>
             <StyledButton onClick={() => setIsTargetPricePopupActive(true)}>
               VK einstellen
             </StyledButton>
