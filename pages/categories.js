@@ -25,7 +25,7 @@ export default function CategoriesPage() {
       body: JSON.stringify(newCategory),
     });
     if (response.ok) {
-      alert("Kategorie hinzugefügt");
+      toast("✅ Kategorie erfolgreich hinzugefügt");
     }
   }
 
