@@ -17,6 +17,7 @@ export default function CategoryCard({ category }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newCategory),
     });
+    toast("✅ Kategorie erfolgreich bearbeitet");
     setIsEdit(!isEdit);
   }
 
