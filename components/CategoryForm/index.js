@@ -31,6 +31,8 @@ export default function CategoryForm({ onSubmit, formName, defaultData }) {
           name="name"
           type="text"
           defaultValue={defaultData?.name}
+          maxLength={15}
+          spellCheck
           required
         />
         <button type="submit">{defaultData ? "ok ✓" : "hinzufügen"}</button>
