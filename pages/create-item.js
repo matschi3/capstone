@@ -42,7 +42,7 @@ export default function CreateItemPage() {
         currency: "EUR",
         dateSold: "",
         imgUrl:
-          "https://res.cloudinary.com/dn4pswuzt/image/upload/v1688228715/etagere_sqk9al.jpg",
+          "https://res.cloudinary.com/dn4pswuzt/image/upload/v1689263603/0e2f1d94b07d3ab7a7edced00.jpg",
         isSold: false,
       };
 
