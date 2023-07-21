@@ -74,10 +74,10 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
 
     // create new part object
     const newPart = {
-      uuid: uuidv4(),
+      uuid: defaultData ? data.uuid : uuidv4(),
       name: data.name,
       dateBuy: todayDate,
-      dateSold: "",
+      dateSold: defaultData ? data.dateSold : "",
       category: data.category,
       currency: "EUR",
       purchasingPrice: data.purchasingPrice,
@@ -88,9 +88,9 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
           ? defaultData.imgUrl
           : "https://res.cloudinary.com/dn4pswuzt/image/upload/v1689263603/0e2f1d94b07d3ab7a7edced00.jpg",
       partOrigin: data.partOrigin,
-      inAssembler: false,
-      isAssembled: false,
-      isSold: false,
+      inAssembler: defaultData ? data.inAssembler : false,
+      isAssembled: defaultData ? data.isAssembled : false,
+      isSold: defaultData ? data.isSold : false,
     };
 
     onSubmit(newPart);
