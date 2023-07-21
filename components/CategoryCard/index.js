@@ -4,11 +4,13 @@ import {
 } from "../PartCard/PartCard.styled.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 import { useState } from "react";
+import useSWR from "swr";
 import CategoryForm from "../CategoryForm/index.js";
 import { toast } from "react-toastify";
 
 export default function CategoryCard({ category }) {
   const [isEdit, setIsEdit] = useState(false);
+  const { mutate } = useSWR(`/api/categories`);
 
   async function handleEditCategory(newCategory) {
     const id = category._id;
@@ -17,6 +19,7 @@ export default function CategoryCard({ category }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newCategory),
     });
+    mutate();
     toast("✅ Kategorie erfolgreich bearbeitet");
     setIsEdit(!isEdit);
   }
@@ -26,6 +29,7 @@ export default function CategoryCard({ category }) {
     const response = await fetch(`/api/categories/${id}`, {
       method: "DELETE",
     });
+    mutate();
     toast("✅ Kategorie erfolgreich gelöscht 🗑️");
   }
 
