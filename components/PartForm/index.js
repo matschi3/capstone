@@ -126,6 +126,8 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
             type="number"
             defaultValue={defaultData?.purchasingPrice}
             step={0.01}
+            min={0}
+            max={99}
             required
           />
           <Label htmlFor="partOrigin">Fundort</Label>
