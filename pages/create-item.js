@@ -6,6 +6,7 @@ import { StyledButton } from "../components/StyledButton/StyledButton.styled.js"
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router.js";
 import useSWR from "swr";
+import { toast } from "react-toastify";
 
 export default function CreateItemPage() {
   const router = useRouter();
@@ -21,7 +22,10 @@ export default function CreateItemPage() {
       inAssemblerParts.find((part) => part.isAssembled === true) ||
       inAssemblerParts.find((part) => part.isSold === true)
     ) {
-      alert("entferne bitte alle bereits verbauten oder verkauften Teile");
+      toast.warning(
+        "entferne bitte alle bereits verbauten oder verkauften Teile",
+        { autoClose: 6000 }
+      );
     } else {
       // create new item from inAssemblerParts
       const newItem = {
@@ -38,7 +42,7 @@ export default function CreateItemPage() {
         currency: "EUR",
         dateSold: "",
         imgUrl:
-          "https://res.cloudinary.com/dn4pswuzt/image/upload/v1688228715/etagere_sqk9al.jpg",
+          "https://res.cloudinary.com/dn4pswuzt/image/upload/v1689263603/0e2f1d94b07d3ab7a7edced00.jpg",
         isSold: false,
       };
 
@@ -62,6 +66,7 @@ export default function CreateItemPage() {
           });
         });
         mutate();
+        toast("✅ Item erfolgreich zusammengestellt");
         router.push("/items");
       }
     }

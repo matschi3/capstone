@@ -1,5 +1,7 @@
 import GlobalStyle from "../styles.js";
 import { SWRConfig } from "swr";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const fetcher = async (url) => {
   try {
@@ -26,6 +28,18 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <SWRConfig value={{ fetcher }}>
         <Component {...pageProps} />
+        <ToastContainer
+          position="bottom-left"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </SWRConfig>
     </>
   );

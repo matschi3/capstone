@@ -4,6 +4,7 @@ import useSWR from "swr";
 import { PartsListContainer } from "../components/PartsList/PartsList.styled.js";
 import CategoryCard from "../components/CategoryCard/index.js";
 import CategoryForm from "../components/CategoryForm/index.js";
+import { toast } from "react-toastify";
 
 export default function CategoriesPage() {
   const { data: categories, isLoading, error } = useSWR("/api/categories");
@@ -24,7 +25,7 @@ export default function CategoriesPage() {
       body: JSON.stringify(newCategory),
     });
     if (response.ok) {
-      alert("Kategorie hinzugefügt");
+      toast("✅ Kategorie erfolgreich hinzugefügt");
     }
   }
 

@@ -5,6 +5,7 @@ import {
 import { StyledButton } from "../StyledButton/StyledButton.styled.js";
 import { useState } from "react";
 import CategoryForm from "../CategoryForm/index.js";
+import { toast } from "react-toastify";
 
 export default function CategoryCard({ category }) {
   const [isEdit, setIsEdit] = useState(false);
@@ -16,6 +17,7 @@ export default function CategoryCard({ category }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newCategory),
     });
+    toast("✅ Kategorie erfolgreich bearbeitet");
     setIsEdit(!isEdit);
   }
 
@@ -24,7 +26,7 @@ export default function CategoryCard({ category }) {
     const response = await fetch(`/api/categories/${id}`, {
       method: "DELETE",
     });
-    alert("Kategorie erfolgreich gelöscht");
+    toast("✅ Kategorie erfolgreich gelöscht 🗑️");
   }
 
   return (

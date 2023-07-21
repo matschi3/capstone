@@ -4,13 +4,13 @@ import { PartsListContainer } from "../PartsList/PartsList.styled.js";
 import { v4 as uuidv4 } from "uuid";
 import useSWR from "swr";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function PartForm({ onSubmit, formName, defaultData }) {
   // for image upload
   const { mutate } = useSWR("/api/images");
   const [uploadImageUrl, setUploadImageUrl] = useState(null);
   const [error, setError] = useState(null);
-  const [uploadStatus, setUploadStatus] = useState(null);
 
   // get categories for select-options
   const {
@@ -30,23 +30,28 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
 
   // just handle img upload and set the returned imgUrl into state for use on form submit
   async function handleImageUpload(event) {
-    setUploadStatus("Foto upload lädt...");
     event.preventDefault();
     const formData = new FormData(event.target);
     try {
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await toast.promise(
+        fetch("/api/upload", {
+          method: "POST",
+          body: formData,
+        }),
+        {
+          pending: "Foto hochladen",
+          success: "Foto erfolgreich hochgeladen",
+          error: "❗️ Fehler beim Upload",
+        }
+      );
       if (response.status === 201) {
-        setUploadStatus("Upload erfolgreich!");
         const result = await response.json();
         const url = result.url;
         mutate();
         setUploadImageUrl(url);
       }
     } catch (error) {
-      setUploadStatus(null);
+      toast.error("❗️ Fehler beim Upload");
       setError(error);
     }
   }
@@ -98,7 +103,6 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
           <Label htmlFor="file">Foto</Label>
           <Input id="file" name="file" type="file" />
           <button type="submit">Foto hochladen</button>
-          <p>{uploadStatus}</p>
           {error && <p>{error.message}</p>}
         </FormContainer>
         <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
