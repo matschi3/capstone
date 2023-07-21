@@ -102,6 +102,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
             name="name"
             type="text"
             defaultValue={defaultData?.name}
+            maxLength={15}
             required
           />
           <Label htmlFor="category">Kategorie</Label>
