@@ -43,7 +43,7 @@ export default function PopUpImage({
         {id}
         <FormContainer aria-labelledby="file" onSubmit={handleImageUpload}>
           <Label htmlFor="file">{name}</Label>
-          <Input id="file" name="file" type="file" />
+          <Input id="file" name="file" type="file" required />
           <button type="submit">Foto hochladen</button>
           <p>{uploadStatus}</p>
           {error && <p>{error.message}</p>}
