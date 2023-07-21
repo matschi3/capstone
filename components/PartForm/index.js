@@ -136,6 +136,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
             name="partOrigin"
             type="text"
             defaultValue={defaultData?.partOrigin}
+            maxLength={15}
           />
           <button type="submit">
             {defaultData ? "bearbeitung bestätigen" : "Teil hinzufügen"}
