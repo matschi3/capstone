@@ -91,7 +91,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
       <PartCardFlexContainer border="var(--color-part)">
         <FormContainer aria-labelledby="file" onSubmit={handleImageUpload}>
           <Label htmlFor="file">Foto</Label>
-          <Input id="file" name="file" type="file" />
+          <Input id="file" name="file" type="file" accept="image/*" required />
           <button type="submit">Foto hochladen</button>
           {error && <p>{error.message}</p>}
         </FormContainer>
