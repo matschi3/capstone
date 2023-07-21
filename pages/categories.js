@@ -1,6 +1,6 @@
 import StyledHeader from "../components/StyledHeader/index.js";
 import StyledFooter from "../components/StyledFooter/index.js";
-import useSWR, { mutate } from "swr";
+import useSWR from "swr";
 import { PartsListContainer } from "../components/PartsList/PartsList.styled.js";
 import CategoryCard from "../components/CategoryCard/index.js";
 import CategoryForm from "../components/CategoryForm/index.js";
