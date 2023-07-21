@@ -50,9 +50,14 @@ export default function PopUpImage({
         </FormContainer>
       </PartCardFlexContainer>
       <PartCardFlexContainer direction="row" justify="space-around">
-        <StyledButton onClick={onCancel}>abbrechen</StyledButton>
-        <StyledButton onClick={() => onConfirm(keyToChange)}>
-          bestätigen
+        <StyledButton
+          onClick={
+            uploadStatus === "Upload erfolgreich!"
+              ? () => onConfirm(keyToChange)
+              : onCancel
+          }
+        >
+          {uploadStatus === "Upload erfolgreich!" ? "OK" : "abbrechen"}
         </StyledButton>
       </PartCardFlexContainer>
     </StyledPopup>
