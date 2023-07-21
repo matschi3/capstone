@@ -62,17 +62,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    // get todays date in Format 'dd.mm.yyyy' IF there is no defaultData (edit-part)
-    let todayDate;
-    if (!defaultData) {
-      todayDate = new Date().toLocaleDateString("de-DE", {
-        dateStyle: "medium",
-      });
-    } else {
-      todayDate = defaultData.dateBuy;
-    }
-
-    // create new part object
+    // create new part object / or edit existing part object
     const newPart = {
       uuid: defaultData ? data.uuid : uuidv4(),
       name: data.name,
