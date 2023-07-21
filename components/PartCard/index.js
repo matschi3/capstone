@@ -97,8 +97,24 @@ export default function PartCard({ part, isDetail, isMini }) {
               ) : (
                 <>
                   <PartCardText>EK Ort: {part.partOrigin}</PartCardText>
-                  <PartCardText>EK Tag: {part.dateBuy}</PartCardText>
-                  <PartCardText>VK Tag: {part.dateSold}</PartCardText>
+                  <PartCardText>
+                    EK Tag:{" "}
+                    {new Intl.DateTimeFormat("de-DE", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "numeric",
+                    }).format(new Date(part.dateBuy))}
+                  </PartCardText>
+                  <PartCardText>
+                    VK Tag:{" "}
+                    {part.dateSold !== ""
+                      ? new Intl.DateTimeFormat("de-DE", {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "numeric",
+                        }).format(new Date(part.dateSold))
+                      : ""}
+                  </PartCardText>
                   <PartCardText>uuid: {part.uuid}</PartCardText>
                 </>
               )}
