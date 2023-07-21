@@ -1,13 +1,18 @@
 import StyledHeader from "../components/StyledHeader/index.js";
 import StyledFooter from "../components/StyledFooter/index.js";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import { PartsListContainer } from "../components/PartsList/PartsList.styled.js";
 import CategoryCard from "../components/CategoryCard/index.js";
 import CategoryForm from "../components/CategoryForm/index.js";
 import { toast } from "react-toastify";
 
 export default function CategoriesPage() {
-  const { data: categories, isLoading, error } = useSWR("/api/categories");
+  const {
+    data: categories,
+    isLoading,
+    error,
+    mutate,
+  } = useSWR("/api/categories");
   if (isLoading) {
     return <h1>lädt Kategorien...</h1>;
   }
@@ -25,6 +30,7 @@ export default function CategoriesPage() {
       body: JSON.stringify(newCategory),
     });
     if (response.ok) {
+      mutate();
       toast("✅ Kategorie erfolgreich hinzugefügt");
     }
   }
