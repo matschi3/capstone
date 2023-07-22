@@ -39,7 +39,7 @@ export default function ItemCard({ item }) {
         if (response.ok) {
           setActivePopUp("none");
           mutate();
-          toast("✅ Verkuafpreis gesetzt");
+          toast("✅ Item erfolgreich editiert");
         } else {
           toast.error("❗️ Fehler beim setzen des neuen Wertes");
         }
