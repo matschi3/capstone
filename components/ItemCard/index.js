@@ -39,8 +39,9 @@ export default function ItemCard({ item }) {
         if (response.ok) {
           setActivePopUp("none");
           mutate();
+          toast("✅ Verkuafpreis gesetzt");
         } else {
-          alert("Fehler beim setzen des neuen Wertes");
+          toast.error("❗️ Fehler beim setzen des neuen Wertes");
         }
       } else {
         // here also edit parts of item data (isSold, dateSold)
@@ -52,8 +53,9 @@ export default function ItemCard({ item }) {
         if (response.ok) {
           setActivePopUp("none");
           mutate();
+          toast("✅ Item verkauft");
         } else {
-          alert("Fehler beim setzen des neuen Wertes");
+          toast.error("❗️ Fehler beim setzen des neuen Wertes");
         }
         item.parts.forEach(function (part) {
           const updatedPart = {
@@ -66,17 +68,13 @@ export default function ItemCard({ item }) {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(updatedPart),
-          })
-            .then((response) => {
-              console.log(updatedPart.name);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
+          }).catch((error) => {
+            toast.error(error.message);
+          });
         });
       }
     } catch (error) {
-      alert("Fehler beim Zugriff auf Datenbank");
+      toast.error("❗️ Fehler beim Zugriff auf Datenbank");
     }
   }
   /* 
