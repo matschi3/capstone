@@ -10,6 +10,7 @@ import Popup from "../Popup/index.js";
 import PopUpImage from "../PopUpImage/index.js";
 import React, { useState } from "react";
 import useSWR from "swr";
+import { toast } from "react-toastify";
 
 export default function ItemCard({ item }) {
   const { mutate } = useSWR(`/api/items`);
@@ -18,23 +19,88 @@ export default function ItemCard({ item }) {
 
   // handle confirm of popups (set item data) with entered inputValue and the keyToChange for multi-purpose
   async function handleConfirm(keyToChange) {
-    const editedItem = { ...item, [keyToChange]: inputValue };
+    const editedItem =
+      keyToChange !== "soldForPrice"
+        ? { ...item, [keyToChange]: inputValue }
+        : {
+            ...item,
+            [keyToChange]: inputValue,
+            dateSold: new Date(),
+            isSold: true,
+          };
     try {
-      const response = await fetch(`/api/items/${item._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(editedItem),
-      });
-      if (response.ok) {
-        setActivePopUp("none");
-        mutate();
+      // if keyToChange is not soldForPrice, just edit item data
+      if (keyToChange !== "soldForPrice") {
+        const response = await fetch(`/api/items/${item._id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(editedItem),
+        });
+        if (response.ok) {
+          setActivePopUp("none");
+          mutate();
+        } else {
+          alert("Fehler beim setzen des neuen Wertes");
+        }
       } else {
-        alert("Fehler beim setzen des neuen Wertes");
+        // here also edit parts of item data (isSold, dateSold)
+        const response = await fetch(`/api/items/${item._id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(editedItem),
+        });
+        if (response.ok) {
+          setActivePopUp("none");
+          mutate();
+        } else {
+          alert("Fehler beim setzen des neuen Wertes");
+        }
+        item.parts.forEach(function (part) {
+          const updatedPart = {
+            ...part,
+            isSold: true,
+            dateSold: new Date(),
+          };
+
+          fetch(`/api/parts/${part._id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(updatedPart),
+          })
+            .then((response) => {
+              console.log(updatedPart.name);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        });
       }
     } catch (error) {
       alert("Fehler beim Zugriff auf Datenbank");
     }
   }
+  /* 
+  useEffect(() => {
+    item.parts.forEach(function (part) {
+      const updatedPart = {
+        ...part,
+        isSold: true,
+        dateSold: new Date(),
+      };
+
+      fetch(`/api/parts/${part._id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedPart),
+      })
+        .then((response) => {
+          // Handle response here
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+  }, [item.isSold]); */
 
   return (
     <>
