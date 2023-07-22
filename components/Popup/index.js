@@ -8,6 +8,7 @@ export default function Popup({
   name,
   keyToChange,
   isActive,
+  inputValue,
   setInputValue,
   onCancel,
   onConfirm,
@@ -19,16 +20,24 @@ export default function Popup({
         <Label htmlFor={keyToChange}>{name}</Label>
         <Input
           type="number"
-          step="0.01"
           id={keyToChange}
           name={keyToChange}
           onChange={(event) => setInputValue(event.target.value)}
         ></Input>
       </PartCardFlexContainer>
       <PartCardFlexContainer direction="row" justify="space-around">
-        <StyledButton onClick={onCancel}>abbrechen</StyledButton>
-        <StyledButton onClick={() => onConfirm(keyToChange)}>
-          bestätigen
+        <StyledButton
+          onClick={
+            inputValue >= 0 && inputValue <= 1000
+              ? () => onConfirm(keyToChange)
+              : onCancel
+          }
+        >
+          {inputValue > 0 && inputValue <= 1000
+            ? "VK-Preis einstellen"
+            : inputValue === "0"
+            ? "mit 0 resetten"
+            : "abbrechen"}
         </StyledButton>
       </PartCardFlexContainer>
     </StyledPopup>
