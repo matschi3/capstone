@@ -77,29 +77,6 @@ export default function ItemCard({ item }) {
       toast.error("❗️ Fehler beim Zugriff auf Datenbank");
     }
   }
-  /* 
-  useEffect(() => {
-    item.parts.forEach(function (part) {
-      const updatedPart = {
-        ...part,
-        isSold: true,
-        dateSold: new Date(),
-      };
-
-      fetch(`/api/parts/${part._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedPart),
-      })
-        .then((response) => {
-          // Handle response here
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    });
-  }, [item.isSold]); */
-
   return (
     <>
       <PartsListContainer borderColor="var(--color-item)">
