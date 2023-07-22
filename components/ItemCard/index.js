@@ -127,6 +127,7 @@ export default function ItemCard({ item }) {
         name="VK-soll-Preis einstellen"
         keyToChange="targetPrice"
         isActive={activePopUp}
+        inputValue={inputValue}
         setInputValue={setInputValue}
         onCancel={() => setActivePopUp("none")}
         onConfirm={handleConfirm}
@@ -136,6 +137,7 @@ export default function ItemCard({ item }) {
         name="VK-ist-Preis einstellen"
         keyToChange="soldForPrice"
         isActive={activePopUp}
+        inputValue={inputValue}
         setInputValue={setInputValue}
         onCancel={() => setActivePopUp("none")}
         onConfirm={handleConfirm}
