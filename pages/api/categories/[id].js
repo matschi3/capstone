@@ -5,7 +5,6 @@ export default async function handler(request, response) {
   await dbConnect();
   const { id } = request.query;
   try {
-    // get id-specific category from the categories db
     if (request.method === "GET") {
       const category = await Category.findById(id);
       if (!category) {
@@ -13,7 +12,6 @@ export default async function handler(request, response) {
       }
       response.status(200).json(category);
     } else if (request.method === "PUT") {
-      // update id-specific category from the categories db
       try {
         const editedCategory = request.body;
         await Category.findByIdAndUpdate(id, editedCategory);
@@ -22,7 +20,6 @@ export default async function handler(request, response) {
         response.status(400).json({ error: error.message });
       }
     } else if (request.method === "DELETE") {
-      // delete id-specific category from the categories db
       try {
         await Category.findByIdAndDelete(id);
         response.status(200).json({ status: "Category deleted" });
