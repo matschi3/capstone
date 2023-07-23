@@ -11,13 +11,14 @@ import LinkTo from "../LinkTo/index.js";
 import { useRouter } from "next/router.js";
 import { mutate } from "swr";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
-// isDetail is for parts-detail-page, isMini is for mini-part-card on corresponding item-card
 export default function PartCard({ part, isDetail, isMini }) {
   const router = useRouter();
   const { id } = router.query;
+  // state for image error handling
+  const [imageError, setImageError] = useState(false);
 
-  // toggle part.inAssembler for assembling parts into an item
   async function toggleInAssembler() {
     const toggledPart = { ...part, inAssembler: !part.inAssembler };
     // fetch url ternary: if toggleButton is clicked on the partsList page, there is no id from router.query; instead use given 'part' to get its '_id' for toggeling
@@ -29,7 +30,6 @@ export default function PartCard({ part, isDetail, isMini }) {
         body: JSON.stringify(toggledPart),
       }
     );
-    // mutate partsList or partDetailPage depending on where toggleButton is clicked
     !id ? mutate(`/api/parts`) : mutate(`/api/parts/${id}`);
   }
 
@@ -53,7 +53,7 @@ export default function PartCard({ part, isDetail, isMini }) {
         >
           <PartCardFlexContainer width="15%"></PartCardFlexContainer>
           <PartCardImage
-            src={part.imgUrl ? part.imgUrl : noImageDefaultImgUrl}
+            src={part.imgUrl}
             alt={
               part.category[0]?.name
                 ? part.category[0]?.name
@@ -61,7 +61,22 @@ export default function PartCard({ part, isDetail, isMini }) {
             }
             width={100}
             height={100}
+            onLoad={() => setImageError(false)}
+            onError={() => setImageError(true)}
+            style={imageError ? { display: "none" } : {}}
           />
+          {imageError && (
+            <PartCardImage
+              src={noImageDefaultImgUrl}
+              alt={
+                part.category[0]?.name
+                  ? part.category[0]?.name
+                  : "part of an etagery"
+              }
+              width={100}
+              height={100}
+            />
+          )}
           <PartCardFlexContainer direction="column" justify="flex-start">
             <PartCardText>
               EK: {part.purchasingPrice} {part.currency}
@@ -76,7 +91,7 @@ export default function PartCard({ part, isDetail, isMini }) {
           <PartCardFlexContainer direction="row" justify="space-between">
             <Link href={!isDetail ? `/${part._id}` : `/`}>
               <PartCardImage
-                src={part.imgUrl ? part.imgUrl : noImageDefaultImgUrl}
+                src={part.imgUrl}
                 alt={
                   part.category[0]?.name
                     ? part.category[0]?.name
@@ -84,7 +99,22 @@ export default function PartCard({ part, isDetail, isMini }) {
                 }
                 width={100}
                 height={100}
+                onLoad={() => setImageError(false)}
+                onError={() => setImageError(true)}
+                style={imageError ? { display: "none" } : {}}
               />
+              {imageError && (
+                <PartCardImage
+                  src={noImageDefaultImgUrl}
+                  alt={
+                    part.category[0]?.name
+                      ? part.category[0]?.name
+                      : "part of an etagery"
+                  }
+                  width={100}
+                  height={100}
+                />
+              )}
             </Link>
             <PartCardFlexContainer direction="column" justify="flex-start">
               <PartCardText>Name: {part.name}</PartCardText>
@@ -97,8 +127,24 @@ export default function PartCard({ part, isDetail, isMini }) {
               ) : (
                 <>
                   <PartCardText>EK Ort: {part.partOrigin}</PartCardText>
-                  <PartCardText>EK Tag: {part.dateBuy}</PartCardText>
-                  <PartCardText>VK Tag: {part.dateSold}</PartCardText>
+                  <PartCardText>
+                    EK Tag:{" "}
+                    {new Intl.DateTimeFormat("de-DE", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "numeric",
+                    }).format(new Date(part.dateBuy))}
+                  </PartCardText>
+                  <PartCardText>
+                    VK Tag:{" "}
+                    {part.dateSold !== ""
+                      ? new Intl.DateTimeFormat("de-DE", {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "numeric",
+                        }).format(new Date(part.dateSold))
+                      : ""}
+                  </PartCardText>
                   <PartCardText>uuid: {part.uuid}</PartCardText>
                 </>
               )}

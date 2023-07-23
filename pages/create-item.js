@@ -17,7 +17,6 @@ export default function CreateItemPage() {
   const inAssemblerParts = data.filter((part) => part.inAssembler === true);
 
   async function handleCreateItem() {
-    // check for already assembled or sold parts in Assembler
     if (
       inAssemblerParts.find((part) => part.isAssembled === true) ||
       inAssemblerParts.find((part) => part.isSold === true)
@@ -27,7 +26,6 @@ export default function CreateItemPage() {
         { autoClose: 6000 }
       );
     } else {
-      // create new item from inAssemblerParts
       const newItem = {
         uuid: uuidv4(),
         name: "",

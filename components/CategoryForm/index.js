@@ -6,7 +6,7 @@ export default function CategoryForm({ onSubmit, formName, defaultData }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    // create new category object
+
     const newCategory = {
       name: data.name,
       text: `Kategorie für ${data.name}`,
@@ -31,6 +31,8 @@ export default function CategoryForm({ onSubmit, formName, defaultData }) {
           name="name"
           type="text"
           defaultValue={defaultData?.name}
+          maxLength={15}
+          spellCheck
           required
         />
         <button type="submit">{defaultData ? "ok ✓" : "hinzufügen"}</button>

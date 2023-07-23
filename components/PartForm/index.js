@@ -7,12 +7,10 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 export default function PartForm({ onSubmit, formName, defaultData }) {
-  // for image upload
   const { mutate } = useSWR("/api/images");
   const [uploadImageUrl, setUploadImageUrl] = useState(null);
   const [error, setError] = useState(null);
 
-  // get categories for select-options
   const {
     data: categories,
     isLoading: isCategoryLoading,
@@ -28,7 +26,6 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
 
-  // just handle img upload and set the returned imgUrl into state for use on form submit
   async function handleImageUpload(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -56,28 +53,16 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     }
   }
 
-  // handle submit of form
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    // get todays date in Format 'dd.mm.yyyy' IF there is no defaultData (edit-part)
-    let todayDate;
-    if (!defaultData) {
-      todayDate = new Date().toLocaleDateString("de-DE", {
-        dateStyle: "medium",
-      });
-    } else {
-      todayDate = defaultData.dateBuy;
-    }
-
-    // create new part object
     const newPart = {
-      uuid: uuidv4(),
+      uuid: defaultData ? data.uuid : uuidv4(),
       name: data.name,
-      dateBuy: todayDate,
-      dateSold: "",
+      dateBuy: defaultData ? data.dateBuy : new Date(),
+      dateSold: defaultData ? data.dateSold : "",
       category: data.category,
       currency: "EUR",
       purchasingPrice: data.purchasingPrice,
@@ -88,9 +73,9 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
           ? defaultData.imgUrl
           : "https://res.cloudinary.com/dn4pswuzt/image/upload/v1689263603/0e2f1d94b07d3ab7a7edced00.jpg",
       partOrigin: data.partOrigin,
-      inAssembler: false,
-      isAssembled: false,
-      isSold: false,
+      inAssembler: defaultData ? data.inAssembler : false,
+      isAssembled: defaultData ? data.isAssembled : false,
+      isSold: defaultData ? data.isSold : false,
     };
 
     onSubmit(newPart);
@@ -101,7 +86,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
       <PartCardFlexContainer border="var(--color-part)">
         <FormContainer aria-labelledby="file" onSubmit={handleImageUpload}>
           <Label htmlFor="file">Foto</Label>
-          <Input id="file" name="file" type="file" />
+          <Input id="file" name="file" type="file" accept="image/*" />
           <button type="submit">Foto hochladen</button>
           {error && <p>{error.message}</p>}
         </FormContainer>
@@ -112,6 +97,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
             name="name"
             type="text"
             defaultValue={defaultData?.name}
+            maxLength={15}
             required
           />
           <Label htmlFor="category">Kategorie</Label>
@@ -133,8 +119,10 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
             id="purchasingPrice"
             name="purchasingPrice"
             type="number"
-            step="0.01"
             defaultValue={defaultData?.purchasingPrice}
+            step={0.01}
+            min={0}
+            max={99}
             required
           />
           <Label htmlFor="partOrigin">Fundort</Label>
@@ -143,6 +131,7 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
             name="partOrigin"
             type="text"
             defaultValue={defaultData?.partOrigin}
+            maxLength={15}
           />
           <button type="submit">
             {defaultData ? "bearbeitung bestätigen" : "Teil hinzufügen"}

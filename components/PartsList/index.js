@@ -8,7 +8,6 @@ export default function PartsList({ parts }) {
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
 
-  // filter the parts array based on the categoryFilter and statusFilter
   const filteredParts = parts.filter((part) => {
     if (categoryFilter === "all" || part.category[0]?.name === categoryFilter) {
       if (statusFilter === "all") {
@@ -29,7 +28,6 @@ export default function PartsList({ parts }) {
   return (
     <>
       <FilterContainer>
-        {/* renders a filterButton for each object in 'options' with given 'value'and 'label' */}
         <StyledFilter
           options={[
             {
@@ -88,7 +86,6 @@ export default function PartsList({ parts }) {
         />
       </FilterContainer>
       <PartsListContainer>
-        {/* render PartCard for each object in 'filteredParts' with given 'part' */}
         {filteredParts.length === 0 ? (
           <p>Keine Teile für gewählte Filter gefunden</p>
         ) : (

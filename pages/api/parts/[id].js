@@ -6,14 +6,12 @@ export default async function handler(request, response) {
   const { id } = request.query;
   try {
     if (request.method === "GET") {
-      // get id-specific parts from the parts db
       const part = await Part.findById(id).populate("category");
       if (!part) {
         return response.status(404).json({ status: "No part found" });
       }
       response.status(200).json(part);
     } else if (request.method === "PUT") {
-      // edit id-specific part from the parts db
       try {
         const editedPart = request.body;
         await Part.findByIdAndUpdate(id, editedPart);
@@ -22,7 +20,6 @@ export default async function handler(request, response) {
         response.status(400).json({ error: error.message });
       }
     } else if (request.method === "DELETE") {
-      // delete id-specific part from the parts db
       try {
         await Part.findByIdAndDelete(id);
         response.status(200).json({ status: "Part deleted" });
