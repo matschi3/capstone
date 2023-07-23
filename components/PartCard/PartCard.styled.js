@@ -29,6 +29,7 @@ export const PartCardImage = styled(Image)`
   border: var(--border-size) solid var(--color-black);
   border-radius: 5px;
   object-fit: cover;
+  margin: 0.1rem;
 `;
 
 export const PartCardText = styled.p`
