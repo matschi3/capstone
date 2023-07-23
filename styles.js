@@ -31,5 +31,7 @@ export default createGlobalStyle`
   body {
     margin: 0;
     background-color: var(--color-white);
+    background-image: linear-gradient(to top, #eaeaea 0%, #feada6 100%);
+    /* background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%); */
   }
 `;
