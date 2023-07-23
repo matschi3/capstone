@@ -116,7 +116,11 @@ export default function ItemCard({ item }) {
     "https://res.cloudinary.com/dn4pswuzt/image/upload/v1689263603/0e2f1d94b07d3ab7a7edced00.jpg";
   return (
     <>
-      <PartsListContainer borderColor="var(--color-item)">
+      <PartsListContainer
+        borderColor="var(--color-item)"
+        minWidth="300px"
+        maxWidth="380px"
+      >
         <PartCardFlexContainer direction="row" justify="space-between">
           <PartCardImage
             src={item.imgUrl}
