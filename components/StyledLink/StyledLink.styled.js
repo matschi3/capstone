@@ -9,4 +9,5 @@ export const StyledLink = styled(Link)`
   border-radius: 5px;
   padding: 0.1rem;
   margin: 0.1rem;
+  font-weight: bold;
 `;
