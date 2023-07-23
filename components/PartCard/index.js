@@ -48,8 +48,10 @@ export default function PartCard({ part, isDetail, isMini }) {
       {isMini ? (
         <PartCardFlexContainer
           direction="row"
-          border="blue"
           justify="flex-start"
+          border="var(--color-black)"
+          isCard
+          boxShadow
         >
           <PartCardImage
             src={part.imgUrl}
