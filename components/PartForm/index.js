@@ -7,12 +7,10 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 export default function PartForm({ onSubmit, formName, defaultData }) {
-  // for image upload
   const { mutate } = useSWR("/api/images");
   const [uploadImageUrl, setUploadImageUrl] = useState(null);
   const [error, setError] = useState(null);
 
-  // get categories for select-options
   const {
     data: categories,
     isLoading: isCategoryLoading,
@@ -28,7 +26,6 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     return <h1>error! fehlerhafte Daten.</h1>;
   }
 
-  // just handle img upload and set the returned imgUrl into state for use on form submit
   async function handleImageUpload(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -56,13 +53,11 @@ export default function PartForm({ onSubmit, formName, defaultData }) {
     }
   }
 
-  // handle submit of form
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    // create new part object / or edit existing part object
     const newPart = {
       uuid: defaultData ? data.uuid : uuidv4(),
       name: data.name,
