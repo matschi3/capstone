@@ -28,7 +28,6 @@ export default function PartsList({ parts }) {
   return (
     <>
       <FilterContainer>
-        {/* renders a filterButton for each object in 'options' with given 'value'and 'label' */}
         <StyledFilter
           options={[
             {
