@@ -123,7 +123,7 @@ export default function ItemCard({ item }) {
             alt={item.name}
             width={100}
             height={100}
-            onError={() => setImageError(true)}
+            onLoad={() => setImageError(true)}
             style={imageError ? { display: "none" } : {}}
           />
           {imageError && (
