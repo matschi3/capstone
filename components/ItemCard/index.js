@@ -197,13 +197,22 @@ export default function ItemCard({ item }) {
             ) : null}
           </PartCardFlexContainer>
           <PartCardFlexContainer direction="column" justify="flex-start">
-            <StyledButton onClick={() => setActivePopUp("imgUrl")}>
+            <StyledButton
+              onClick={() => setActivePopUp("imgUrl")}
+              backgroundColor="var(--color-highlight)"
+            >
               + Foto
             </StyledButton>
-            <StyledButton onClick={() => setActivePopUp("targetPrice")}>
+            <StyledButton
+              onClick={() => setActivePopUp("targetPrice")}
+              backgroundColor="var(--color-highlight)"
+            >
               VK einstellen
             </StyledButton>
-            <StyledButton onClick={() => setActivePopUp("soldForPrice")}>
+            <StyledButton
+              onClick={() => setActivePopUp("soldForPrice")}
+              backgroundColor="var(--color-highlight)"
+            >
               verkauft...
             </StyledButton>
           </PartCardFlexContainer>

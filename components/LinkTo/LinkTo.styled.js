@@ -8,4 +8,5 @@ export const StyledLinkTo = styled(StyledLink)`
   background-color: ${({ color }) =>
     color ? `${color}` : `var(--color-white)`};
   ${(props) => (props.fontSize ? `font-size: ${props.fontSize}` : "")};
+  font-weight: bold;
 `;

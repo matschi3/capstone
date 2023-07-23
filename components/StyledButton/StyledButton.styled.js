@@ -10,6 +10,8 @@ export const StyledButton = styled.button`
   border: var(--border-sizeButton) solid
     ${(props) =>
       props.borderColor ? `${props.borderColor}` : "var(--color-black)"};
+  ${(props) =>
+    props.backgroundColor && `background-color: ${props.backgroundColor}`};
   border-radius: 5px;
   padding: 0.1rem;
   margin: 0.1rem;

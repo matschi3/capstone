@@ -162,7 +162,7 @@ export default function PartCard({ part, isDetail, isMini }) {
             <PartCardFlexContainer direction="column" justify="flex-start">
               <StyledButton
                 onClick={toggleInAssembler}
-                borderColor="var(--color-highlight)"
+                backgroundColor="var(--color-highlight)"
               >
                 verarbeiten
               </StyledButton>
@@ -174,10 +174,11 @@ export default function PartCard({ part, isDetail, isMini }) {
                     href={`${part._id}/edit-part`}
                     name="bearbeiten"
                     fontSize="13.333px"
+                    color="var(--color-item)"
                   />
                   <StyledButton
                     onClick={deletePart}
-                    borderColor="var(--color-red)"
+                    backgroundColor="var(--color-red)"
                   >
                     löschen
                   </StyledButton>
