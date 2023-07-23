@@ -8,6 +8,8 @@ export default createGlobalStyle`
   *::before,
   *::after {
     box-sizing: border-box;
+    font-family: ${robotoFlex.style.fontFamily};
+    font-weight: ${robotoFlex.style.fontWeight};
   }
 
   :root {
@@ -28,7 +30,6 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: system-ui;
     background-color: var(--color-white);
   }
 `;
