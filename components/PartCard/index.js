@@ -51,7 +51,7 @@ export default function PartCard({ part, isDetail, isMini }) {
           <PartCardFlexContainer width="15%"></PartCardFlexContainer>
           <PartCardImage
             src={part.imgUrl}
-            onError={(e) => {
+            onLoad={(e) => {
               e.target.src = noImageDefaultImgUrl;
             }}
             alt={
@@ -76,7 +76,10 @@ export default function PartCard({ part, isDetail, isMini }) {
           <PartCardFlexContainer direction="row" justify="space-between">
             <Link href={!isDetail ? `/${part._id}` : `/`}>
               <PartCardImage
-                src={part.imgUrl ? part.imgUrl : noImageDefaultImgUrl}
+                src={part.imgUrl}
+                onLoad={(e) => {
+                  e.target.src = noImageDefaultImgUrl;
+                }}
                 alt={
                   part.category[0]?.name
                     ? part.category[0]?.name
