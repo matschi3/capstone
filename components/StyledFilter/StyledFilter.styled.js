@@ -16,5 +16,6 @@ export const FilterButtonContainer = styled.section`
 `;
 
 export const FilterButton = styled.button`
+  font-weight: 200;
   ${(props) => (props.isActiveFilter === true ? "font-weight: bold" : "")}
 `;
