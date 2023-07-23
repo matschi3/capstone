@@ -16,7 +16,7 @@ export const PartCardFlexContainer = styled.article`
   ${(props) => props.isCard && `margin: 0.3rem;`}
   ${(props) =>
     props.cardColor &&
-    `background-image: linear-gradient(to left, var(--color-white) 0%, ${props.cardColor} 100%);`}
+    `background-image: linear-gradient(to left, var(--color-white) -15%, ${props.cardColor} 100%);`}
 `;
 
 export const PartCardCategory = styled.p`
