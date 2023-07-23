@@ -6,7 +6,7 @@ export default function CategoryForm({ onSubmit, formName, defaultData }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    // create new category object
+
     const newCategory = {
       name: data.name,
       text: `Kategorie für ${data.name}`,
