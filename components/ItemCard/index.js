@@ -116,10 +116,14 @@ export default function ItemCard({ item }) {
     "https://res.cloudinary.com/dn4pswuzt/image/upload/v1689263603/0e2f1d94b07d3ab7a7edced00.jpg";
   return (
     <>
-      <PartsListContainer
-        borderColor="var(--color-item)"
+      <PartCardFlexContainer
+        direction="column"
+        justify="space-between"
+        border="var(--color-black)"
         minWidth="300px"
         maxWidth="380px"
+        isCard
+        boxShadow
       >
         <PartCardFlexContainer direction="row" justify="space-between">
           <PartCardImage
@@ -203,10 +207,19 @@ export default function ItemCard({ item }) {
             </StyledButton>
           </PartCardFlexContainer>
         </PartCardFlexContainer>
-        {item.parts.map((part) => (
-          <PartCard key={part._id} part={part} isMini />
-        ))}
-      </PartsListContainer>
+        <PartCardFlexContainer direction="row" justify="flex-start">
+          <PartCardFlexContainer width="10%"></PartCardFlexContainer>
+          <PartCardFlexContainer
+            justify="flex-start"
+            minWidth="290px"
+            maxWidth="370px"
+          >
+            {item.parts.map((part) => (
+              <PartCard key={part._id} part={part} isMini />
+            ))}
+          </PartCardFlexContainer>
+        </PartCardFlexContainer>
+      </PartCardFlexContainer>
       <Popup
         id={item._id}
         name="VK-soll-Preis einstellen"
