@@ -12,12 +12,10 @@ import { useRouter } from "next/router.js";
 import { mutate } from "swr";
 import { toast } from "react-toastify";
 
-// isDetail is for parts-detail-page, isMini is for mini-part-card on corresponding item-card
 export default function PartCard({ part, isDetail, isMini }) {
   const router = useRouter();
   const { id } = router.query;
 
-  // toggle part.inAssembler for assembling parts into an item
   async function toggleInAssembler() {
     const toggledPart = { ...part, inAssembler: !part.inAssembler };
     // fetch url ternary: if toggleButton is clicked on the partsList page, there is no id from router.query; instead use given 'part' to get its '_id' for toggeling
@@ -29,7 +27,6 @@ export default function PartCard({ part, isDetail, isMini }) {
         body: JSON.stringify(toggledPart),
       }
     );
-    // mutate partsList or partDetailPage depending on where toggleButton is clicked
     !id ? mutate(`/api/parts`) : mutate(`/api/parts/${id}`);
   }
 
