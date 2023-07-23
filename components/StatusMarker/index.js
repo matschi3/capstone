@@ -14,7 +14,7 @@ export default function StatusMarker({ part }) {
       {part.isAssembled === true ? (
         <StatMarker
           key={"isAssembled"}
-          style={{ backgroundColor: "var(--color-part)" }}
+          style={{ backgroundColor: "var(--color-highlight)" }}
         >
           verbaut
         </StatMarker>
