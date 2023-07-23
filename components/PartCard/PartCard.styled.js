@@ -12,6 +12,8 @@ export const PartCardFlexContainer = styled.article`
   ${(props) => props.width && `width: ${props.width};`}
   ${(props) => props.minWidth && `min-width: ${props.minWidth};`}
   ${(props) => props.maxWidth && `max-width: ${props.maxWidth};`}
+  ${(props) => props.boxShadow && `box-shadow: 5px 5px 0px var(--color-black);`}
+  ${(props) => props.isCard && `margin: 0.3rem;`}
 `;
 
 export const PartCardCategory = styled.p`
