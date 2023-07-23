@@ -11,10 +11,13 @@ import LinkTo from "../LinkTo/index.js";
 import { useRouter } from "next/router.js";
 import { mutate } from "swr";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 export default function PartCard({ part, isDetail, isMini }) {
   const router = useRouter();
   const { id } = router.query;
+  // state for image error handling
+  const [imageError, setImageError] = useState(false);
 
   async function toggleInAssembler() {
     const toggledPart = { ...part, inAssembler: !part.inAssembler };
@@ -51,9 +54,6 @@ export default function PartCard({ part, isDetail, isMini }) {
           <PartCardFlexContainer width="15%"></PartCardFlexContainer>
           <PartCardImage
             src={part.imgUrl}
-            onLoad={(e) => {
-              e.target.src = noImageDefaultImgUrl;
-            }}
             alt={
               part.category[0]?.name
                 ? part.category[0]?.name
@@ -61,7 +61,21 @@ export default function PartCard({ part, isDetail, isMini }) {
             }
             width={100}
             height={100}
+            onLoad={() => setImageError(true)}
+            style={imageError ? { display: "none" } : {}}
           />
+          {imageError && (
+            <PartCardImage
+              src={noImageDefaultImgUrl}
+              alt={
+                part.category[0]?.name
+                  ? part.category[0]?.name
+                  : "part of an etagery"
+              }
+              width={100}
+              height={100}
+            />
+          )}
           <PartCardFlexContainer direction="column" justify="flex-start">
             <PartCardText>
               EK: {part.purchasingPrice} {part.currency}
