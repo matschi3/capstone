@@ -3,7 +3,6 @@ import { StatMarker } from "./StatusMarker.styled.js";
 export default function StatusMarker({ part }) {
   return (
     <>
-      {/* renders a statusMarker if that status is set true */}
       {part.inAssembler === true ? (
         <StatMarker
           key={"inAssembler"}
