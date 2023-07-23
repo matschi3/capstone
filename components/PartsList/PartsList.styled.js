@@ -9,4 +9,6 @@ export const PartsListContainer = styled.section`
   margin: 0.1rem;
   margin-top: 5em;
   margin-bottom: 2.5em;
+  min-width: 300px;
+  max-width: 380px;
 `;
