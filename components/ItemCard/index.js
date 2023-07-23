@@ -42,9 +42,8 @@ export default function ItemCard({ item }) {
           toast("✅ Item erfolgreich editiert");
         } else {
           toast.error("❗️ Fehler beim setzen des neuen Wertes");
-        }
-      } else {
-        // here also edit parts of item data (isSold, dateSold)
+        } // here also edit parts of item data (isSold, dateSold)
+      } else if (keyToChange === "soldForPrice" && inputValue > 0) {
         const response = await fetch(`/api/items/${item._id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -71,7 +70,43 @@ export default function ItemCard({ item }) {
           }).catch((error) => {
             toast.error(error.message);
           });
+        }); // here reset item and parts of item data (isSold, dateSold)
+      } else if (keyToChange === "soldForPrice" && inputValue === "0") {
+        const resetItem = {
+          ...item,
+          [keyToChange]: inputValue,
+          dateSold: "",
+          isSold: false,
+        };
+        const response = await fetch(`/api/items/${item._id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(resetItem),
         });
+        if (response.ok) {
+          setActivePopUp("none");
+          mutate();
+          toast("✅ Item Verkauf zurückgesetzt");
+        } else {
+          toast.error("❗️ Fehler beim resetten");
+        }
+        item.parts.forEach(function (part) {
+          const updatedPart = {
+            ...part,
+            isSold: false,
+            dateSold: "",
+          };
+
+          fetch(`/api/parts/${part._id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(updatedPart),
+          }).catch((error) => {
+            toast.error(error.message);
+          });
+        });
+      } else {
+        toast.error("❗️ ungültige Eingabe");
       }
     } catch (error) {
       toast.error("❗️ Fehler beim Zugriff auf Datenbank");
