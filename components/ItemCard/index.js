@@ -17,7 +17,6 @@ export default function ItemCard({ item }) {
   const [activePopUp, setActivePopUp] = useState("none");
   const [inputValue, setInputValue] = useState(null);
 
-  // handle confirm of popups (set item data) with entered inputValue and the keyToChange for multi-purpose
   async function handleConfirm(keyToChange) {
     const editedItem =
       keyToChange !== "soldForPrice"
@@ -29,7 +28,6 @@ export default function ItemCard({ item }) {
             isSold: true,
           };
     try {
-      // if keyToChange is not soldForPrice, just edit item data
       if (keyToChange !== "soldForPrice") {
         const response = await fetch(`/api/items/${item._id}`, {
           method: "PUT",
@@ -42,7 +40,7 @@ export default function ItemCard({ item }) {
           toast("✅ Item erfolgreich editiert");
         } else {
           toast.error("❗️ Fehler beim setzen des neuen Wertes");
-        } // here also edit parts of item data (isSold, dateSold)
+        }
       } else if (keyToChange === "soldForPrice" && inputValue > 0) {
         const response = await fetch(`/api/items/${item._id}`, {
           method: "PUT",
@@ -70,7 +68,7 @@ export default function ItemCard({ item }) {
           }).catch((error) => {
             toast.error(error.message);
           });
-        }); // here reset item and parts of item data (isSold, dateSold)
+        });
       } else if (keyToChange === "soldForPrice" && inputValue === "0") {
         const resetItem = {
           ...item,
@@ -136,7 +134,6 @@ export default function ItemCard({ item }) {
             <PartCardText>
               {item.totalPurchasingPrice} {item.currency}
             </PartCardText>
-            {/* Ternarys for correct display of Price-information depending on which data has been given */}
             {item.targetPrice && !item.soldForPrice ? (
               <>
                 <PartCardText>
@@ -180,7 +177,6 @@ export default function ItemCard({ item }) {
               </>
             ) : null}
           </PartCardFlexContainer>
-          {/* right hand Buttons */}
           <PartCardFlexContainer direction="column" justify="flex-start">
             <StyledButton onClick={() => setActivePopUp("imgUrl")}>
               + Foto
@@ -193,12 +189,10 @@ export default function ItemCard({ item }) {
             </StyledButton>
           </PartCardFlexContainer>
         </PartCardFlexContainer>
-        {/* render miniPartCard for each part in populated item.parts (parts of item) */}
         {item.parts.map((part) => (
           <PartCard key={part._id} part={part} isMini />
         ))}
       </PartsListContainer>
-      {/* available PopUps */}
       <Popup
         id={item._id}
         name="VK-soll-Preis einstellen"
