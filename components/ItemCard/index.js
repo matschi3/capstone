@@ -112,16 +112,17 @@ export default function ItemCard({ item }) {
       toast.error("❗️ Fehler beim Zugriff auf Datenbank");
     }
   }
+  const noImageDefaultImgUrl =
+    "https://res.cloudinary.com/dn4pswuzt/image/upload/v1689263603/0e2f1d94b07d3ab7a7edced00.jpg";
   return (
     <>
       <PartsListContainer borderColor="var(--color-item)">
         <PartCardFlexContainer direction="row" justify="space-between">
           <PartCardImage
-            src={
-              item.imgUrl === null
-                ? "https://res.cloudinary.com/dn4pswuzt/image/upload/v1689263603/0e2f1d94b07d3ab7a7edced00.jpg"
-                : item.imgUrl
-            }
+            src={item.imgUrl}
+            onError={(e) => {
+              e.target.src = noImageDefaultImgUrl;
+            }}
             alt={item.name}
             width={100}
             height={100}
