@@ -162,7 +162,7 @@ export default function PartCard({ part, isDetail, isMini }) {
             <PartCardFlexContainer direction="column" justify="flex-start">
               <StyledButton
                 onClick={toggleInAssembler}
-                borderColor="var(--color-inAssembler)"
+                borderColor="var(--color-highlight)"
               >
                 verarbeiten
               </StyledButton>
