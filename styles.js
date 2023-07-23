@@ -15,9 +15,10 @@ export default createGlobalStyle`
   :root {
     --color-white: #eaeaea;
     --color-black: #121212;
-    --color-part: blue;
-    --color-item: red;
-    --color-category: green;
+    --color-part: #00C198;
+    --color-item:  #01959C;
+    --color-category: #11788F;
+    --color-highlight: #F0C326;
     --color-inAssembler: orange;
     --color-isNotAssembled: yellow;
     --color-isAssembled: orangered;
