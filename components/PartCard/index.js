@@ -53,7 +53,10 @@ export default function PartCard({ part, isDetail, isMini }) {
         >
           <PartCardFlexContainer width="15%"></PartCardFlexContainer>
           <PartCardImage
-            src={part.imgUrl ? part.imgUrl : noImageDefaultImgUrl}
+            src={part.imgUrl}
+            onError={(e) => {
+              e.target.src = noImageDefaultImgUrl;
+            }}
             alt={
               part.category[0]?.name
                 ? part.category[0]?.name
