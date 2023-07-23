@@ -52,6 +52,7 @@ export default function PartCard({ part, isDetail, isMini }) {
           border="var(--color-black)"
           isCard
           boxShadow
+          cardColor="var(--color-part)"
         >
           <PartCardImage
             src={part.imgUrl}
@@ -95,6 +96,7 @@ export default function PartCard({ part, isDetail, isMini }) {
           maxWidth="380px"
           isCard
           boxShadow
+          cardColor="var(--color-part)"
         >
           <PartCardFlexContainer direction="row" justify="space-between">
             <Link href={!isDetail ? `/${part._id}` : `/`}>

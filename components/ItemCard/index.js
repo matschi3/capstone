@@ -124,6 +124,7 @@ export default function ItemCard({ item }) {
         maxWidth="380px"
         isCard
         boxShadow
+        cardColor="var(--color-item)"
       >
         <PartCardFlexContainer direction="row" justify="space-between">
           <PartCardImage
