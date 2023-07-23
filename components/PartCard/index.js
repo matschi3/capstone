@@ -62,6 +62,7 @@ export default function PartCard({ part, isDetail, isMini }) {
             width={100}
             height={100}
             onLoad={() => setImageError(true)}
+            onError={() => setImageError(true)}
             style={imageError ? { display: "none" } : {}}
           />
           {imageError && (
@@ -99,6 +100,7 @@ export default function PartCard({ part, isDetail, isMini }) {
                 width={100}
                 height={100}
                 onLoad={() => setImageError(true)}
+                onError={() => setImageError(true)}
                 style={imageError ? { display: "none" } : {}}
               />
               {imageError && (
