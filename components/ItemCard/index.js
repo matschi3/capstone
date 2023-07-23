@@ -16,6 +16,8 @@ export default function ItemCard({ item }) {
   const { mutate } = useSWR(`/api/items`);
   const [activePopUp, setActivePopUp] = useState("none");
   const [inputValue, setInputValue] = useState(null);
+  // state for image error handling
+  const [imageError, setImageError] = useState(false);
 
   async function handleConfirm(keyToChange) {
     const editedItem =
@@ -118,13 +120,20 @@ export default function ItemCard({ item }) {
         <PartCardFlexContainer direction="row" justify="space-between">
           <PartCardImage
             src={item.imgUrl}
-            onError={(e) => {
-              e.target.src = noImageDefaultImgUrl;
-            }}
             alt={item.name}
             width={100}
             height={100}
+            onError={() => setImageError(true)}
+            style={imageError ? { display: "none" } : {}}
           />
+          {imageError && (
+            <PartCardImage
+              src={noImageDefaultImgUrl}
+              alt={item.name}
+              width={100}
+              height={100}
+            />
+          )}
           <PartCardFlexContainer direction="column" justify="flex-start">
             <PartCardText>
               {new Date(item.dateAssembled).toLocaleString("de-DE", {
