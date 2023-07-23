@@ -35,8 +35,6 @@ export default function Popup({
           onChange={(event) => setInputValue(event.target.value)}
         ></Input>
       </PartCardFlexContainer>
-      {keyToChange}
-      {inputValue}
       <PartCardFlexContainer direction="row" justify="space-around">
         <StyledButton
           onClick={
