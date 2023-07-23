@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useSWR from "swr";
-import { Form, StyledButton } from "./ImageUploadForm.styled";
+import { Form, StyledButton } from "./ImageUploadForm.styled.js";
 
 export default function ImageUploadForm() {
   const { mutate } = useSWR("/api/images/");
