@@ -18,6 +18,7 @@ export const PartCardCategory = styled.p`
   background-color: var(--color-category);
   padding: 0.1rem;
   margin: 0.1rem;
+  font-weight: 200;
 `;
 
 export const PartCardImage = styled(Image)`
@@ -28,4 +29,5 @@ export const PartCardImage = styled(Image)`
 
 export const PartCardText = styled.p`
   margin: 0.2rem;
+  font-weight: 200;
 `;
