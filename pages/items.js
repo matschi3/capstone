@@ -66,7 +66,6 @@ export default function ItemsPage() {
     <>
       <StyledHeader title="ITEMS" color="var(--color-item)" />
       <FilterContainer>
-        {/* render a filterButton for each object in 'options' with given 'value' and 'label' */}
         <StyledFilter
           options={[
             {
