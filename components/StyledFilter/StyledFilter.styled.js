@@ -6,6 +6,7 @@ export const FilterContainer = styled.section`
   position: fixed;
   width: 100vw;
   top: 2em;
+  min-width: 300px;
 `;
 
 export const FilterButtonContainer = styled.section`
