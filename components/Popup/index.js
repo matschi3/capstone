@@ -2,6 +2,7 @@ import { StyledPopup } from "./Popup.styled.js";
 import { PartCardFlexContainer } from "../PartCard/PartCard.styled.js";
 import { StyledButton } from "../StyledButton/StyledButton.styled";
 import { Label, Input } from "../PartForm/PartForm.styled.js";
+import { useEffect, useRef } from "react";
 
 export default function Popup({
   id,
@@ -13,18 +14,29 @@ export default function Popup({
   onCancel,
   onConfirm,
 }) {
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (isActive === keyToChange) {
+      inputRef.current.focus();
+    }
+  }, [isActive, keyToChange]);
+
   return isActive === keyToChange ? (
     <StyledPopup>
       <PartCardFlexContainer align="center">
         {id}
         <Label htmlFor={keyToChange}>{name}</Label>
         <Input
+          ref={inputRef}
           type="number"
           id={keyToChange}
           name={keyToChange}
           onChange={(event) => setInputValue(event.target.value)}
         ></Input>
       </PartCardFlexContainer>
+      {keyToChange}
+      {inputValue}
       <PartCardFlexContainer direction="row" justify="space-around">
         <StyledButton
           onClick={
