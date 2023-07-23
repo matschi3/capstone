@@ -51,7 +51,6 @@ export default function PartCard({ part, isDetail, isMini }) {
           border="blue"
           justify="flex-start"
         >
-          <PartCardFlexContainer width="15%"></PartCardFlexContainer>
           <PartCardImage
             src={part.imgUrl}
             alt={
