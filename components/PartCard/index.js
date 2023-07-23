@@ -61,7 +61,7 @@ export default function PartCard({ part, isDetail, isMini }) {
             }
             width={100}
             height={100}
-            onLoad={() => setImageError(true)}
+            onLoad={() => setImageError(false)}
             style={imageError ? { display: "none" } : {}}
           />
           {imageError && (
@@ -91,9 +91,6 @@ export default function PartCard({ part, isDetail, isMini }) {
             <Link href={!isDetail ? `/${part._id}` : `/`}>
               <PartCardImage
                 src={part.imgUrl}
-                onLoad={(e) => {
-                  e.target.src = noImageDefaultImgUrl;
-                }}
                 alt={
                   part.category[0]?.name
                     ? part.category[0]?.name
@@ -101,7 +98,21 @@ export default function PartCard({ part, isDetail, isMini }) {
                 }
                 width={100}
                 height={100}
+                onLoad={() => setImageError(false)}
+                style={imageError ? { display: "none" } : {}}
               />
+              {imageError && (
+                <PartCardImage
+                  src={noImageDefaultImgUrl}
+                  alt={
+                    part.category[0]?.name
+                      ? part.category[0]?.name
+                      : "part of an etagery"
+                  }
+                  width={100}
+                  height={100}
+                />
+              )}
             </Link>
             <PartCardFlexContainer direction="column" justify="flex-start">
               <PartCardText>Name: {part.name}</PartCardText>
