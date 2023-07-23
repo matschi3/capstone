@@ -5,4 +5,5 @@ export const StatMarker = styled.p`
   border-radius: 5px;
   padding: 0.1rem;
   margin: 0.1rem;
+  font-weight: 200;
 `;
