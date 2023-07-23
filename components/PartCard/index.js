@@ -89,9 +89,11 @@ export default function PartCard({ part, isDetail, isMini }) {
       ) : (
         <PartCardFlexContainer
           direction="column"
-          border="blue"
+          border="var(--color-black)"
           minWidth="300px"
           maxWidth="380px"
+          isCard
+          boxShadow
         >
           <PartCardFlexContainer direction="row" justify="space-between">
             <Link href={!isDetail ? `/${part._id}` : `/`}>
