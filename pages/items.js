@@ -5,6 +5,7 @@ import useSWR from "swr";
 import { useState } from "react";
 import StyledFilter from "../components/StyledFilter/index.js";
 import { FilterContainer } from "../components/StyledFilter/StyledFilter.styled.js";
+import { PartsListContainer } from "../components/PartsList/PartsList.styled.js";
 
 export default function ItemsPage() {
   const [sorting, setSorting] = useState("dateAssembled(DESC)");
@@ -111,9 +112,11 @@ export default function ItemsPage() {
           }}
         />
       </FilterContainer>
-      {sortedItems.map((item) => (
-        <ItemCard key={item._id} item={item} />
-      ))}
+      <PartsListContainer>
+        {sortedItems.map((item) => (
+          <ItemCard key={item._id} item={item} />
+        ))}
+      </PartsListContainer>
       <StyledFooter />
     </>
   );

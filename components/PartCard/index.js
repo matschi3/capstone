@@ -48,10 +48,12 @@ export default function PartCard({ part, isDetail, isMini }) {
       {isMini ? (
         <PartCardFlexContainer
           direction="row"
-          border="blue"
           justify="flex-start"
+          border="var(--color-black)"
+          isCard
+          boxShadow
+          cardColor="var(--color-part)"
         >
-          <PartCardFlexContainer width="15%"></PartCardFlexContainer>
           <PartCardImage
             src={part.imgUrl}
             alt={
@@ -87,7 +89,15 @@ export default function PartCard({ part, isDetail, isMini }) {
           </PartCardFlexContainer>
         </PartCardFlexContainer>
       ) : (
-        <PartCardFlexContainer direction="column" border="blue">
+        <PartCardFlexContainer
+          direction="column"
+          border="var(--color-black)"
+          minWidth="300px"
+          maxWidth="380px"
+          isCard
+          boxShadow
+          cardColor="var(--color-part)"
+        >
           <PartCardFlexContainer direction="row" justify="space-between">
             <Link href={!isDetail ? `/${part._id}` : `/`}>
               <PartCardImage
@@ -152,7 +162,7 @@ export default function PartCard({ part, isDetail, isMini }) {
             <PartCardFlexContainer direction="column" justify="flex-start">
               <StyledButton
                 onClick={toggleInAssembler}
-                borderColor="var(--color-inAssembler)"
+                backgroundColor="var(--color-highlight)"
               >
                 verarbeiten
               </StyledButton>
@@ -164,10 +174,11 @@ export default function PartCard({ part, isDetail, isMini }) {
                     href={`${part._id}/edit-part`}
                     name="bearbeiten"
                     fontSize="13.333px"
+                    color="var(--color-item)"
                   />
                   <StyledButton
                     onClick={deletePart}
-                    borderColor="var(--color-red)"
+                    backgroundColor="var(--color-red)"
                   >
                     löschen
                   </StyledButton>

@@ -2,6 +2,7 @@ import GlobalStyle from "../styles.js";
 import { SWRConfig } from "swr";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LottieBackground from "../LottieBackground";
 
 const fetcher = async (url) => {
   try {
@@ -26,6 +27,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
+      <LottieBackground />
       <SWRConfig value={{ fetcher }}>
         <Component {...pageProps} />
         <ToastContainer

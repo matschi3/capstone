@@ -6,7 +6,7 @@ export default function StatusMarker({ part }) {
       {part.inAssembler === true ? (
         <StatMarker
           key={"inAssembler"}
-          style={{ backgroundColor: "var(--color-inAssembler)" }}
+          style={{ backgroundColor: "var(--color-highlight)" }}
         >
           in Verarbeitung
         </StatMarker>
@@ -14,14 +14,14 @@ export default function StatusMarker({ part }) {
       {part.isAssembled === true ? (
         <StatMarker
           key={"isAssembled"}
-          style={{ backgroundColor: "var(--color-isAssembled)" }}
+          style={{ backgroundColor: "var(--color-highlight)" }}
         >
           verbaut
         </StatMarker>
       ) : (
         <StatMarker
           key={"NotinAssembler"}
-          style={{ backgroundColor: "var(--color-isNotAssembled)" }}
+          style={{ backgroundColor: "var(--color-part)" }}
         >
           unverbaut
         </StatMarker>
@@ -29,7 +29,7 @@ export default function StatusMarker({ part }) {
       {part.isSold === true ? (
         <StatMarker
           key={"isSold"}
-          style={{ backgroundColor: "var(--color-isSold)" }}
+          style={{ backgroundColor: "var(--color-part)" }}
         >
           verkauft
         </StatMarker>

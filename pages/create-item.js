@@ -82,7 +82,7 @@ export default function CreateItemPage() {
             <StyledButton
               onClick={handleCreateItem}
               name="verarbeiten"
-              color="var(--color-item)"
+              backgroundColor="var(--color-highlight)"
               posbt="top"
               poslr="right"
               fontSize="1rem"
