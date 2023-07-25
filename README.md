@@ -25,13 +25,20 @@
 - Formidable
 - Toastify
 
+### `Demo`
+You can find the hosted version of Assembler: [Deployment @ Vercel](https://capstone-assembler.vercel.app/)
+
+***IMPORTANT NOTE: currently optimized for mobile!***
+
 ## `Project Setup`
 
-To run project commands locally, you need to clone this repository and install the dependencies using `npm i` first.
+To run this project locally, you need to
+- **clone this repository** and install the dependencies using `npm i` first.   
+- **Create** your own `.env` file inside the root folder.
+- Add your `MONGODB_URI` from mongoDB.
+- Add your `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY` and `CLOUDINARY_SECRET` from cloudinary.
 
 You can then use the following commands:
-
 - `npm run dev` to start the development server
 - `npm run test` to run the tests in watch mode (if available)
 
-> 💡 This project requires a bundler. You can use `npm run dev` to start the development server. You can then view the project in the browser at `http://localhost:3000`. The Live Preview Extension for Visual Studio Code will **not** work for this project.
